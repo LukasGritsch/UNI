@@ -1,0 +1,71 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{tabularx}
+\usepackage{lmodern,textcomp}
+\usepackage{geometry,lipsum}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{makecell}
+\usepackage{eurosym}
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\usepackage[onehalfspacing]{setspace}
+% http://ctan.org/pkg/{geometry,lipsum}
+\renewcommand{\contentsname}{Inhaltsverzeichnis}
+% default
+%\geometry{margin=1in}% 1in margin
+\geometry{margin=2cm}% 1cm margin
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\today}
+\chead{Lukas Gritsch}
+\lhead{Systemplanung}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\section{Erklären Sie, warum professionelle Software nicht nur die Programme umfasst, die für einen Kunden / eine
+Kundin entwickelt werden}
+Professionelle Software beinhaltet auch die Dokumentation der Codierung. Man muss ein System betreuen, welches kontinuierlich gebaut werden kann. Man muss einen Setupprozess betreuen, bei welchem der Kunde oder ein Techniker ein Update einfach ausrollen kann. Eine professionell Entwickelte Software folgt einem genau vorgegebenen Prozess. Des weiteren kann man sich über eine Professionelle Software meist über eine Webseite informieren und Kontakt mit den Entwicklern bzw. dem Support des Softwarehauses aufnehmen. Dort bekommt man auch Hilfe, wenn ein Bug in der Software vorliegt.
+
+\section{Was ist der wichtigste Unterschied zwischen generischer Softwareproduktentwicklung und
+kund:innenspezifischer Softwareentwicklung?}
+Bei der generischen Software bestimmt der Entwickler/die Entwicklerin (das Entwicklerteam) und das Softwarehaus wie die Software weiterentwickelt wird, welche Technologie verwendet wird und welche Features in der Zukunft veröffentlicht werden.
+Bei der Entwicklung speziell für einen Kunden/eine Kundin wird immer die Technoligie verwendet, welche der vom Kunden/von der Kundin angefordert wird. Dazu entschiedet auch nicht der Entwickler/die Entwicklerin den weiteren Weg der Software. Er/Sie setzt lediglich die Anforderungen des Kunden/der Kundin um.
+
+\section{Welches sind wichtige Merkmale die alle professionelle Softwareprodukte aufweisen sollten.}
+\begin{itemize}
+ \item Kurze Reaktionszeit, immer wenn man auf einen Button, etc... klickt passiert etwas (Anforderungen, welche vom Kunden/von der Kundin als Grundvoraussetzung gelten)
+ \item Sicherheit, dass die Daten welche in der Software eingegeben werden vertraulich behandelt werden
+ \item Dass das Produkt immer einen Grundprozess folgt \textbf{Spezifikation,Design und Implementierung,Validieren,Evolution} dieser Prozess kann iterativ ausgeführt werden.
+\end{itemize}
+\pagebreak
+\section{Zeigen Sie, abgesehen von den Herausforderungen der Heterogenität, des unternehmerischen und sozia-
+len Wandels, des Vertrauens und der Sicherheit, andere Probleme und Herausforderungen auf, denen
+Software-Engineering im 21. Jahrhundert wahrscheinlich begegnen wird.}
+\begin{itemize}
+ \item Zunehmende Knappheit an Ressourcen (Mikrocontroller sind zurzeit nur sehr schwer lieferbar)
+ \item Klimawandel, man sollte Ressourcen wieder verwerten anstatt diese immer neu zu erfinden.
+ \item Quantencomputer könne die Verschlüsselung, welche zurzeit im Einsatz ist schneller entschlüsseln. Das bedeutet, dass man die Programmierung nochmals neu erfinden muss
+\end{itemize}
+\section{Erklären Sie mit Beispielen warum unterschiedliche Anwendungstypen spezialisierte Software-
+Engineering-Techniken erforderlich machen, um deren Entwurf und Entwicklung zu unterstützen.}
+Wenn man mit Software arbeitete, welche in kritischen Umgebungen Läuft (Krankenhaus,Flugzeug,ect.) Ist es wichtige, dass man die Anforderung an die Software gut spezifiziert und dies Validierung dieser Spezifikationen dann auch genau abarbeitet. Des weiteren ist es in diesem Bereich sehr wichtig, dass die Software gut getestet wird. Im Gegensatz zur Entwicklung von Spiel. Hier kann es der Fall sein, dass beim Releas noch der ein oder andere Bug zu finden ist, diese werden dann aber kontinuierlich gepatcht um die Software zu verbessern. Dieser Vorgang wäre bei einem Landeassisten eines Flugzeuges fatal.
+\pagebreak
+\section{Erklären Sie, warum es grundlegende Konzepte des Software-Engineerings gibt, die auf alle Typen von
+Softwaresystemen angewandt werden.}
+Es gibt grundlegende Konzepte, da eine Software abstrakt gesehen immer das Gleiche ist. Ein Problem wird definiert und mithilfe von Sourcode gelöst. Ob man hier nun ein Spiel programmiert, welches als Problem die Unterhaltung von Personen nimmt oder man eine Prozess in einem Unternehmen automatisiert. Dieser Prozess kann folgendermaßen abgebildet werden \textbf{Spezifikation,Design und Implementierung,Validieren,Evolution}. Meistens ist man aber durch zeitliche, finanziell oder personelle Gründe daran gehindert alle Aspekte diese Prozesses abzuarbeiten. Deswegen muss man dieses Grundlegenden Prozess so adaptieren, dass die beste Lösung für das aktuelle Problem erzielt werden kann.
+
+\section{Erklären Sie, wie die Durchdringung des Internets Softwaresysteme verändert hat.}
+\begin{itemize}
+ \item Update können leichter und schneller an der Kunden gebracht werden.
+ \item Anwendungen werden im Browser entwickelt und können auf mehreren Endgeräten abgerufen werden.
+ \item Entwickler können sich über Foren austauschen und Probleme effizienter Lösen.
+ \item Software kann nach Nutzung gekauft/ bezahlt werden. Beispiel man mietet sich einen Server bei einem Hosting-Unternehmen und dieser Server läuft 3 Stunden. Dann bezahlt man auch nur für diese 3 Stunden
+\end{itemize}
+
+\section{Diskutieren Sie, ob professionelle Software Entwickler:innen ebenso wie Ärzt:innen und Anwält:innen zerti-
+fiziert sein sollten.}
+Nein es sollte für Software Entwickler/Entwicklerinnen keine Zertifizierung geben wie Ärzt:innen oder Anwält:innen. Die  Softwareentwicklung lebt auch ganz stark davon, dass man sich das meiste heutzutage über das Internet selber beibringen kann. So gibt es etliche Tutorials wie man eine Anwendung in Python erstellt. In 90\% der Fälle können die Entwickler:innen mit diesem eigenständig erlernten Wissen eine gute Arbeit in der Programmierung leisten. Sollte ein/e Entwickler:in in der selben Branche arbeiten wie ein/e Ärzt:innen, dann sollte das Unternehmen, für welches diese/r arbeitet eine Zertifizierung erhalte, dass dieses den Prozess der Entwicklung kritischer Systeme abwickeln kann.
+\end{document}
