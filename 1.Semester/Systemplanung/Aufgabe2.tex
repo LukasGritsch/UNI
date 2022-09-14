@@ -1,0 +1,76 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{tabularx}
+\usepackage{lmodern,textcomp}
+\usepackage{geometry,lipsum}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{makecell}
+\usepackage{eurosym}
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\usepackage[onehalfspacing]{setspace}
+% http://ctan.org/pkg/{geometry,lipsum}
+\renewcommand{\contentsname}{Inhaltsverzeichnis}
+% default
+%\geometry{margin=1in}% 1in margin
+\geometry{margin=2cm}% 1cm margin
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\today}
+\chead{Lukas Gritsch}
+\lhead{Systemplanung}
+\rfoot{Seite \thepage}
+
+\begin{document}
+\section{Erklären Sie, warum es wichtig ist, während der Anforderungsentwicklung zwischen der Entwicklung der
+Benutzer:innenanforderungen und der Entwicklung der Systemanforderungen zu unterscheiden.}
+Systemanforderungen sind Vorgaben, an welche man sich halten muss, damit dass Programm läuft. Als Beispiel hierfür ist z.B. die Kundendatenbank welche vorgegeben wird. Wenn eine Verbindung zu MSSQL erwünscht wird, dann kann man nicht auf Oracle programmieren (SQL Syntax ist etwas anders). Dies sind Grundlegende Vorgaben, damit das Programm grundsätzlich läuft. Benutzer:innenanforderungen können im Anschluss Umgesetzt werden. Diese sind dann weniger von technilogischen Hürden abhängig als von der individuellen Anforderung des Kunden.
+
+\section{Beschreiben Sie die Hauptabläufe im Softwareprozess und ihre Ergebnisse. Zeigen Sie die möglichen Be-
+ziehungen zwischen den Ergebnissen dieser Aktivitäten auf.}
+\begin{itemize}
+ \item Spezifikation\\
+ Hier werden die Anforderungen des Kunden erhoben und Dokumentiert (Requirement Engeneering). Zum Abschluss dieser Phase wird meist ein Pflichtenheft verfasst
+ \item Design und Implementierung\\
+ Hier wird zunächst die Architektur des Systems festgelegt meist mit UML oder schon direkte Klassen in der Programmierung angelegt. Danach werden diese Strukturen implementiert. Zum Abschluss dieser Phase wird eine werden UNIT Tests geschrieben, welche sicherstellen, dass das Programm läuft.
+ \item Validierung\\
+ Hier wird überprüft ob die Punkte welche in der Spezifikation erhoben wurden erfüllt worden sind. Ab ende dieser Phase findet eine Abnahme des Kunden statt.
+ \item Evolution\\
+ Diese Phase wird immer irrelevanter, da die Softwareentwicklung ein kontinuierlicher Prozess geworden ist und man davon weg geht, dass es ein Produkt A gibt und einige Jahre später ein Produkt B.
+\end{itemize}
+\pagebreak
+\section{Erklären Sie warum Änderungen in komplexen Systemen unvermeidlich sind und nennen Sie Beispiele
+von Softwareprozessaktivitäten, die helfen Änderungen vorherzusagen und die die zu entwickelnde Soft-
+ware robuster gegenüber Änderungen machen}
+Komplexe Systeme werden oft über mehrere Jahre entwickelt. Dabei wird meist nach einem Wasserfallmodell gearbeitet, was bedeutet, dass die Anforderungen erhoben werden und dann abgearbeitet werden. Die Anforderungen der Kunden können sich aber während dieser Zeit ändern oder auch die technischen Möglichkeiten. Des weiteren kann es sein, dass man auf eine Technologie setzt und diese dann EOL erreicht (ZcCLient IE11). Hier kann eine Risikoabschätzung im Vorhinein gemacht werden, in welcher man die Technologie Prüft und versucht eine Prognose zu erstellen. Des weiteren kann ein Prototyp entwickelt werden, damit man die technischen Hürden abklären und testen kann. Für sie Änderungen der Kundenanforderungen kann man sich diesen in den Entwicklungsprozess mit ein beziehen, dies ist aber ehre in einem agilen Softwareprozess der Fall und nicht in einem Plan-getriebenen.
+\section{Schlagen Sie das am besten geeignete allgemeine Vorgehensmodell vor, das als Grundlage für die Ent-
+wicklung der folgenden Systeme dienen kann. Begründen Sie ihre Entscheidung auf der Basis des Sys-
+temtyps, der entwickelt wird:}
+\subsection{Ein System, das bei einem Auto das Antiblockiersystem steuert}
+Da es sich hier um ein kritisches System handelt, von welchem Menschenleben abhängen können würde ich hier zu einer Plan-getriebenen Vorgehensweise tendieren. Der Kunde muss hier auch nicht wirklich mit einbezogen werden dies kann sehr gut ohne den Kunden getestet werden und hängt nicht vom Geschmack usw. ab
+\subsection{Ein Virtual-Reality-System zur Unterstützung der Maschinenwartung}
+Hier würde ich es davon anhängig machen, welche Maschienen gewartet werden müssen. Sollte es ein MRT-Gerät sein, dann würde ich zu einer Plan-getriebenen Vorgehensweise tendieren. Der Ausfall eines solchen Geräts kann fatal sein, wenn es dringend gebraucht wird. Werden hingegen Maschinen gewartet wie eine Waschmaschine, welche ein Hobby-Heimwerker damit warten kann, dann würde ich ein Agiles-Modell setzen. Hier können dann auch die User Input zur UI/UX geben.
+\subsection{Ein Buchhaltungssystem, das in einer Universität das bestehende System ersetzt}
+Da ein Buchhaltungssystem klar definiert werden kann und bei einer ablöse eines bestehenden Systems die Rückmeldungen der Kunden nicht sehr informativ sein könne (da sie den Entwicklungsvortschritt immer mit dem bisherigen Programm vergleichen) würde ich einen Prozess-getriebenen Vorgang wählen.
+\subsection{Ein interaktives Reiseplanungssystem, das den Nutzern hilft, Reisen mit den geringsten Auswir-
+kungen auf die Umwelt zu planen}
+Dieses System würde ich in einer Agilen Form entwickeln, da der Endbenutzer hier eine große Bereicherung im Entwicklungsprozess sein kann. Das Programm würde eine gute UI/UX benötigen, deswegen ist die Rückmeldung von Benutzern nochmal wichtig. Des weiteren handelt es sich hier um kein zu komplexes Problem und auch nicht um eine kritische Anwendung
+\section{Wann würden Sie sich gegen eine agile Methode zur Entwicklung eines Softwaresystems aussprechen?}
+\pagebreak
+\section{Extreme Programming drückt die Benutzer:innenanforderungen in Form von User-Storys bzw. Szenarios
+aus, die jeweils auf eine Karteikarte geschrieben werden. Erörtern Sie die Vor- und Nachteile dieses An-
+satzes zur Anforderungsbeschreibung.}
+\section{Vergleichen Sie den Scrum-Anzatz zum Projektmanagement mit konventionellen planbasierten Vorge-
+hensweisen. Die Gegenüberstellung sollte die Effektivität jedes Ansatzes bei den folgenden Punkten be-
+rücksichtigen: Aufteilung der Mitarbeiter:innen auf die Projekte, Schätzung der Projektkosten, Erhalt der
+Teamzusammensetzung und der Umgang mit personellen Änderungen im Projektteam}
+\section{Um Kosten und die ökologischen Auswirkungen des Pendelns zu reduzieren, entscheidet sich Ihre Firma,
+eine Reihe von Büros zu schließen und Mitarbeiter:innen dabei zu unterstützen, von zu Hause aus zu ar-
+beiten. Jedoch ist sich das obere Management, das die Strategie eingeführt hat, nicht darüber bewusst,
+dass Software mit Hilfe von agilen Methoden entwickelt wird, die auf engere Teamarbeit und Pair Pro-
+gramming beruhen. Erläutern Sie die Schwierigkeiten, die diese neue Politik verursachen könnte und wie
+Sie diese Probleme umschiffen würde}
+\end{document}
