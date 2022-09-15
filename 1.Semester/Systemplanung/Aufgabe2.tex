@@ -59,18 +59,39 @@ Da ein Buchhaltungssystem klar definiert werden kann und bei einer ablöse eines
 kungen auf die Umwelt zu planen}
 Dieses System würde ich in einer Agilen Form entwickeln, da der Endbenutzer hier eine große Bereicherung im Entwicklungsprozess sein kann. Das Programm würde eine gute UI/UX benötigen, deswegen ist die Rückmeldung von Benutzern nochmal wichtig. Des weiteren handelt es sich hier um kein zu komplexes Problem und auch nicht um eine kritische Anwendung
 \section{Wann würden Sie sich gegen eine agile Methode zur Entwicklung eines Softwaresystems aussprechen?}
+Wenn es sich um ein kritisches System handelt, in welchem das menschliche Leben gefährdet sein kann. Hier finde ich es wichtig, dass solche Systeme Plan-getrieben umgesetzt werden. Meist ist dies auch von den Betrieben vorgegeben und man muss sich Zertifikate dafür geben lassen. Des weiteren würde ich mich bei großen oder komplexen Programmen für eine Plan-getriebene Variante aussprechen, da hier eine gute Planung und eine gute Architektur von großem Vorteil ist, bzw. ein muss ist. Wenn man solche Projekte in einer agilen Form umsetzt läuft man Gefahr, dass man durch eine voreilige Implementierung sich selbst Hürden für den weiteren Projekt-lauf liefert.
 \pagebreak
 \section{Extreme Programming drückt die Benutzer:innenanforderungen in Form von User-Storys bzw. Szenarios
 aus, die jeweils auf eine Karteikarte geschrieben werden. Erörtern Sie die Vor- und Nachteile dieses An-
 satzes zur Anforderungsbeschreibung.}
+Wenn man Anforderungen auf Karteikarten schreibt, dann müssen diese sehr zusammengefasst werden. Man hat also die Chance, dass der Kunde sich mit dem Problem selbst mehr auseinander setzte und sich zuvor überlegt, welche Anforderungen er/sie unterbringen bzw einbringen möchte und die Formulierung so wählt, dass diese leicht verständlich ist. Wenn der Kunde nur wenig Platz zur Beschreibung eines Problems hat, dann kann dies aber auch wieder ungenaue werden, vor allem, wenn man ein sehr komplexes Problem Beschreiben will. Generell ist es schwierig wenn alle Kunden Anforderungen stellen dürfen, da man hier leicht den Überblick verlieren kann was essentielle Features sind und was nur nice to have ist
 \section{Vergleichen Sie den Scrum-Anzatz zum Projektmanagement mit konventionellen planbasierten Vorge-
 hensweisen. Die Gegenüberstellung sollte die Effektivität jedes Ansatzes bei den folgenden Punkten be-
 rücksichtigen: Aufteilung der Mitarbeiter:innen auf die Projekte, Schätzung der Projektkosten, Erhalt der
 Teamzusammensetzung und der Umgang mit personellen Änderungen im Projektteam}
+\begin{itemize}
+ \item Aufteilung der Mitarbeiter auf Projekte
+ \begin{itemize}
+  \item [Scrum:] Da Scrum sehr effektiv ist, wenn man diesen Ansatz in einem kleinen Team verfolgt, kann man hier auch die Einteilung der Mitarbeiter auf die einzelnen Probleme leicht einteilen. Wenn man Scrum auf ein großes Entwicklerteam anwendet, kann es leicht sein, dass man bei den Meetings, welche täglich abgehalten werden können den Überblick verliert und das Meeting sehr lange dauert. Daher funktioniert dies nur im kleinen Rahmen sinnvoll
+  \item[Plan:] Da man hier sehr viel Zeit in die Planung steckt und das Programm vorab mittels UML konzipiert und eine Architektur aufstellt, kann man auch die Mitarbeiter leichter auf die einzelnen Punkte aufteilen. Dies funktioniert hier nicht nur bei kleinen Teams, sondern auch bei sehr komplexen Organisationen
+ \end{itemize}
+ \item Schätzung der Projektkosten
+ \begin{itemize}
+  \item [Scrum:] Da sich unter Scrum die Anforderungen immer wieder ändern können (da der Kunde sehr stark involviert ist) kann man die Kosten zu beginn sicher sehr schwierig abschätzen. Da der Kunde aber aktiv an der Entwicklung teilnimmt kann man die kosten immer wieder neu Verhandeln (Absprechen, wenn dieses Feature noch eingebaut werden soll, dann dauert es 2 Wochen länger und Kostet x € mehr). Deswegen kommt man am Ende des Projekt auf eine klar definierte und kommunizierte Summe.
+  \item [Plan:] Da die Anforderungen sehr spezifisch und genau ausgearbeitete werden kann man eine sehr gute Kostenschätzung abgeben. Diese wird in den meisten Fällen sehr gut passen. Was aber am Anfang nicht abschätzbar ist, dass sich Anforderungen während der Zeit ändern können oder eine technische Hürde, welche nicht abzusehen war auftritt. Andernfalls kann man zu beginn des Projekt sehr gut abschätzen wie viel es am Ende kostet
+ \end{itemize}
+ \item Erhalt der Teamzusammensetzung und der Umgang mit personellen Änderungen im Projektteam
+ \begin{itemize}
+  \item [Scrum:] Bei Scrum ist man prinzipiell flexibler, wenn man im laufe des Projekt eine Änderung im Entwicklerteam hat. Durch die ständigen Meetings, können offene Fragen geklärt werden und neuen Mitgliedern der Einstige in das Projekt erleichter werden. Dies führt auch zu einem stärkeren Teamzusammenhalt.
+  \item[Plan:] Hier werden gewisse Entwicklungsteile auf verschiedene Teams aufgeteilt (Team A Programmiert UI, Team B die API). Wenn man nun eine personellen Änderung hat kann ein neues Mitglied eher schwer in ein bestehendes Team eintreten, da der Zeitdruck eher wenig Zeit für Einschulungen zulasst. Da die Entwicklung aber von Experten in dem Bereich durchgeführt wird, kann ein neu Einstieger eine sehr steile Lehrnkurve bekommen.
+ \end{itemize}
+\end{itemize}
+
 \section{Um Kosten und die ökologischen Auswirkungen des Pendelns zu reduzieren, entscheidet sich Ihre Firma,
 eine Reihe von Büros zu schließen und Mitarbeiter:innen dabei zu unterstützen, von zu Hause aus zu ar-
 beiten. Jedoch ist sich das obere Management, das die Strategie eingeführt hat, nicht darüber bewusst,
 dass Software mit Hilfe von agilen Methoden entwickelt wird, die auf engere Teamarbeit und Pair Pro-
 gramming beruhen. Erläutern Sie die Schwierigkeiten, die diese neue Politik verursachen könnte und wie
 Sie diese Probleme umschiffen würde}
+Pairprogramming über remote ist sicher schwieriger, als wenn man sich am selben Ort befindet. Hierzu git es aber viele Tools welche das Arbeiten über das Internet erleichtern. VSCode aht zum Beispiel ein Plugin, bei welchem man zusammen ein SourceCode fiel bearbeiten kann. Dies erleichtert die Arbeit über das Internet schon um einiges. Des weiten machen es Tools wie MS-Teams ect. extem einfach Bildschirme zu teilen und zusammen zu arbeiten. Lieder ist das Internet nicht überall gut ausgebaut, so kann es zu Verzerrungen und Problemen bei der Verständigung kommen. Die Enge Teamarbeit kann man mit täglichen kurzen Meeting aufrecht erhalten.
 \end{document}
