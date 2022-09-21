@@ -1,41 +1,31 @@
 \documentclass[12pt]{article}
 \usepackage[utf8]{inputenc}
-\usepackage{tabularx}
-\usepackage{lmodern,textcomp}
 \usepackage{geometry,lipsum}
-\usepackage{xcolor}
 \usepackage{fancyhdr}
-\usepackage{graphicx}
-\usepackage{makecell}
-\usepackage{eurosym}
-\usepackage{amsmath}
-\usepackage{pgfplots}
-\usepackage[onehalfspacing]{setspace}
-% http://ctan.org/pkg/{geometry,lipsum}
-\renewcommand{\contentsname}{Inhaltsverzeichnis}
-% default
-%\geometry{margin=1in}% 1in margin
-\geometry{margin=2cm}% 1cm margin
+\usepackage{sectsty}
 
+\sectionfont{\fontsize{12}{15}\selectfont}
+\subsectionfont{\fontsize{12}{15}\selectfont}
+\geometry{margin=2cm}
 \pagestyle{fancy}
 \fancyhf{}
 \rhead{\today}
-\chead{Lukas Gritsch}
+\chead{Sybille Kohler,Bernhard Flür, Lukas Gritsch}
 \lhead{Systemplanung}
 \rfoot{Seite \thepage}
 
 \begin{document}
 \section{Erklären Sie, warum es wichtig ist, während der Anforderungsentwicklung zwischen der Entwicklung der
 Benutzer:innenanforderungen und der Entwicklung der Systemanforderungen zu unterscheiden.}
-Systemanforderungen sind Vorgaben, an welche man sich halten muss, damit dass Programm läuft. Als Beispiel hierfür ist z.B. die Kundendatenbank welche vorgegeben wird. Wenn eine Verbindung zu MSSQL erwünscht wird, dann kann man nicht auf Oracle programmieren (SQL Syntax ist etwas anders). Dies sind Grundlegende Vorgaben, damit das Programm grundsätzlich läuft. Benutzer:innenanforderungen können im Anschluss Umgesetzt werden. Diese sind dann weniger von technilogischen Hürden abhängig als von der individuellen Anforderung des Kunden.
+Systemanforderungen sind Vorgaben, an welche man sich halten muss, damit dass Programm läuft. Als Beispiel hierfür ist z.B. die Kundendatenbank welche vorgegeben wird. Wenn eine Verbindung zu MSSQL erwünscht wird, dann kann man nicht auf Oracle programmieren (SQL Syntax ist etwas anders). Dies sind Grundlegende Vorgaben, damit das Programm grundsätzlich läuft. Benutzer:innenanforderungen können im Anschluss Umgesetzt werden. Diese sind dann weniger von technologischen Hürden abhängig als von der individuellen Anforderung des Kunden.
 
 \section{Beschreiben Sie die Hauptabläufe im Softwareprozess und ihre Ergebnisse. Zeigen Sie die möglichen Be-
 ziehungen zwischen den Ergebnissen dieser Aktivitäten auf.}
 \begin{itemize}
  \item Spezifikation\\
- Hier werden die Anforderungen des Kunden erhoben und Dokumentiert (Requirement Engeneering). Zum Abschluss dieser Phase wird meist ein Pflichtenheft verfasst. Dies kann durch eine Marktanalyse unterstützt werden.
+ Hier werden die Anforderungen des Kunden erhoben und Dokumentiert (Requirement Engineering). Zum Abschluss dieser Phase wird meist ein Pflichtenheft verfasst. Dies kann durch eine Marktanalyse unterstützt werden.
  \item Design und Implementierung\\
- In dieser Phase fließen die Punkte, welche im Pflichtenheft festgelegt wurden in die Erstellung der Architektur des Systems ein. Für die Darstellung der Arkchitektur verwendet man meist Modellierungssprachen wie UML. Danach werden diese Strukturen implementiert. Zum Abschluss dieser Phase werden UNIT Tests geschrieben, welche für automatisierte Tests verwendet werden.
+ In dieser Phase fließen die Punkte, welche im Pflichtenheft festgelegt wurden in die Erstellung der Architektur des Systems ein. Für die Darstellung der Architektur verwendet man meist Modellierungssprachen wie UML. Danach werden diese Strukturen implementiert. Zum Abschluss dieser Phase werden UNIT Tests geschrieben, welche für automatisierte Tests verwendet werden.
  \item Validierung\\
  Das Programm welches unter der vorherigen Phase entstanden ist, wird nun mit Spezifikation abgeglichen. Des Weiteren werden in dieser Phase noch System- und Entwicklungstest durchgeführt. Am Ende dieser Phase findet eine Abnahme des Kunden statt. Vor der Abnahme werden auch noch Tests von Seiten des Kunden ausgeführt.
  \item Evolution\\
@@ -43,7 +33,7 @@ ziehungen zwischen den Ergebnissen dieser Aktivitäten auf.}
 \end{itemize}
 \pagebreak
 \section{Erklären Sie warum Änderungen in komplexen Systemen unvermeidlich sind und nennen Sie Beispiele
-von Softwareprozessaktivitäten, die helfen Änderungen vorherzusagen und die die zu entwickelnde Soft-
+von Softwareprozessaktivitäten, die helfen Änderungen vorher- zusagen und die die zu entwickelnde Soft-
 ware robuster gegenüber Änderungen machen}
 Am Anfang eines Projektes kann man nicht immer absehen, ob die Technologien, auf welche man während der Entwicklung setzt immer zur Verfügung stehen und gewartet werden. Des Weiteren kann es zu Änderungen in der Gesetzgebung kommen. Als Beispiel hierfür gilt die DSGVO. Auch ein Wandel in der Gesellschaft kann dazu führen, dass sich Anforderungen ändern. Hier ist die Popularität von abhängen Softwareprodukten als Beispiel zu nennen. Sollten sich die Unternehmensziel des Kunden ändern, kann es auch hier zu einer Änderung der Anforderungen kommen. Ein Beispiel hierfür ist, dass man sich geeinigt hat eine Windows-Anwendung zu bauen und der Kunde stellt den Betrieb auf MAC-OS um.
 Um solche Änderungen schneller zu erkennen, kann man das Projekt mit einem agilen Softwareprozess abwickeln. So kann man schneller auf Änderungswünsche von Kunden reagieren. Des Weiteren kann ein Prototyp entwickelt werden, damit man die technischen Hürden abklären und testen kann.
@@ -57,19 +47,19 @@ Es gibt auch wenig Sinn nur einen Teil der Software auszuliefern, da diese nur k
 Hier würde wir es davon anhängig machen, welche Maschinen gewartet werden müssen. Sollte es ein MRT-Gerät sein, dann würde wir zu einer Plan-getriebenen Vorgehensweise tendieren.
 Der Ausfall eines solchen Geräts kann fatal sein, wenn es dringend gebraucht wird. Werden hingegen Maschinen gewartet wie eine Waschmaschine, welche ein Hobby-Heimwerker damit warten kann, dann würde wir auf ein Agiles-Modell setzen. Hier können dann auch die User Input zur UI/UX geben.
 \subsection{Ein Buchhaltungssystem, das in einer Universität das bestehende System ersetzt}
-Da ein Buchhaltungssystem klar definiert werden kann und bei einer ablöse eines bestehenden Systems die Rückmeldungen der Kunden nicht sehr informativ sein könnte (da sie den Entwicklungsvortschritt immer mit dem bisherigen Programm vergleichen) würde wir einen Plan-getriebenen Vorgang wählen.
+Da ein Buchhaltungssystem klar definiert werden kann und bei einer ablöse eines bestehenden Systems die Rückmeldungen der Kunden nicht sehr informativ sein könnte (da sie den Entwicklungsfortschritt immer mit dem bisherigen Programm vergleichen) würde wir einen Plan-getriebenen Vorgang wählen.
 \subsection{Ein interaktives Reiseplanungssystem, das den Nutzern hilft, Reisen mit den geringsten Auswir-
 kungen auf die Umwelt zu planen}
 Dieses System würde wir in einer Agilen Form entwickeln, da sich die Anforderungen ständig ändern. Das Programm würde eine gute UI/UX benötigen, deswegen ist die Rückmeldung von Benutzern auch wichtig. Des weiteren handelt es sich hier um kein zu komplexes Problem und auch nicht um eine kritische Anwendung.
 \section{Wann würden Sie sich gegen eine agile Methode zur Entwicklung eines Softwaresystems aussprechen?}
 Wenn es sich um ein kritisches System handelt, in welchem das menschliches Leben gefährdet sein kann. Hier ist es wichtig, dass solche Systeme Plan-getrieben umgesetzt werden.
 Des Weiteren würden wir uns bei neuen Projekten, welche sich als großen oder komplexen herausstellen für eine Plan-getriebene Variante aussprechen. In diesem Fall ist eine gute Planung und eine gute Architektur von großem Vorteil ist, bzw. ein muss ist. Wenn man solche Projekte in einer agilen Form umsetzt läuft man Gefahr, dass man durch eine voreilige Implementierung sich selbst Hürden für den weiteren Projekt-lauf liefert. Auch wenn sich die Entwicklerteams an vielen unterschiedlichen Standorten und/oder Zeitzonen befinden ist ein Plan-getriebener Prozess von Vorteil.
-\pagebreak
 \section{Extreme Programming drückt die Benutzer:innenanforderungen in Form von User-Storys bzw. Szenarios
 aus, die jeweils auf eine Karteikarte geschrieben werden. Erörtern Sie die Vor- und Nachteile dieses An-
 satzes zur Anforderungsbeschreibung.}
 Ein Vorteil von den User-Storys ist es mit Sicherheit, dass die Anforderungen nicht in einem großen Dokument zusammengefasst sind, sondern in kleine Teilanforderungen aufgeteilt sind. Durch die vielen Inputs kann es auch passieren, dass wichtige Anforderungen leicht übersehen werden können. Diese herauszufiltern ist schwierig.
 Da das Format einer Karteikarte nicht viel platz bietet, muss dich der Kunde sehr genau überlegen, was er als User-Story aufschreibt. Man hat also die Chance, dass der Kunde sich mit dem Problem selber mehr auseinander setzte und sich zuvor überlegt, welche Anforderungen er/sie einbringen möchte. Man muss auch prüfen, ob der Kunde/ die Kundin, welcher die User-Story erstellt hat repräsentativ ist. Des Weiteren kann es auch sein, dass Kunden aufgrund ihrer Erfahrung teile eines Vorganges als selbstverständlich erachten und deshalb den gewünschten Vorgang nicht vollständig Erklären. Dadurch, dass der Kunde / die Kundin selbst die User-Storys erstellen kann, wird durch diesen Ansatz der Bedarf bestmöglich abgedeckt.
+\pagebreak
 \section{Vergleichen Sie den Scrum-Anzatz zum Projektmanagement mit konventionellen planbasierten Vorge-
 hensweisen. Die Gegenüberstellung sollte die Effektivität jedes Ansatzes bei den folgenden Punkten be-
 rücksichtigen: Aufteilung der Mitarbeiter:innen auf die Projekte, Schätzung der Projektkosten, Erhalt der
@@ -77,26 +67,27 @@ Teamzusammensetzung und der Umgang mit personellen Änderungen im Projektteam}
 \begin{itemize}
  \item Aufteilung der Mitarbeiter auf Projekte
  \begin{itemize}
-  \item [Scrum:] Da Scrum sehr effektiv ist, wenn man diesen Ansatz in einem kleinen Team verfolgt, kann man hier auch die Einteilung der Mitarbeiter auf die einzelnen Probleme leicht einteilen. Wenn man Scrum auf ein großes Entwicklerteam anwendet, kann es leicht sein, dass man bei den Meetings, welche täglich abgehalten werden können den Überblick verliert und das Meeting sehr lange dauert. Daher funktioniert dies nur im kleinen Rahmen sinnvoll
-  \item[Plan:] Da man hier sehr viel Zeit in die Planung steckt und das Programm vorab mittels UML konzipiert und eine Architektur aufstellt, kann man auch die Mitarbeiter leichter auf die einzelnen Punkte aufteilen. Dies funktioniert hier nicht nur bei kleinen Teams, sondern auch bei sehr komplexen Organisationen
+  \item [Scrum:] Bei Projekt-teile auf Teams aufgeteilt, deswegen liegt die Wissensverteilung bei mehreren Entwickler:innen. Diese Teams sollten klein gehalten werden, um einen schnellen Informationsaustausch zu garantieren.
+  \item[Plan:] Jeder/Jede Entwickler/Entwickler bekommt genaue Aufgaben. Welche er/sie im laufe des Projektes zu erledigen hat.
  \end{itemize}
  \item Schätzung der Projektkosten
  \begin{itemize}
-  \item [Scrum:] Da sich unter Scrum die Anforderungen immer wieder ändern können (da der Kunde sehr stark involviert ist) kann man die Kosten zu beginn sicher sehr schwierig abschätzen. Da der Kunde aber aktiv an der Entwicklung teilnimmt kann man die kosten immer wieder neu Verhandeln (Absprechen, wenn dieses Feature noch eingebaut werden soll, dann dauert es 2 Wochen länger und Kostet x € mehr). Deswegen kommt man am Ende des Projekt auf eine klar definierte und kommunizierte Summe.
-  \item [Plan:] Da die Anforderungen sehr spezifisch und genau ausgearbeitete werden kann man eine sehr gute Kostenschätzung abgeben. Diese wird in den meisten Fällen sehr gut passen. Was aber am Anfang nicht abschätzbar ist, dass sich Anforderungen während der Zeit ändern können oder eine technische Hürde, welche nicht abzusehen war auftritt. Andernfalls kann man zu beginn des Projekt sehr gut abschätzen wie viel es am Ende kostet
+  \item [Scrum:] Am Anfang ist es schwieriger einen fixen Preis abzuschätzen. Hier greift man eher auf ein Budget zurück, welches zu Verfügung stehen soll. Da der Kunde aber aktiv an der Entwicklung teilnimmt kann man die Kosten immer wieder neu Verhandeln. Deswegen kommt man am Ende des Projekt auf eine klar definierte und kommunizierte Summe.
+  \item [Plan:] Durch die im Pflichtenheft festgelegten Punkte kann ein genaue Kostenschätzung abge- geben werden.Mögliche Schwierigkeiten werden schon in der Planung berücksichtigt, daher kommt es seltener zu unerwarteten Verzögerungen oder Mehrkosten. Sollten aber dennoch Schwierigkeiten bei der Umsetzung auftreten, dann können die Mehrkosten und die Zeitverzögerung enorm ausfallen.
  \end{itemize}
  \item Erhalt der Teamzusammensetzung und der Umgang mit personellen Änderungen im Projektteam
  \begin{itemize}
-  \item [Scrum:] Bei Scrum ist man prinzipiell flexibler, wenn man im laufe des Projekt eine Änderung im Entwicklerteam hat. Durch die ständigen Meetings, können offene Fragen geklärt werden und neuen Mitgliedern der Einstige in das Projekt erleichter werden. Dies führt auch zu einem stärkeren Teamzusammenhalt.
-  \item[Plan:] Hier werden gewisse Entwicklungsteile auf verschiedene Teams aufgeteilt (Team A Programmiert UI, Team B die API). Wenn man nun eine personellen Änderung hat kann ein neues Mitglied eher schwer in ein bestehendes Team eintreten, da der Zeitdruck eher wenig Zeit für Einschulungen zulasst. Da die Entwicklung aber von Experten in dem Bereich durchgeführt wird, kann ein neu Einstieger eine sehr steile Lehrnkurve bekommen.
+  \item [Scrum:] Dadurch, dass die Projekt-teile auf mehrere MitarbeiterInnen aufgeteilt sind, können einzelne EntwicklerInnen leichter ausgetauscht werden. Durch die ständigen Meetings, können offene Fragen geklärt werden und neuen Mitgliedern der Einstige in das Projekt erleichter werden. Dies führt auch zu einem stärkeren Teamzusammenhalt. Durch diese ständigen Meetings kommt es ebenfalls zu einer besseren Kommunikation aller Beteiligten.
+
+  \item[Plan:]Da jeder/jede Entwickler/Entwicklerin eine spezielle Aufgabe hat, ist es schwer diesen/ diese während des Projektes zu ersetzen. Allerdings gibt es klar definierte Projektphasen. Nach Abschluss einer Phase wird das Personal wieder verfügbar und personelle Änderungen können leichter in die Tat umgesetzt werden. Während einer laufenden Phase herrscht ein Zeitdruck, welcher die Einschulungen neuer Mitarbeiter schwierig gestaltet.
  \end{itemize}
 \end{itemize}
 
-\section{Um Kosten und die ökologischen Auswirkungen des Pendelns zu reduzieren, entscheidet sich Ihre Firma,
+\section{Um Kosten und die ökologischen Auswirkungen des Pendelns zu reduzieren, ent- scheidet sich Ihre Firma,
 eine Reihe von Büros zu schließen und Mitarbeiter:innen dabei zu unterstützen, von zu Hause aus zu ar-
 beiten. Jedoch ist sich das obere Management, das die Strategie eingeführt hat, nicht darüber bewusst,
 dass Software mit Hilfe von agilen Methoden entwickelt wird, die auf engere Teamarbeit und Pair Pro-
 gramming beruhen. Erläutern Sie die Schwierigkeiten, die diese neue Politik verursachen könnte und wie
 Sie diese Probleme umschiffen würde}
-Pairprogramming über remote ist sicher schwieriger, als wenn man sich am selben Ort befindet. Hierzu git es aber viele Tools welche das Arbeiten über das Internet erleichtern. VSCode aht zum Beispiel ein Plugin, bei welchem man zusammen ein SourceCode fiel bearbeiten kann. Dies erleichtert die Arbeit über das Internet schon um einiges. Des weiten machen es Tools wie MS-Teams ect. extem einfach Bildschirme zu teilen und zusammen zu arbeiten. Lieder ist das Internet nicht überall gut ausgebaut, so kann es zu Verzerrungen und Problemen bei der Verständigung kommen. Die Enge Teamarbeit kann man mit täglichen kurzen Meeting aufrecht erhalten.
+Die größte Schwierigkeit, welche man hier Lösen muss ist die Kommunikation untereinander. Im heutigen Berufsalltag wird dies aber auch schon mehrfach Online über Teams,Zoom,... abgehalten. Dadurch mach es keinen Unterschied , ob man sich im Büro oder im Homeoffice befindet. Pairprogramming über das Internet ist sicher schwieriger, als wenn man sich am selben Ort befindet. Hierzu gibt es aber viele Tools welche das Arbeiten über das Internet erleichtern. VSCode hat zum Beispiel ein Plugin, bei welchem man zusammen ein SourceCode-File bearbeiten kann. Dies erleichtert die Arbeit über das Internet schon um einiges. Des Weiten haben machen Tools wie MS-Teams eine Funktion, welche es extrem einfach macht seinen Bildschirme zu teilen und zusammen zu arbeiten. Ein Faktor, welchen man allerdings nicht beeinflussen kann, ist die Internetverbindung des/der einzelnen MitarbeiterIn. So kann es zu Verzerrungen und Problemen bei der Verständigung kommen. Die Enge Teamarbeit kann man mit täglichen kurzen Meeting aufrecht erhalten.
 \end{document}

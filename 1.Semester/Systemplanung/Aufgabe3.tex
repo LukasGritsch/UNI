@@ -1,0 +1,126 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry,lipsum}
+\usepackage{fancyhdr}
+\usepackage{sectsty}
+\usepackage{multicol}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{csquotes}
+\usepackage[backend=biber,style=alphabetic,]{biblatex}
+\usepackage{babel}
+
+\sectionfont{\fontsize{12}{15}\selectfont}
+\subsectionfont{\fontsize{12}{15}\selectfont}
+\geometry{margin=2cm}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\today}
+\chead{Sybille Kohler,Bernhard Flür, Lukas Gritsch}
+\lhead{Systemplanung}
+\rfoot{Seite \thepage}
+\newenvironment{myreq}[1]{%
+\setlist[description]{font=\normalfont\color{darkgray}}%
+\begin{tcolorbox}[colframe=black,colback=white, sharp corners, boxrule=1pt]%
+\bfseries\color{blue}%
+\begin{description}#1}%
+{\end{description}\end{tcolorbox}}
+\newcommand{\threeinline}[3]{\begin{multicols}{3}#1 #2 #3\end{multicols}}
+\newcommand{\twoinline}[2]{\begin{multicols}{2}#1 #2\end{multicols}}
+\newcommand{\reqno}{\item[Requirement \#:]}
+\newcommand{\reqtype}{\item[Requirement Type:]}
+\newcommand{\reqevent}{\item[Event/BUC/PUC \#:]}
+\newcommand{\reqdesc}{\item[Description:]}
+\newcommand{\reqrat}{\item[Rationale:]}
+\newcommand{\reqfit}{\item[Fit Criterion:]}
+\newcommand{\reqsatis}{\item[Customer Satisfaction:]}
+\newcommand{\reqdissat}{\item[Customer Dissatisfaction:]}
+\newcommand{\reqdep}{\item[Dependencies:]}
+\newcommand{\reqconf}{\item[Conflicts:]}
+\newcommand{\reqmater}{\item[Materials:]}
+\newcommand{\reqhist}{\item[History:]}
+
+\addbibresource{literatur.bib}
+\renewcommand\refname{Quellen}
+
+
+
+\begin{document}
+\section{Finden Sie Mehrdeutigkeiten und Lücken in der folgenden Aufstellung von Anforderungen für einen Teil
+eines Fahrscheinautomaten}
+\begin{quote}
+\textit{"Ein Fahrscheinautomat verkauft Zugfahrscheine. Benutzer:innen wählen ihr Ziel aus und geben eine Kreditkarte und eine persönliche Geheimnummer ein. Der Fahrschein wird ausgegeben und vom Konto der
+Kreditkarte werden die Kosten abgebucht. Drückt der/die Benutzer:in den Startknopf, dann wird neben einem Menü mit möglichen Zielorten eine Nachricht angezeigt, dass der/die Benutzer:in den Zielort auswählen soll. Wurde ein Ziel ausgewählt, dann werden die Benutzer:innen aufgefordert, ihre Kreditkartendaten
+einzugeben. Deren Gültigkeit wird überprüft und die Benutzer:innen werden aufgefordert, die persönliche
+Geheimnummer einzugeben. Wenn die Transaktion überprüft ist, wird der Fahrschein ausgegeben."}
+\end{quote}
+Wie wird der Zielort ausgewählt? Soll sich eine Karte öffnen und man klickt auf die Stadt öder durchsucht man eine Liste der möglichen Ziele? Soll das Zahlungssystem nur mit der Kreditkarte funktionieren? Benötigt man Pin nicht nur bei der Debitkart? Wie wird der Fahrschein Ausgegeben? Wird ein QR-Code genieriet und man kann diesen Scannen? Wird der Fahrschein ausgedruckt? Kann man dich den Fahrschein auch per Mail senden lassen?
+
+\section{Stellen Sie eine Reihe nichtfunktionaler Anforderungen für das Fahrscheinausgabesystem auf und legen
+Sie seine erwartete Zuverlässigkeit und Antwortzeit fest.}
+
+Das System sollte eine Touchscreen haben, welcher sich leicht und flüssig bedienen lässt. Da der Automat potentiell unter Stress bedient wird, sollte die Auswahl in so wenig schritten wie möglich Abwickelbar sein. Es sollten die Häufigsten Routen bezüglich der Uhrzeit als Quickauswahl zu Verfügung stehen. Die Anbindung an den Kreditkarten dienst muss sicher sein und die Daten der Karte dürfen nicht gespeichert werden. Sollte es einen Drucker geben, muss dieser schnell und akkurat drucken. Des Weiteren sollte es eine Möglichkeit geben den Fahrschein elektronisch zu erwerben. Würde hier auch alternative Bezahlweisen Andenken (ApplePay...).
+\pagebreak
+\section{Stellen Sie plausible Benutzer:innenanforderungen für die folgenden Funktionen auf und benutzen Sie da-
+für eine Technik, bei der natürliche Sprache in einem standardisierten Format verwendet wird:}
+Für die folgenden Anforderungen wird das System des VOLERE Requirements Engineering verwendet:
+\begin{itemize}
+ \item Requirement: Eindeutige Nummer
+ \item Requirement: Ist eine Nummer welche die Karten in Sektionen enteilt. Diese Nummer ist nicht immer notwendig, sollte aber angeführt werden, da man erkennen kann in welchem Zusammenhang die Karte mit den andren Punkten steht.
+ \item Event/Use-Case: Nummer, wie viel Produktanforderungen dieses Anforderung benötigen.
+ \item Description: Erläuterung der Anforderung in einem Satz.
+ \item Rationale: Erklärung, warum diese Anforderung wichtig ist
+ \item Fit Criterion: Abschätzung/Lösungsansatz wie man es Testen kann ob die Lösung die Anforderung erfüllt.
+ \item Customer Satisfaction: Wie zufrieden wäre der Anforderungssteller, wenn er dieses Feature bekommt: Skala von 1 (Nicht) - 5 (Sehr)
+ \item Customer Disssatisfaction: Wie unzufrieden wäre der Anforderungssteller, wenn er dieses Feature nicht bekommt: Skala von 1 (Nicht) - 5 (Sehr)
+ \item Dependencies: Liste andere Anforderungen, welche von dieser abhängen
+ \item Conflicts: Liste von Anforderungen, welche ausfalle, wenn diese Implementiert wird
+ \item Materials: Link zu weiteren Dokumenten oder Anhängen
+ \item History: Liste, wann diese Karte erstellt wurde und wann, welche Änderungen gemacht wurden.
+\end{itemize}
+%Quelle: https://www.inf.ed.ac.uk/teaching/courses/seoc/2007_2008/resources/volere-template.pdf
+\cite{volere}
+\pagebreak
+\subsection{Das Geldausgabesystem an einem Geldautomaten}
+\begin{myreq}
+  \threeinline
+    {\reqno 1}
+    {\reqtype 1}
+    {\reqevent 7.9}
+  \reqdesc Die Klappe zur Entnahme des Geldes soll sich nach 30 Sekunden Inaktivität schließen, vergessenes Geld soll Zurückerstattet werden.
+  \reqrat Damit vergessenes Geld nicht vom nächsten Benutzer genommen werden kann.
+  \reqfit Getestet kann dies werden, indem man absichtlich einen Geldschein in der Geldausgabe lässt und überprüft ob die Summe wieder auf das Bankkonto gutgeschrieben wird.
+  \twoinline
+    {\reqsatis 2}
+    {\reqdissat 3}
+  \twoinline
+  {\reqdep Geldausgabe\\Zurückerstattet}
+  {\reqconf 111}
+  \reqmater -
+  \reqhist Erstellt am 21.09.2022
+\end{myreq}
+
+\begin{myreq}
+  \threeinline
+    {\reqno 1}
+    {\reqtype 1}
+    {\reqevent 7.9}
+  \reqdesc Die Klappe zur Entnahme des Geldes soll sich nach 30 Sekunden Inaktivität schließen, vergessenes Geld soll Zurückerstattet werden.
+  \reqrat Damit vergessenes Geld nicht vom nächsten Benutzer genommen werden kann.
+  \reqfit Getestet kann dies werden, indem man absichtlich einen Geldschein in der Geldausgabe lässt und überprüft ob die Summe wieder auf das Bankkonto gutgeschrieben wird.
+  \twoinline
+    {\reqsatis 2}
+    {\reqdissat 3}
+  \twoinline
+  {\reqdep Geldausgabe\\Zurückerstattet}
+  {\reqconf 111}
+  \reqmater -
+  \reqhist Erstellt am 21.09.2022
+\end{myreq}
+
+\subsection{Die Rechtschreibprüfung und –korrektur einer Textverarbeitung}
+\subsection{Eine unbeaufsichtigte Zapfsäule, die ein Kreditkartenlesegerät enthält}
+\pagebreak
+\printbibliography
+\end{document}
