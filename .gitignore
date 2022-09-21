@@ -4,8 +4,9 @@
 *.synctex.gz
 *.toc
 *.docx
-*.bbl
+.bbl
 *.blg
 *.bcf
 *.dvi
 *.run.xml
+Aufgabe3.blg
