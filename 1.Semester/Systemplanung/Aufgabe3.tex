@@ -10,7 +10,9 @@
 \usepackage{csquotes}
 \usepackage[backend=biber,style=alphabetic,]{biblatex}
 \usepackage{babel}
+\usepackage{graphicx}
 
+\renewcommand{\figurename}{Abbildung}
 \sectionfont{\fontsize{12}{15}\selectfont}
 \subsectionfont{\fontsize{12}{15}\selectfont}
 \geometry{margin=2cm}
@@ -92,7 +94,7 @@ Für die folgenden Anforderungen wird das System des VOLERE Requirements Enginee
   \reqrat Damit vergessenes Geld nicht vom nächsten Benutzer genommen werden kann.
   \reqfit Getestet kann dies werden, indem man absichtlich einen Geldschein in der Geldausgabe lässt und überprüft ob die Summe wieder auf das Bankkonto gutgeschrieben wird.
   \twoinline
-    {\reqsatis 2}
+    {\reqsatis 4}
     {\reqdissat 3}
   \twoinline
   {\reqdep Geldausgabe\\Zurückerstattet}
@@ -105,22 +107,153 @@ Für die folgenden Anforderungen wird das System des VOLERE Requirements Enginee
   \threeinline
     {\reqno 2}
     {\reqtype 1}
-    {\reqevent 7.9}
-  \reqdesc Die Klappe zur Entnahme des Geldes soll sich nach 30 Sekunden Inaktivität schließen, vergessenes Geld soll Zurückerstattet werden.
-  \reqrat Damit vergessenes Geld nicht vom nächsten Benutzer genommen werden kann.
-  \reqfit Getestet kann dies werden, indem man absichtlich einen Geldschein in der Geldausgabe lässt und überprüft ob die Summe wieder auf das Bankkonto gutgeschrieben wird.
+    {\reqevent 4}
+  \reqdesc Die Ausgabe sollte eine Auswahl von Geldscheinen zulassen.
+  \reqrat Damit man genau Auswählen kann, welche Scheine man enthält
+  \reqfit Getestet kann dies durch User-Test, indem man versucht verschiedene Scheine auszuwählen.
   \twoinline
     {\reqsatis 2}
     {\reqdissat 3}
   \twoinline
-  {\reqdep Geldausgabe\\Zurückerstattet}
-  {\reqconf 111}
+  {\reqdep Geldausgabe\\}
+  {\reqconf 5}
   \reqmater -
-  \reqhist Erstellt am 21.09.2022
+  \reqhist Erstellt am 23.09.2022
+\end{myreq}
+\pagebreak
+\subsection{Die Rechtschreibprüfung und –korrektur einer Textverarbeitung}
+\begin{myreq}
+  \threeinline
+    {\reqno 1}
+    {\reqtype 4}
+    {\reqevent 5}
+  \reqdesc Wenn ein Fehler passiert soll dieser Visuell angezeigt werden.
+  \reqrat Damit man gleich sehen kann, wo der Fehler entstanden ist.
+  \reqfit Getestet werden kann dies durch User-Test, gibt man ein Wort bewusst falsch an, dann muss dieser gekennzeichnet werden.
+  \twoinline
+    {\reqsatis 4}
+    {\reqdissat 3}
+  \twoinline
+  {\reqdep Prüfung der Worte\\}
+  {\reqconf 0}
+  \reqmater Beispiel Link zu einem Bild
+  \reqhist Erstellt am 05.09.2022
+\end{myreq}
+\begin{myreq}
+  \threeinline
+    {\reqno 2}
+    {\reqtype 4}
+    {\reqevent 8}
+  \reqdesc Fehler sollen in Echtzeit angezeigt werden.
+  \reqrat So kann man den Fehler sofort wieder beheben.
+  \reqfit Dies kann man durch User-Tests testen sobald man ein Wort falsch eingebt, muss dieses als Fehler dargestellt werden.
+  \twoinline
+    {\reqsatis 4}
+    {\reqdissat 3}
+  \twoinline
+  {\reqdep Prüfung der Worte\\Visuelle Darstellung von Fehler}
+  {\reqconf 0}
+  \reqmater -
+  \reqhist Erstellt am 05.09.2022
+\end{myreq}
+\pagebreak
+\subsection{Eine unbeaufsichtigte Zapfsäule, die ein Kreditkartenlesegerät enthält}
+\begin{myreq}
+  \threeinline
+    {\reqno 1}
+    {\reqtype 8}
+    {\reqevent 3}
+  \reqdesc Man soll direkt sehen, wie viel Geld man schon getankt hat.
+  \reqrat Damit man ab einen Betrag x abbrechen kann.
+  \reqfit Dies kann man durch User-Tests testen sobald der Tankvorgang gestartet wird, soll direkt der aktuelle Preis am Display ablesbar sein.
+  \twoinline
+    {\reqsatis 5}
+    {\reqdissat 5}
+  \twoinline
+  {\reqdep Tankvorgang\\Berechnung des Preises}
+  {\reqconf 2}
+  \reqmater -
+  \reqhist Erstellt am 05.09.2022
+\end{myreq}
+\begin{myreq}
+  \threeinline
+    {\reqno 2}
+    {\reqtype 8}
+    {\reqevent 6}
+  \reqdesc Man soll die Rechnung per QR-Code herunterladen können
+  \reqrat Damit man die Rechnung nicht ausdrucken muss.
+  \reqfit Dies kann man durch UNIT-Tests testen. Link zu einem Dokument zu einem QR-Bild rendern.
+  \twoinline
+    {\reqsatis 5}
+    {\reqdissat 2}
+  \twoinline
+  {\reqdep Rechnung zur Verfügung stellen }
+  {\reqconf 2}
+  \reqmater -
+  \reqhist Erstellt am 09.09.2022
 \end{myreq}
 
-\subsection{Die Rechtschreibprüfung und –korrektur einer Textverarbeitung}
-\subsection{Eine unbeaufsichtigte Zapfsäule, die ein Kreditkartenlesegerät enthält}
 \pagebreak
+\section{Entwickeln Sie mit Hilfe Ihres Wissens über die Verwendung eines Geldautomaten eine Reihe von An-
+wendungsfällen, die als Basis für das Verständnis der An- forderungen an ein Geldautomatensystem ver-
+wendet werden können.}
+\begin{itemize}
+ \item [1] Bankomatkarte wird eingesteckt und der Code wird richtig eingegeben. Dann wird ausgewählt, welche Scheine man abheben möchte. Danach wird das Geld ausgegeben
+ \item [2] Bankomatkarte wird eingesteckt, aber nicht erkannt. Die Karte wird wieder ausgegeben
+ \item [3] Bankomatkarte wird eingesteckt und der Code wird falsch eingegeben. Dann wird ausgewählt, welche Scheine man haben möchte. Der Code wird wieder abgefragt und richtig eingegeben. Dann wird das Geld ausgegeben.
+ \item [4] Bankomatkarte wird eingesteckt und der Code wird falsch eingegeben. Dann wird ausgewählt, welche Scheine man haben möchte. Der Code wird wieder abgefragt und falsch eingegeben. Der Code wird nochmal abgefragt und richtig eingegeben. Dann wird das Geld ausgegeben.
+ \item [5] Bankomatkarte wird eingesteckt und der Code wird falsch eingegeben. Dann wird ausgewählt, welche Scheine man haben möchte. Der Code wird wieder abgefragt und falsch eingegeben. Der Code wird nochmal abgefragt und falsch eingegeben. Dann wird die Karte eingezogen und der Vorgang beendet.
+ \item [6] Bankomatkarte wird eingesteckt, es ist aber kein Geld mehr im Automat. Die Karte wird wider ausgegeben.
+\end{itemize}
+
+\pagebreak
+\section{Sie sind aufgefordert worden, ein System zu entwickeln, dass beim Planen von groß angelegten Veran-
+staltungen und Partys helfen soll (z.B. Hochzeiten, Abschluss- feiern, Geburtstagsfeiern, etc.). Modellieren
+Sie für solch ein System den Prozess- kontext mithilfe eines Aktivitätsdiagramms, das die Aktivitäten zeigt,
+die mit der Planung einer Feier verbunden sind (z.B. Buchen eines Veranstaltungsorts, Organisieren der
+Einladungen, usw.) sowie die Systemelemente, die in jeder Phase benutzt werden könnten.}
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.43]{UML_Party}
+\caption{UML Diagramm zum Ablauf einer Veranstaltung}
+\end{center}
+\end{figure}
+\pagebreak
+\section{Prüfen Sie genau, wie die Nachrichten und Postfächer in dem E-Mail System, das Sie benutzen, dargestellt sind. Modellieren Sie die Objektklassen, die möglicherweise in der Systemimplementierung benutzt
+werden, um ein Postfach und eine E-Mail Nachricht darzustellen.}
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.43]{Klassendiagramm}
+\caption{Klassendiagramm eines Email Postfaches}
+\end{center}
+\end{figure}
+\pagebreak
+\section{Zeichnen Sie, basierend auf Ihren Erfahrungen mit einem Geldautomaten, ein Aktivitätsdiagramm, das die
+dabei auftretende Datenverarbeitung modelliert, wenn ein Kunde / eine Kundin Bargeld vom Automaten
+abhebt.}
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.42]{UML_Geldautomat}
+\caption{UML-Diagramm zur Beschreibung der Aktivität "Geld abheben"}
+\end{center}
+\end{figure}
+\pagebreak
+\section{Zeichnen Sie ein Zustandsdiagramm der Steuerungssoftware für:}
+\subsection{Eine automatische Waschmaschine, die für verschiedene Textilarten unterschiedliche Program-
+me besitzt}
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.42]{Zustand_Waschmaschiene}
+\caption{Zustandsdiagramm einer Waschmaschine}
+\end{center}
+\end{figure}
+\pagebreak
+\subsection{Die Software für einen DVD-Player}
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.42]{Zustand_DVD}
+\caption{Zustandsdiagramm eines DVD-Players}
+\end{center}
+\end{figure}
 \printbibliography
 \end{document}
