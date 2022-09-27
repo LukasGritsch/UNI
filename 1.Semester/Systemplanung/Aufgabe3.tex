@@ -11,6 +11,8 @@
 \usepackage[backend=biber,style=alphabetic,]{biblatex}
 \usepackage{babel}
 \usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{multirow}
 
 \renewcommand{\figurename}{Abbildung}
 \sectionfont{\fontsize{12}{15}\selectfont}
@@ -35,6 +37,7 @@
 \newcommand{\reqevent}{\item[Event/BUC/PUC \#:]}
 \newcommand{\reqdesc}{\item[Description:]}
 \newcommand{\reqrat}{\item[Rationale:]}
+\newcommand{\source}{\item[Source:]}
 \newcommand{\reqfit}{\item[Fit Criterion:]}
 \newcommand{\reqsatis}{\item[Customer Satisfaction:]}
 \newcommand{\reqdissat}{\item[Customer Dissatisfaction:]}
@@ -49,7 +52,7 @@
 
 
 \begin{document}
-\section{Finden Sie Mehrdeutigkeiten und Lücken in der folgenden Aufstellung von Anforderungen für einen Teil
+\section{Finden Sie Mehrdeutigkeiten und Lücken in der folgenden Aufstellung von An- forderungen für einen Teil
 eines Fahrscheinautomaten}
 \begin{quote}
 \textit{"Ein Fahrscheinautomat verkauft Zugfahrscheine. Benutzer:innen wählen ihr Ziel aus und geben eine Kreditkarte und eine persönliche Geheimnummer ein. Der Fahrschein wird ausgegeben und vom Konto der
@@ -57,29 +60,46 @@ Kreditkarte werden die Kosten abgebucht. Drückt der/die Benutzer:in den Startkn
 einzugeben. Deren Gültigkeit wird überprüft und die Benutzer:innen werden aufgefordert, die persönliche
 Geheimnummer einzugeben. Wenn die Transaktion überprüft ist, wird der Fahrschein ausgegeben."}
 \end{quote}
-Wie wird der Zielort ausgewählt? Soll sich eine Karte öffnen und man klickt auf die Stadt öder durchsucht man eine Liste der möglichen Ziele? Soll das Zahlungssystem nur mit der Kreditkarte funktionieren? Benötigt man Pin nicht nur bei der Debitkart? Wie wird der Fahrschein Ausgegeben? Wird ein QR-Code genieriet und man kann diesen Scannen? Wird der Fahrschein ausgedruckt? Kann man dich den Fahrschein auch per Mail senden lassen?
+Wie wird der Zielort ausgewählt? Soll sich eine Karte öffnen und man klickt auf die Stadt oder durchsucht man eine Liste der möglichen Ziele? Soll das Zahlungssystem nur mit der Kreditkarte funktionieren? Benötigt man Pin nicht nur bei der Debitkart? Wie wird der Fahrschein Ausgegeben? Wird ein QR-Code erstellt und man kann diesen Scannen? Wird der Fahrschein ausgedruckt? Kann man dich den Fahrschein auch per Mail senden lassen? Welche Destinationen werden angezeigt, nur diese welche auch vom Standort aus erreichbar sind oder alle möglichen? Kann nur ein Ticket gekauft werden oder auch mehrere? Was passiert wenn man die Destination ändern möchte? Gibt es eine Möglichkeit einen schritt zurück zu gehen oder muss man den Prozess neu beginnen? Was passiert wenn die Karte gleich zu beginn eingesteckt wird? Was passiert wenn der Pin nicht korrekt eingegeben wird oder die Karte nicht erkannt wird?
 
-\section{Stellen Sie eine Reihe nichtfunktionaler Anforderungen für das Fahrscheinausgabesystem auf und legen
+\section{Stellen Sie eine Reihe nichtfunktionaler Anforderungen für das Fahrscheinausgabe- system auf und legen
 Sie seine erwartete Zuverlässigkeit und Antwortzeit fest.}
 
-Das System sollte eine Touchscreen haben, welcher sich leicht und flüssig bedienen lässt. Da der Automat potentiell unter Stress bedient wird, sollte die Auswahl in so wenig schritten wie möglich Abwickelbar sein. Es sollten die Häufigsten Routen bezüglich der Uhrzeit als Quickauswahl zu Verfügung stehen. Die Anbindung an den Kreditkarten dienst muss sicher sein und die Daten der Karte dürfen nicht gespeichert werden. Sollte es einen Drucker geben, muss dieser schnell und akkurat drucken. Des Weiteren sollte es eine Möglichkeit geben den Fahrschein elektronisch zu erwerben. Würde hier auch alternative Bezahlweisen Andenken (ApplePay...).
-\pagebreak
+\begin{itemize}
+ \item Generell
+\begin{itemize}
+  \item Der Automat muss robust und stabil gegen äußerliche Einwirkungen sein
+  \item Die Anbindung an den Kreditkarten dienst muss sicher sein und die Daten der Karte dürfen nicht gespeichert werden.
+  \item Anbindung an die Datenbank oder API des Bahnhofbetribers muss sicher und Verschlüsselt sein.
+  \item Sprachausgabe für sehbehinderte Menschen.
+  \item Am Display sollte es die Möglichkeit geben einen Qr-Code anzeigen zu lassen, mit welchem man das Ticket scannen und downloaden kann.
+  \item Alternative Bezahlweisen Andenken (ApplePay,Bargeld,...)
+\end{itemize}
+ \item Zuverlässigkeit und Antwortzeit
+\begin{itemize}
+ \item Ein Techniker/ Eine Technikerin muss innerhalb von einer Stunde beim Automaten sein, damit ein langer Stillstand ausgeschlossen werden kann.
+ \item Kurze Reaktionszeit der Anwendung, damit der Benutzer/die Benutzerin nicht lange warten muss.
+ \item Das System sollte eine Touchscreen haben, welcher sich leicht und flüssig bedienen lässt. Da der Automat potentiell unter Stress bedient wird, sollte die Auswahl in so wenig schritten wie möglich Abwickelbar sein. Es sollten die Häufigsten Routen bezüglich der Uhrzeit als Quickauswahl zu Verfügung stehen
+ \item Sollte es einen Drucker geben, muss dieser schnell und akkurat drucken, maximal drei Sekunden bis zum fertigen Ticket.
+\end{itemize}
+\end{itemize}
 \section{Stellen Sie plausible Benutzer:innenanforderungen für die folgenden Funktionen auf und benutzen Sie da-
 für eine Technik, bei der natürliche Sprache in einem standardisierten Format verwendet wird:}
 Für die folgenden Anforderungen wird das System des VOLERE Requirements Engineering verwendet:
 \begin{itemize}
  \item Requirement: Eindeutige Nummer
- \item Requirement: Ist eine Nummer welche die Karten in Sektionen enteilt. Diese Nummer ist nicht immer notwendig, sollte aber angeführt werden, da man erkennen kann in welchem Zusammenhang die Karte mit den andren Punkten steht.
- \item Event/Use-Case: Nummer, wie viel Produktanforderungen dieses Anforderung benötigen.
+ \item Requirement Type: Ist eine Nummer welche die Karten in Sektionen enteilt. Diese Nummer ist nicht immer notwendig, sollte aber angeführt werden, da man erkennen kann in welchem Zusammenhang die Karte mit den andren Punkten steht.
+ \item Event/Use-Case: Liste der Anforderungen, welche diese Anforderung beinhalten.
  \item Description: Erläuterung der Anforderung in einem Satz.
- \item Rationale: Erklärung, warum diese Anforderung wichtig ist
+ \item Rationale: Erklärung, warum diese Anforderung wichtig ist.
+ \item Source: Wer hat diese Anforderung gestellt.
  \item Fit Criterion: Abschätzung/Lösungsansatz wie man es Testen kann ob die Lösung die Anforderung erfüllt.
- \item Customer Satisfaction: Wie zufrieden wäre der Anforderungssteller, wenn er dieses Feature bekommt: Skala von 1 (Nicht) - 5 (Sehr)
- \item Customer Disssatisfaction: Wie unzufrieden wäre der Anforderungssteller, wenn er dieses Feature nicht bekommt: Skala von 1 (Nicht) - 5 (Sehr)
- \item Dependencies: Liste andere Anforderungen, welche von dieser abhängen
- \item Conflicts: Liste von Anforderungen, welche ausfalle, wenn diese Implementiert wird
- \item Materials: Link zu weiteren Dokumenten oder Anhängen
- \item History: Liste, wann diese Karte erstellt wurde und wann, welche Änderungen gemacht wurden.
+ \item Customer Satisfaction: Wie zufrieden wäre die Person, welche diese Anforderung gestellt hat, wenn er dieses Feature bekommt: Skala von 1 (Nicht) - 5 (Sehr).
+ \item Customer Disssatisfaction: Wie unzufrieden wäre die Person, welche diese Anforderung gestellt hat, wenn er dieses Feature nicht bekommt: Skala von 1 (Nicht) - 5 (Sehr).
+ \item Dependencies: Liste andere Anforderungen, von welcher diese Anforderung abhängt.
+ \item Conflicts: Anzahl von Anforderungen, welche mit dieser Anforderung im Konflikt stehen.
+ \item Materials: Link zu weiteren Dokumenten oder Anhängen.
+ \item History: Liste an Datumseinträgen, wann diese Karte erstellt wurde und wann Änderungen gemacht wurden.
 \end{itemize}
 %Quelle: https://www.inf.ed.ac.uk/teaching/courses/seoc/2007_2008/resources/volere-template.pdf
 \cite{volere}
@@ -89,20 +109,20 @@ Für die folgenden Anforderungen wird das System des VOLERE Requirements Enginee
   \threeinline
     {\reqno 1}
     {\reqtype 1}
-    {\reqevent 7.9}
+    {\reqevent 7,9}
   \reqdesc Die Klappe zur Entnahme des Geldes soll sich nach 30 Sekunden Inaktivität schließen, vergessenes Geld soll Zurückerstattet werden.
   \reqrat Damit vergessenes Geld nicht vom nächsten Benutzer genommen werden kann.
+  \source Max Mustermann
   \reqfit Getestet kann dies werden, indem man absichtlich einen Geldschein in der Geldausgabe lässt und überprüft ob die Summe wieder auf das Bankkonto gutgeschrieben wird.
   \twoinline
     {\reqsatis 4}
     {\reqdissat 3}
   \twoinline
   {\reqdep Geldausgabe\\Zurückerstattet}
-  {\reqconf 111}
+  {\reqconf 5}
   \reqmater -
   \reqhist Erstellt am 21.09.2022
 \end{myreq}
-
 \begin{myreq}
   \threeinline
     {\reqno 2}
@@ -110,51 +130,110 @@ Für die folgenden Anforderungen wird das System des VOLERE Requirements Enginee
     {\reqevent 4}
   \reqdesc Die Ausgabe sollte eine Auswahl von Geldscheinen zulassen.
   \reqrat Damit man genau Auswählen kann, welche Scheine man enthält
+  \source Petra Mustermann
   \reqfit Getestet kann dies durch User-Test, indem man versucht verschiedene Scheine auszuwählen.
   \twoinline
     {\reqsatis 2}
-    {\reqdissat 3}
+    {\reqdissat 1}
   \twoinline
   {\reqdep Geldausgabe\\}
-  {\reqconf 5}
+  {\reqconf 9}
   \reqmater -
   \reqhist Erstellt am 23.09.2022
+\end{myreq}
+\pagebreak
+\begin{myreq}
+  \threeinline
+    {\reqno 3}
+    {\reqtype 1}
+    {\reqevent 4,15}
+  \reqdesc Vor das Geld ausgegeben wird, soll überprüft werden, ob diese Buchung das Limit des Kontos nicht überschreitet.
+  \reqrat Damit das Kundenkonto nicht überzogen werden kann.
+  \source Klaus Mustermann (Mitarbeiter der Bank)
+  \reqfit Diese Anforderung, soll mit UNIT-Tests getestet werden. Der Kontostand kann abgefragt werden, wenn man den Betrag den der Kunde von diesem abzieht muss das Ergebnis größer als 0 sein.
+  \twoinline
+    {\reqsatis 4}
+    {\reqdissat 5}
+  \twoinline
+  {\reqdep Kontostand abfragen}
+  {\reqconf 2}
+  \reqmater -
+  \reqhist Erstellt am 09.09.2022
 \end{myreq}
 \pagebreak
 \subsection{Die Rechtschreibprüfung und –korrektur einer Textverarbeitung}
 \begin{myreq}
   \threeinline
-    {\reqno 1}
+    {\reqno 25}
     {\reqtype 4}
     {\reqevent 5}
   \reqdesc Wenn ein Fehler passiert soll dieser Visuell angezeigt werden.
   \reqrat Damit man gleich sehen kann, wo der Fehler entstanden ist.
+  \source Caroline Mustermann
   \reqfit Getestet werden kann dies durch User-Test, gibt man ein Wort bewusst falsch an, dann muss dieser gekennzeichnet werden.
   \twoinline
     {\reqsatis 4}
     {\reqdissat 3}
   \twoinline
-  {\reqdep Prüfung der Worte\\}
+  {\reqdep Prüfung der Worte}
   {\reqconf 0}
   \reqmater Beispiel Link zu einem Bild
   \reqhist Erstellt am 05.09.2022
 \end{myreq}
 \begin{myreq}
   \threeinline
-    {\reqno 2}
+    {\reqno 26}
     {\reqtype 4}
     {\reqevent 8}
   \reqdesc Fehler sollen in Echtzeit angezeigt werden.
   \reqrat So kann man den Fehler sofort wieder beheben.
+  \source Markus Mustermann
   \reqfit Dies kann man durch User-Tests testen sobald man ein Wort falsch eingebt, muss dieses als Fehler dargestellt werden.
   \twoinline
-    {\reqsatis 4}
-    {\reqdissat 3}
+    {\reqsatis 5}
+    {\reqdissat 4}
   \twoinline
   {\reqdep Prüfung der Worte\\Visuelle Darstellung von Fehler}
   {\reqconf 0}
   \reqmater -
   \reqhist Erstellt am 05.09.2022
+\end{myreq}
+\pagebreak
+\begin{myreq}
+  \threeinline
+    {\reqno 28}
+    {\reqtype 4}
+    {\reqevent 8}
+  \reqdesc Falsches Word dem Wörterbuch hinzufügen.
+  \reqrat Ein Korrekt geschrieben Wort, welches aber als falsch gekennzeichnet wird, soll in Zukunft nicht mehr als falsch gekennzeichnet werden.
+  \source Manuela Mustermann
+  \reqfit Dies kann man durch User-Tests testen, sobald ein Wort dem Wörterbuch hinzugefügt wurde, soll es nicht mehr als falsch gekennzeichnet werden.
+  \twoinline
+    {\reqsatis 2}
+    {\reqdissat 2}
+  \twoinline
+  {\reqdep Prüfung der Worte\\Visuelle Darstellung von Fehler}
+  {\reqconf 0}
+  \reqmater -
+  \reqhist Erstellt am 07.09.2022
+\end{myreq}
+\begin{myreq}
+  \threeinline
+    {\reqno 30}
+    {\reqtype 4}
+    {\reqevent 9}
+  \reqdesc Vorschlag von korrekten Worten.
+  \reqrat Damit man schneller das richtige Wort finden kann.
+  \source Dietmar Mustermann
+  \reqfit Dies kann man durch User-Tests testen, sobald ein Wort als falsch gekennzeichnet wurde, soll man einen Vorschlag bekommen, wenn man mit der Maus drüber hovert.
+  \twoinline
+    {\reqsatis 2}
+    {\reqdissat 2}
+  \twoinline
+  {\reqdep Prüfung der Worte\\Visuelle Darstellung von Fehler}
+  {\reqconf 1}
+  \reqmater -
+  \reqhist Erstellt am 03.09.2022
 \end{myreq}
 \pagebreak
 \subsection{Eine unbeaufsichtigte Zapfsäule, die ein Kreditkartenlesegerät enthält}
@@ -165,6 +244,7 @@ Für die folgenden Anforderungen wird das System des VOLERE Requirements Enginee
     {\reqevent 3}
   \reqdesc Man soll direkt sehen, wie viel Geld man schon getankt hat.
   \reqrat Damit man ab einen Betrag x abbrechen kann.
+  \source Sahra Mustermann
   \reqfit Dies kann man durch User-Tests testen sobald der Tankvorgang gestartet wird, soll direkt der aktuelle Preis am Display ablesbar sein.
   \twoinline
     {\reqsatis 5}
@@ -182,39 +262,135 @@ Für die folgenden Anforderungen wird das System des VOLERE Requirements Enginee
     {\reqevent 6}
   \reqdesc Man soll die Rechnung per QR-Code herunterladen können
   \reqrat Damit man die Rechnung nicht ausdrucken muss.
+  \source Daniel Mustermann
   \reqfit Dies kann man durch UNIT-Tests testen. Link zu einem Dokument zu einem QR-Bild rendern.
   \twoinline
-    {\reqsatis 5}
+    {\reqsatis 3}
     {\reqdissat 2}
   \twoinline
-  {\reqdep Rechnung zur Verfügung stellen }
+  {\reqdep Rechnung\\Berechnung des Preises}
   {\reqconf 2}
   \reqmater -
   \reqhist Erstellt am 09.09.2022
 \end{myreq}
+\pagebreak
+\begin{myreq}
+  \threeinline
+    {\reqno 3}
+    {\reqtype 8}
+    {\reqevent 6}
+  \reqdesc Zapfsäule muss den zu zahlenden Betrag an das Kartenlesegerät melden.
+  \reqrat Damit der korrekte Betrag abgebucht werden kann
+  \source Stephanie Mustermann
+  \reqfit Dies kann man durch UNIT-Tests testen. Der Betrag, welcher am Kartenlesegerät ankommt muss mit dem berechneten Betrag übereinstimme.
+  \twoinline
+    {\reqsatis 5}
+    {\reqdissat 5}
+  \twoinline
+  {\reqdep Berechnung des Preises}
+  {\reqconf 1}
+  \reqmater -
+  \reqhist Erstellt am 18.09.2022
+\end{myreq}
+\begin{myreq}
+  \threeinline
+    {\reqno 4}
+    {\reqtype 8}
+    {\reqevent 6}
+  \reqdesc Berechnung, ob noch Treibstoff im Wert des Maximalbetrags der Kreditkarte verfügbar ist.
+  \reqrat Damit der Benutzer/die Benutzerin sieht, ob der Tank noch vollgefüllt werden kann.
+  \source David Mustermann
+  \reqfit Dies kann man durch UNIT-Tests testen. Die Anzahl der Liter im Tank multipliziert mit dem Preis des Kraftstoffs muss größer als der Maximalbetrag der Kreditkarte sein.
+  \twoinline
+    {\reqsatis 2}
+    {\reqdissat 1}
+  \twoinline
+  {\reqdep Berechnung des Preises \\ Abfrage Maximum der Kreditkarte}
+  {\reqconf 13}
+  \reqmater -
+  \reqhist Erstellt am 20.09.2022
+\end{myreq}
+\pagebreak
+\section{Entwickeln Sie mit Hilfe Ihres Wissens über die Verwendung eines Geldautomaten eine Reihe von Anwendungsfällen, die als Basis für das Verständnis der An- forderungen an ein Geldautomatensystem verwendet werden können.}
+\begin{figure}[h]
+ \begin{center}
+  \includegraphics[scale=0.7]{Anwendungsfallmodell_Geld_behebn}
+ \end{center}
+ \caption{Use Case Model für Geld beheben}
+\end{figure}
+\begin{tabular}{ |p{3cm}|p{13cm}|  }
+ \hline
+ \multicolumn{2}{|l|}{\textbf{Geld beheben}} \\
+ \hline
+ Akteur&Kunde, Kreditkarteninstitut, Bank, Drittbank\\
+ \hline
+ Beschreibung&Der Kunde behebt Geld am ATM. Dazu führt er eine Bank- oder Kreditkarte in das Gerät ein und wählt einen gewünschten Betrag aus. Der Betrag wird dann entweder direkt oder durch den Dritten auf dem Kontokorrent des Kunden belastet.\\
+ \hline
+ Daten&PIN, Salden, Sperren, Limits\\
+ Auslöser&Karte wird in das Gerät eingeschoben – Funktion Bargeld beheben wird ausgewählt\\
+ \hline
+ Antwort&PIN eingeben, Verifizierung der Daten, Ausgabe Bargeld\\
+ \hline
+ Kommentare&Voraussetzung: Bargeld muss vorhanden sein, Verifizierung kann durchgeführt werden\\
+ \hline
+\end{tabular}
+\pagebreak
+\begin{figure}[h]
+ \begin{center}
+  \includegraphics[scale=0.8]{Anwendungsfallmodell_kontoinformation}
+ \end{center}
+ \caption{Use Case Model für Kontoinformation abfragen}
+\end{figure}
+\begin{tabular}{ |p{3cm}|p{13cm}|  }
+ \hline
+ \multicolumn{2}{|l|}{\textbf{Informationen über das Konto abrufen}} \\
+ \hline
+ Akteur&Kunde, Kreditkarteninstitut, Bank, Drittbank\\
+ \hline
+ Beschreibung&Der Kunde ruft aktuelle Informationen zu seinem Kontokorrent ab. Dazu führt er eine Bankkarte in das Gerät ein und wählt die Option Kontoinformationen erhalten. Die gewünschten Informationen werden auf dem Bildschirm angezeigt\\
+ \hline
+ Daten&PIN\\
+ Auslöser&Karte wird in das Gerät eingeschoben – Funktion Kontoinformationen wird ausgewählt\\
+ \hline
+ Antwort&PIN eingeben, Verifizierung der Daten, Ausgabe der gewünschten Daten\\
+ \hline
+ Kommentare&Voraussetzung: Verifizierung kann durchgeführt werden\\
+ \hline
+\end{tabular}
 
 \pagebreak
-\section{Entwickeln Sie mit Hilfe Ihres Wissens über die Verwendung eines Geldautomaten eine Reihe von An-
-wendungsfällen, die als Basis für das Verständnis der An- forderungen an ein Geldautomatensystem ver-
-wendet werden können.}
-\begin{itemize}
- \item [1] Bankomatkarte wird eingesteckt und der Code wird richtig eingegeben. Dann wird ausgewählt, welche Scheine man abheben möchte. Danach wird das Geld ausgegeben
- \item [2] Bankomatkarte wird eingesteckt, aber nicht erkannt. Die Karte wird wieder ausgegeben
- \item [3] Bankomatkarte wird eingesteckt und der Code wird falsch eingegeben. Dann wird ausgewählt, welche Scheine man haben möchte. Der Code wird wieder abgefragt und richtig eingegeben. Dann wird das Geld ausgegeben.
- \item [4] Bankomatkarte wird eingesteckt und der Code wird falsch eingegeben. Dann wird ausgewählt, welche Scheine man haben möchte. Der Code wird wieder abgefragt und falsch eingegeben. Der Code wird nochmal abgefragt und richtig eingegeben. Dann wird das Geld ausgegeben.
- \item [5] Bankomatkarte wird eingesteckt und der Code wird falsch eingegeben. Dann wird ausgewählt, welche Scheine man haben möchte. Der Code wird wieder abgefragt und falsch eingegeben. Der Code wird nochmal abgefragt und falsch eingegeben. Dann wird die Karte eingezogen und der Vorgang beendet.
- \item [6] Bankomatkarte wird eingesteckt, es ist aber kein Geld mehr im Automat. Die Karte wird wider ausgegeben.
-\end{itemize}
 
+\begin{figure}[h]
+ \begin{center}
+  \includegraphics[scale=0.8]{Anwendungsfallmodell_SIM_laden}
+ \end{center}
+ \caption{Use Case Model für SIM aufladen}
+\end{figure}
+\begin{tabular}{|p{3cm}|p{13cm}|}
+ \hline
+ \multicolumn{2}{|l|}{\textbf{SIM-Karte laden}} \\
+ \hline
+ Akteur&Kunde, Bank, Mobilfunkanbieter\\
+ \hline
+ Beschreibung&Der Kunde lädt das Guthaben der SIM-Karte seines Mobiltelefons. Dazu führt er eine Bankkarte in das Gerät ein und wählt die Option SIM-Karte laden. Es erfolgt die Verifizierung des PINs und des Limits durch die Bank. Bei positiven Ausgang kann der Kunde den gewünschten Anbieter und Betrag auf dem Bildschirm wählen. Nach Eingabe der Mobiltelefons, erfolgt die Verifizierung durch den Anbieter. Ist diese positiv wird die SIM-Karte mit dem gewünschten Betrag beladen. Betrag wird vom Kontokorrent abgebucht.\\
+ \hline
+ Daten&PIN,Mobilfunknummer\\
+ \hline
+ Auslöser&Karte wird in das Gerät eingeschoben – Funktion SIM-Karte laden wird ausgewählt\\
+ \hline
+ Antwort&PIN eingeben, Verifizierung der Daten, Laden SIM-Karte, Belastung Kontokorrent\\
+ \hline
+ Kommentare&Voraussetzung: Verifizierung kann durchgeführt werden\\
+ \hline
+\end{tabular}
 \pagebreak
-\section{Sie sind aufgefordert worden, ein System zu entwickeln, dass beim Planen von groß angelegten Veran-
-staltungen und Partys helfen soll (z.B. Hochzeiten, Abschluss- feiern, Geburtstagsfeiern, etc.). Modellieren
+\section{Sie sind aufgefordert worden, ein System zu entwickeln, dass beim Planen von groß angelegten Veranstaltungen und Partys helfen soll (z.B. Hochzeiten, Abschluss- feiern, Geburtstagsfeiern, etc.). Modellieren
 Sie für solch ein System den Prozess- kontext mithilfe eines Aktivitätsdiagramms, das die Aktivitäten zeigt,
 die mit der Planung einer Feier verbunden sind (z.B. Buchen eines Veranstaltungsorts, Organisieren der
 Einladungen, usw.) sowie die Systemelemente, die in jeder Phase benutzt werden könnten.}
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.43]{UML_Party}
+\includegraphics[scale=0.38]{UML_Party}
 \caption{UML Diagramm zum Ablauf einer Veranstaltung}
 \end{center}
 \end{figure}
@@ -233,7 +409,7 @@ dabei auftretende Datenverarbeitung modelliert, wenn ein Kunde / eine Kundin Bar
 abhebt.}
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.42]{UML_Geldautomat}
+\includegraphics[scale=0.38]{UML_Geldautomat}
 \caption{UML-Diagramm zur Beschreibung der Aktivität "Geld abheben"}
 \end{center}
 \end{figure}
@@ -243,7 +419,7 @@ abhebt.}
 me besitzt}
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.42]{Zustand_Waschmaschiene}
+\includegraphics[scale=0.41]{Zustand_Waschmaschiene}
 \caption{Zustandsdiagramm einer Waschmaschine}
 \end{center}
 \end{figure}

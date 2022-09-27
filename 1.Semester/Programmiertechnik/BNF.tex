@@ -1,0 +1,72 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry,lipsum}
+\usepackage{fancyhdr}
+\usepackage{sectsty}
+\usepackage{multicol}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{csquotes}
+\usepackage[backend=biber,style=alphabetic,]{biblatex}
+\usepackage{babel}
+\usepackage{graphicx}
+\usepackage{listings}
+
+\sectionfont{\fontsize{12}{15}\selectfont}
+\subsectionfont{\fontsize{12}{15}\selectfont}
+\geometry{margin=2cm}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\today}
+\chead{Lukas Gritsch}
+\lhead{Programmiertechnik}
+\rfoot{Seite \thepage}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color
+  basicstyle=\footnotesize,        % size of fonts used for the code
+  breaklines=true,                 % automatic line breaking only at whitespace
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  keywordstyle=\color{blue},       % keyword style
+  stringstyle=\color{mymauve},     % string literal style
+}
+
+\begin{document}
+\section{Backus Normalform für URL}
+\begin{lstlisting}[caption={BNF für Email adressen},frame=single, numbers=left]
+<url> ::= <protocol> <server> <port>? <path>?
+<protocol> ::= "http://" | "https://"
+<serverChar> ::= "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" | "j" | "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x" | "y" | "z" | "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z" | "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+<serverString> ::= <serverChar> | <serverChar> <serverString>
+<server> ::= <serverString> | <serverString> "." <server>
+<pathChar> ::= "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" | "j" | "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x" | "y" | "z" | "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z" | "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "-"
+<pathString> ::= <pathChar> | <pathChar> <pathString>
+<path> ::= <pathString> | <pathString> "/" <path>
+<digit> ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+<integer> ::= <digit> | <digit> <integer>
+<port> ::= ":" <integer>
+\end{lstlisting}
+\subsection{(Optional)Umsetzung in Python}
+\begin{lstlisting}[caption={Umsetzung der obigen BNF in Python},language=Python,frame=single, numbers=left, breaklines=true]
+from pyparsing import *
+
+protocol = Literal("http") ^ Literal('https')
+serverPart = Word('abcdefghijklmnopqrrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789')
+server = serverPart + OneOrMore('.'+serverPart)
+pathPart = Word('abcdefghijklmnopqrrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-')
+path = OneOrMore('/' + pathPart)
+port = ':' + Word(nums)
+url =  protocol + '://' + server + Optional(port) + Optional(path)
+
+url.run_tests("https://mars.mci4me.at:8000/test/test2/test3")
+url.run_tests("http://www.google.com")
+url.run_tests("https://www.mci.edu/en/universtity/the-mci/team-faculty")
+\end{lstlisting}
+\end{document}

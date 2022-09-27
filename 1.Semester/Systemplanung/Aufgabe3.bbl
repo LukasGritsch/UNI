@@ -1,0 +1,50 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{anyt/global//global/global}
+    \entry{volere}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=ff611c8b5cf64df49c3bba3afc0216a1}{%
+           family={Suzanne\bibnamedelima Robertson},
+           familyi={S\bibinitperiod\bibinitdelim R\bibinitperiod},
+           given={James},
+           giveni={J\bibinitperiod},
+           prefix={an},
+           prefixi={a\bibinitperiod}}}%
+      }
+      \strng{namehash}{ff611c8b5cf64df49c3bba3afc0216a1}
+      \strng{fullhash}{ff611c8b5cf64df49c3bba3afc0216a1}
+      \strng{bibnamehash}{ff611c8b5cf64df49c3bba3afc0216a1}
+      \strng{authorbibnamehash}{ff611c8b5cf64df49c3bba3afc0216a1}
+      \strng{authornamehash}{ff611c8b5cf64df49c3bba3afc0216a1}
+      \strng{authorfullhash}{ff611c8b5cf64df49c3bba3afc0216a1}
+      \field{labelalpha}{Suz}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.inf.ed.ac.uk/teaching/courses/seoc/2007_2008/resources/volere-template.pdf}}
+      \field{note}{Besucht: 21.09.2022}
+      \field{title}{{Volere} Requirements Specification Template}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
