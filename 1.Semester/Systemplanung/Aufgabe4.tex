@@ -1,0 +1,98 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry,lipsum}
+\usepackage{fancyhdr}
+\usepackage{sectsty}
+\usepackage{multicol}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{csquotes}
+\usepackage[backend=biber,style=alphabetic,]{biblatex}
+\usepackage{babel}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage[document]{ragged2e}
+
+\renewcommand{\figurename}{Abbildung}
+\sectionfont{\fontsize{12}{15}\selectfont}
+\subsectionfont{\fontsize{12}{15}\selectfont}
+\geometry{margin=2cm}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\today}
+\chead{Sybille Kohler,Bernhard Flür, Lukas Gritsch}
+\lhead{Systemplanung}
+\rfoot{Seite \thepage}
+
+\addbibresource{literaturAufgabe4.bib}
+\renewcommand\refname{Quellen}
+
+\begin{document}
+\section{Erklären Sie, warum Sie beim Entwurf der Architektur eines großen Systems in der Regel mehrere Architekturmuster benutzten. Welche zusätzlichen Informationen über Muster – abgesehen von denen, die im
+Kurs diskutiert wurden – könnten beim Entwurf von großen System hilfreich sein?}
+Bei der Umsetzung der Architektur eines großen Systems kann es sein, dass man mehrere Anwendung hat. So kann es sein, dass man eine Desktopanwendung betreibt, in welcher die Dienstplanung für die Mitarbeiter gemacht wird. Diese Anwendung könnte über das "Client-Server Pattern" funktionieren. Während man für die Mitarbeiter eine Webapp betriebt, in welcher der Mitarbeiter seinen aktuellen Dinestplan abrufen kann und eventuell Änderungen beantragen kann. Diese Webapp verfolgt das "MVC-Pattern". Für die Skalierbarkeit von großen Systemen könnte es sinnvoll sein sich Architekturmuster für Container-Technologien anzuschauen. Mit Container-Technologien wie Docker kann man Microservices erstellen, welche Applicationen hosten.
+\section{Schlagen Sie die Komponenten vor, die Teil eines Informationssystems sein können, welches den Benut-
+zer:innen die Anzeige der Abflug- und Ankunftszeiten eines bestimmten Flughafens ermöglicht.}
+\begin{itemize}
+ \item Datenbank die Daten über die Zeiten der Flüge beinhaltet.
+ \item Schnittstelle zum System des Towers, an welchen die Daten in der Datenbank aktualisiert werden können. Dies kann auch über eine REST API funktionieren, welche auf einem Webserver (Beispielsweise Tomact) läuft.
+ \item Über eine REST API kann man auch eine Frontend Applikation anbinden, welche die Informa- tionen via HTML,CSS,JavaScript, usw.. darstellt. Diese kann vom Internet aus abgerufen werden.
+ \item Einem Reverseproxy, welcher den Zugang zu zur API reguliert. Beispielsweise NGINX
+ \item Ein Endgerät, welches die Zeiten der Abflüge in der Abflughalle anzeigen kann.
+ \item Ein Reporting-Tool, welches Auswertungen und Statistiken aus den Daten der Datenbank erstellt.
+\end{itemize}
+\pagebreak
+\section{Schlagen Sie eine Architektur für ein System vor, das eingesetzt wird, um Musik über das Internet zu zu
+vertreiben (wie beispielsweise Spotify oder iTunes). Welche Architekturmuster bilden die Grundlage für
+diese Architektur}
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.5]{Architektur_Musik_Stream}
+\caption{Architektur Musikstreamingdienst}
+\end{center}
+\end{figure}
+Bei dieser Architektur kommt das MVC-Pattern ins spiel. Die Endgeräte greifen auf einen Load- balancer zu, welche die Verbindungen nach Last auf einen der Server weiterleitet. Auf den ein- zelnen Servern laufen mehrere Container. Ein Container besteht aus einem Webserver, auf wel- chem eine Webapp mit Servlets läuft. Des weiteren läuft eine Frontend auf jeden Container. Dies kann mit *.jsp Files, Angular,React, usw... umgesetzt werden. Ein einzelner Container läuft so- lange, solange ein User Musik abspielt. Sobald die Verbindungen abgebrochen wird, wird der Container wieder beendet. Da jeder Container gleich ist, kann man dieses System beliebig oft erweitern. Die Servlets bilden die Controler des MVC-Patterns. Das Modell besteht aus Klassen, welche die Struktur der Datenbank abbilden. Der Controler liest die Daten aus und gibt diese an die View (HTML-Komponente) weiter. Eingaben vom User (Änderungen Playlist,usw) werden von der View an den Controller weitergegeben, welcher das Modell abändert und in der Daten- bank hinterlegt.
+\section{Erläutern Sie, warum Konflikte auftauchen können, wenn eine Architektur entworfen wird, für die sowohl
+Verfügbarkeits- als auch Informationssicherheits- anforderungen die wichtigsten nichtfunktionalen Anforde-
+rungen darstellen?}
+Die Verfügbarkeitssicheheit beschreibt, dass ein System immer bzw. in einer Vorgegebenen Zeit zur Verfügung steht. Dass dies bewerkstelligt werden kann, muss man gewisse Sachen redundant ausführen. Zum Beispiel führt man einen Reverseproxy und einen Load- balancer redundant aus, damit die Verbindung zum Backend immer bestehen bleibt, selbst wenn ein Proxy oder ein Loadbalancer ausfällt. Im idealen Fall befinden sich diese Softwareteile auf unterschiedlichen physischen Maschinen und Rechenzentren. Dann kann auch im Falle eines Stromausfalls der jeweils andere Server die Verbindungen halten. Die Informationssicherheit beschäftigt sich primär mit drei Themen:
+\begin{itemize}
+ \item Vertraulichkeit: Dass nur berechtigte Personen gewisse Daten einsehen dürfen.
+ \item Integrität: Eine unerkannte Datenänderung darf nicht möglich sein.
+ \item Verfügbarkeit: Daten dürfen nicht verloren gehen, bzw. nicht von unbefugten bearbeitet oder gelöscht werden.
+\end{itemize}
+Wenn man nun beide Sicherheiten als wichtigste Anforderungen nimmt, dann kann dies zu einigen Konflikten kommen. Damit nur berechtigte Personen zugreifen können, muss man alle Server schützen. Da die Server aber redundant ausgeführt werden, muss man dies auf allen umsetzten, dies führt zu einem erheblichen Mehraufwand. Mehre Server mit gut abgesicherter Firewall können zu einer komplexen und aufwändigen Wartung führen.
+\cite{info}
+\cite{verf}
+\section{Warum ist es manchmal schwer zu entscheiden, ob ein soziotechnisches System versagt hat oder nicht?
+Geben Sie ein Beispiel.}
+\justifying
+Es ist schwer, da sich Probleme ergeben können, welche nicht technischer Natur sind und auch nicht messbar sind. Diese Probleme treten erst auf wenn man des System in dem Unternehmen des Kunden deployed hat. So kann es sein, dass gewisse Mitarbeiter des Unternehmen das neue System ablehnen, da es sich vom bisherigen unterscheidet. Des Weiteren kann es sein, dass Mitarbeiter Ihr bisheriges Wissen nicht mehr einsetzten können, da dieses in der neuen Software nicht mehr benötigt wird. Dadurch kann ein Mitarbeiter seine Stellung im Unternehmen oder sogar seinen Job verlieren. Wenn man zum Beispiel ein Profi im Programmieren von SAP ist und das Unternehmen SAP nicht mehr verwendet, dann kann es sein, dass man selbst auch das Feld räumen muss. Wenn sich im Unternehmen Änderungen passieren, kann es auch sein, dass dies Auswirkungen auf die Software hat. So kann es sein, dass der Seniorchef vom Juniorchef abgelöst wird und dieser will das System nicht mehr weiter benützten. Die Software an sich kann fehlerfrei und reibungslos funktionieren und dennoch wird sie nicht mehr weiter verwendet.
+\pagebreak
+\section{Für ein Konsortium europäischer Museen soll ein virtuelles Multimediasystem entwickelt werden, das virtuelle Eindrücke aus dem antiken Griechenland liefern soll. Das System soll den Besucher:innen die Möglichkeit geben, sich 3D Modelle des antiken Griechenlands mithilfe eines Standardwebbrowsers anzusehen und zudem eine beeindruckende virtuelle Realität zu erfahren. Welche politischen und unternehmens-
+spezifischen Schwierigkeiten können auftreten, wenn das System in den zu diesem Konsortium gehöhrenden Museen installiert wird?}
+Bei der Installation der Software gibt es das Problem, dass das System zuerst von den Mitarbeitern verstanden werden muss, da diese etwaige Probleme im Betrieb in erster Linie selbst lösen können müssen. So sollte sich ein Mitarbeiter des Museums auskennen, wenn ein Besucher/ eine Besucherin die Webseite nicht aufrufen kann. Dazu muss ein großer Aufwand in die Schulung der Mitarbeiter gesteckt werden. Mitarbeiter, welche sich nicht für Technik interessieren können bei diesen Schulun- gen unaufmerksam sein und deswegen dann den BesucherInnen eventuell nicht richtig helfen. Damit die Webseite erreicht werden kann, muss diese über ein Netzwerk im Museum zur Verfügung gestellt werden. Hier muss man wahrscheinlich die Hardware im gesamten Museum nachrüsten. Damit die Webseite im gesamten Gebäude vernünftig funktioniert. Wenn die Mitarbeiter die Besucher nicht richtig betreuen oder das Netzwerk nicht überall oder mit der Masse der Besucher funktioniert, dann kann es sein, dass die Besucher die Softwaer ablehnen, obwohl die Webseite an sich keine Fehler aufweisest.
+\section{Warum ist Systemintegration ein besonders wichtiger Teil des Systementwicklungspro- zesses?}
+Standsoftware in einem komplexen System einzubauen, ist meist Sinnvoll, da die Entwicklung der Software den Zeitrahmen und/oder das Budget sprengen kann. In der Systemintegration beschäftigt man sich damit Standardsoftware mit individuell programmierter Software so zu verbin- ´den, dass die Probleme des Gesamtsystems so schnell und kostengünstig wie möglich umgesetzt werden können. Die Systemintegration endet aber nicht mit dem deployment der Software. Man muss sich auch noch darum kümmern, dass das System am laufen bleibt. Im Vorfeld der Umsetzung muss man auch Prüfen, ob Software oder Hardware, welche man zukaufen möchte mit dem System harmonieren.
+\section{Was spricht dafür bzw. dagegen, dass System-Engineering, ähnlich wie Elektrotechnik oder Software-
+Engineering ein eigenständiges Berufsfeld ist?}
+\begin{itemize}
+ \item Pro
+ \begin{itemize}
+  \item Es beschäftigt sich mit komplexen Systemen, darum ist es wichtig, dass man ein Ausbildung erhält, wie man mit den Einzelnen Akteuren kommuniziert.
+  \item Man muss einen guten Überblick über das gesamte System haben, damit man Entscheidungen treffen kann die das System zum Erfolg führen. Menschen, welche solche Aufgaben öfter machen, haben hier einen Vorteil, da sie wichtige Aspekte schneller erkennen und unwichtiges ausfiltern können
+  \item Wenn sich Menschen aktiv mit diesem Thema Beschäftigen, kann es sein, dass diese Experten Pattern und Prozesse entwickeln, welche als Standard umgesetzt werden können. So kann sichergestellt werden , dass ein System zum Erfolg wird.
+ \end{itemize}
+ \item Contra
+ \begin{itemize}
+  \item Für diese Tätigkeit muss man kein Experte in einem Fach sein. Man muss nicht verstehen wie eine Software oder eine Hardwarekomponente im Detail funktioniert. Deswegen dies auch keine eigenes Berufsfeld werden. Man sollte sich hier lediglich Personen suchen, welche ordentlich und strukturiert arbeiten, sowie gut mit anderen kommunizieren können.
+  \item Diese Tätigkeit kann vom Management ausgeführt werden, da man sich hier die meiste Zeit mit der Koordinierung und der Kontrolle aufhält. Man muss also kein neues Berufsfeld schaffen, sondern kann auf ein bestehendes zurückgreifen.
+  \item Wenn man ein eigenes Berufsfeld mit großer Verantwortung schafft, dann muss dies auch dementsprechend entlohnt werden. Um Geld zu sparen können sich die Einzelnen Personen der verschiedensten Abteilungen in Besprechungen treffen und sich gegenseitig auf den neuesten Stand bringen. So kann das Budget geschont und die Teamarbeit gefördert werden.
+ \end{itemize}
+\end{itemize}
+
+\vfill
+\printbibliography
+\end{document}
