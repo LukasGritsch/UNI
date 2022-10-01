@@ -1,5 +1,7 @@
 \documentclass[12pt]{article}
+\usepackage[ngerman]{babel}
 \usepackage[utf8]{inputenc}
+
 \usepackage{tabularx}
 \usepackage{lmodern,textcomp}
 \usepackage{geometry,lipsum}
@@ -11,10 +13,15 @@
 \usepackage{amsmath}
 \usepackage{pgfplots}
 \usepackage[onehalfspacing]{setspace}
-% http://ctan.org/pkg/{geometry,lipsum}
+\usepackage{listings}
+\usepackage{tcolorbox}
+\usepackage{csquotes}
+
 \renewcommand{\contentsname}{Inhaltsverzeichnis}
-% default
-%\geometry{margin=1in}% 1in margin
+\renewcommand{\figurename}{Abbildung}
+\renewcommand{\lstlistingname}{Sourcecode}% Listing -> Algorithm
+\renewcommand{\lstlistlistingname}{List von \lstlistingname Einträgen}
+
 \geometry{margin=2cm}% 1cm margin
 
 \pagestyle{fancy}
@@ -24,11 +31,56 @@
 \lhead{eCollaboration}
 \rfoot{Seite \thepage}
 
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color
+  basicstyle=\footnotesize,        % size of fonts used for the code
+  breaklines=true,                 % automatic line breaking only at whitespace
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  keywordstyle=\color{blue},       % keyword style
+  stringstyle=\color{mymauve},
+  showstringspaces=false,
+  literate=%
+    {Ö}{{\"O}}1
+    {Ä}{{\"A}}1
+    {Ü}{{\"U}}1
+    {ß}{{\ss}}1
+    {ü}{{\"u}}1
+    {ä}{{\"a}}1
+    {ö}{{\"o}}1
+    {~}{{\textasciitilde}}1
+}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
 \begin{document}
 \tableofcontents
 \pagebreak
 \section{Aufgabe Pairprogramming}
-Mit wem habe ich an welchem Projekt und wie gearbeitet?
+Ich habe die erste Aufgabe aus dem Fach Programmiertechnik mit Frau Sybille Kohler erarbeitet. Die Aufgabe war es mithilfe der Backus Normalform eine Regel zu definieren, welche für die folgenden URLs gilt:
+\begin{itemize}
+ \item https://mars.mci4me.at:8000/test/test2/test3
+ \item http://www.google.com
+ \item https://www.mci.edu/en/universtity/the-mci/team-faculty
+\end{itemize}
+Des Weiteren sollten wir einen Regulären Ausdruck (englisch regular expression, Abkürzung RegExp oder Regex), welcher überprüft, ob eine Mailadresse valide ist.\\\\
+Wir haben die Aufgabe zuerst einzeln begonnen und anschließen ein Programm in Python entworfen, welches die Regeln überprüft, welche wir erstellt hatten. Zur Überprüfung der BNF und des Regex haben wir die Python Pakete \textbf{pyparsing} für die BNF und \textbf{re} für den Regex. Für die Umsetzung des Programms haben wir uns im \textbf{Study room 01} im Sakai-Kurs "my Bacherlor DiBSE" verwendet. Dort haben wir uns über die BigBlueButton Sitzung unterhalten und via Screen Sharing die Aufgabe besprochen. Zum Programmieren selbst haben wir das die Visual Studio Code plugin "Live Share" verwendet:
+\begin{figure}[h]
+ \begin{center}
+  \includegraphics[scale=1]{example-image-a}
+  \caption{Screenshot während dem Arbeiten mit Live Share}
+ \end{center}
+\end{figure}
+\pagebreak\\
+Als erstes habe wir die BNF für URLs als Funktion umgesetzt:
+\lstinputlisting[caption={Umsetzung einer BNF für URLs in Python},language=Python,frame=single, numbers=left, breaklines=true,firstline=4,lastline=27]{../Programmiertechnik/ExerciseSheet_1.py}
+Dieser Sourcecode teste die oben angegeben URLs, ob diese aus einem Protokoll, einer Serveradresse, optional einen Port und optional einem Pfad besteht. Als Protokoll sind entweder \textbf{http} oder \textbf{https} zulässig. Nach dem Protokoll muss unbedingt die Zeichenkette \textbf{://} folgen. Nach dieser Zeichenkette folgt die Serveradresse, diese besteht aus einzeln Serveradress-teilen. Ein Serveradress-teil darf aus Zeichen von \textbf{a-z},\textbf{A-Z} oder \textbf{0-9} bestehen. Einzelne Serveradress-teile werden mit \textbf{"."} zusammen gehängt und werden dadurch zur Serveradresse. Nach der Serveradresse folgt wahlweise ein Port oder ein Pfad. Ein Port besteht aus dem Zeichen \textbf{":"} und Zahlen von \textbf{0-9}. Ein Pfad besteht aus Pfad-teilen, welche mit dem Zeichen \textbf{"$/$"} zu einem Pfad zusammen gehängt. Der Pfad-teil besteht wiederum aus Zeichen von \textbf{a-z},\textbf{A-Z}, dem Zeichen \textbf{"-"} oder \textbf{0-9}.\\\\
+Als nächstes haben wir eine Funktion erstellt, welche eine Reihe von Mailadressen gegen zwei Regex testet:
+\lstinputlisting[caption={Umsetzung von Regex zum testen von Mailadressen},language=Python,frame=single, numbers=left, breaklines=true,firstline=31,lastline=50]{../Programmiertechnik/ExerciseSheet_1.py}
+Wir haben beide Entwürfe des Regex getestet. Der Ausdruck, welcher der Variable \textbf{"x"} Zuweisen wir stammt von mir, deswegen werde ich die Funktion am Beispiel dieses Regex nun kurz erläutern. Am Anfang wird festgelegt, dass die Mailadresse nicht mit \textbf{"."} oder \textbf{"-"} beginnen darf. Dies übernimmt der Teil \textbf{\^{$[$}\^{$.-]$}}. Des Weiteren wird definiert, dass der Teil, welcher vor dem \textbf{"@"} Symbol steht alles beinhalten darf außer "ä,ü,ö,Ä,Ö,Ü oder {\ss}". Des Weiteren die Zeichenkette nicht mit einem Punkt enden. Dies wird mit der Zeichenkette \textbf{$[$\^{äöüÄÖÜ{\ss}$]*(?<!$\textbackslash$.)$}} sichergestellt. Nach dem zwingen \textbf{"@"} Symbol, welches durch \textbf{\textbackslash @} definiert wird. Muss ein Domain folgen, welche alle Zeichen von "$a-z,A-Z,0-9$ oder $-"$ enthalten darf. Es darf nicht mit einem Punkt beginnen und auch nicht mit einem Minus enden. Dass stellt die Zeichenkette \textbf{$[$\^{$.-$}$]($\textbackslash w| \textbackslash$-)+[$\^{$-$}$]$} sicher. Die letzte Zeichenkette $($\textbackslash$.[a-z]\{2\})+$ besagt, dass die Mailadresse mit Zeichenketten aufhören muss. Diese Zeichenketten müssen mindestens zwei Stellen haben und mit einem Punkt zur nächsten zweistelligen Zeichenkette und der Zeichenkette zuvor getrennt sein. Also zum Beispiel \textbf{.co.at}.
 \subsection{Zeitaufwand}
 Habe ich dazu mehr oder weniger Zeit benötigt, als hätte ich dies alleine gemacht?
 \subsection{Verwendung in der Zukunft}
@@ -36,5 +88,7 @@ Werde ich diese Methode in der Zukunft verwenden?
 \subsection{Reposetory mit Ergebnis}
 Den Link zum MCI-Repo einfügen und eventuell auch gleich den python Code einfügen
 
+\listoffigures
+\lstlistoflistings
 
 \end{document}
