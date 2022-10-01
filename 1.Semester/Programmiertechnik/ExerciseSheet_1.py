@@ -2,12 +2,21 @@ from pyparsing import *
 import re
 
 def bnf():
-    protocol = Literal("http") ^ Literal('https')
-    serverPart = Word('abcdefghijklmnopqrrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789')
+    # <protocol> ::= 'http' | 'https' 
+    protocol = Literal('http') ^ Literal('https')
+    # serverPart ::= 'a' | 'b' | 'c' | 'd' | 'e' | 'f' | 'g' | 'h' | 'i' | 'j' | 'k' | 'l' | 'm' | 'n' | 'o' | 'p' | 'q' | 'r' | 's' | 't' | 'u' | 'v' |
+    # 'w' | 'x' | 'y' | 'z' | 'A' | 'B' | 'C' | 'D' | 'E' | FGHIJKLMNOPQRSTUVWXYZ 
+    serverPart = Word('abcdefghijklmnopqrrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789') 
+    # <server> :== serverPart + '.' serverPart | server + . + serverPart 
     server = serverPart + OneOrMore('.'+serverPart)
+
     pathPart = Word('abcdefghijklmnopqrrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-')
+    # <path> ::= '/' + pathPart | path + '/' + pathPart 
     path = OneOrMore('/' + pathPart)
+    # <nums> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+    # <port> ::= ':' + nums
     port = ':' + Word(nums)
+
     url =  protocol + '://' + server + Optional(port) + Optional(path) 
 
     url.run_tests("https://mars.mci4me.at:8000/test/test2/test3")
@@ -17,21 +26,26 @@ def bnf():
 
 
 def mail():
-    
-    #Valid adress = "gl1575@mci4me.at"
-    #Invalid Adress1 = "gl1575@-mci4me.at"
-    #Invalid Adress2 = "gl1575@mci4me.a5t"
 
-    hadresses = ["gl1575@mci4me.at","gl1575@-mci4me.at","gl1575@mci4me.a5t"]
+    hadresses = ["gl1575@mci4me.at","gl1575@-mci4me.at","gl1575@mci4me.a5t","gl1ä575@mci4me.a5t","gl15ü75@mci4me.a5t","gl1ß575@mci4me.a5t",".gl1575@mci4me.a5t"]
 
     for adress in hadresses:
-        x = re.search(r"^[^.]([a-z]|[A-Z]|\d|\&|\+|\-|\=|\_|\~|\.)+\@[a-z]([a-z]|[A-Z]|\d|\-)+(\.[a-z]{2,3})?\.[a-z]{2,3}", adress)
+
+        x = re.search(r"^[^.-][^äöüÄÖÜß]*(?<!\.)\@[^.-](\w|\-)+[^-](\.[a-z]{2})+$", adress)
+        y = re.search(r"(?!(\.))[a-zA-Z0-9\&\+\-\=\_\~\.]*(?<!\.)@(?!(\-))[a-zA-Z0-9\-]+(?<!\-)\.?([a-z]{2})\.[a-z]{2}$",adress)
+
+        print('Für regex x:')
         if x is not None:
             print(x.string+ ' is a Valid Mailadress') 
+        else:
+            print(adress + ' is not a Valid Mailadress')
+
+        print('Für regex y:')
+        if y is not None:
+            print(y.string+ ' is a Valid Mailadress') 
         else:
             print(adress + ' is not a Valid Mailadress')
 
 bnf()
 print()
 mail()
-    
