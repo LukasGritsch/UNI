@@ -1,0 +1,84 @@
+\documentclass[12pt]{article}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry,lipsum}
+\usepackage{fancyhdr}
+\usepackage{sectsty}
+\usepackage{multicol}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{csquotes}
+\usepackage[backend=biber,style=alphabetic,]{biblatex}
+\usepackage{babel}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage[document]{ragged2e}
+
+\renewcommand{\figurename}{Abbildung}
+\sectionfont{\fontsize{12}{15}\selectfont}
+\subsectionfont{\fontsize{12}{15}\selectfont}
+\geometry{margin=2cm}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\today}
+\chead{Sybille Kohler,Bernhard Flür, Lukas Gritsch}
+\lhead{Systemplanung}
+\rfoot{Seite \thepage}
+
+\addbibresource{literaturAufgabe4.bib}
+\renewcommand\refname{Quellen}
+
+\begin{document}
+\section{Unter welchen Umständen wäre es für eine Firma gerechtfertigt, einen wesentlich höheren Preis für ein
+Softwaresystem zu fordern, als sich aus der Kostenschätzung plus Gewinnspanne ergibt?}
+\begin{itemize}
+ \item Wenn man ein Monopol hat und dieses deshalb nutzen kann.
+ \item Wenn man die Software in einen neuen Feld macht. Zum Beispiel von der Backend Entwicklung in die App-Entwicklung wechselt. Daher kann man die Probleme nicht abschätzen und man muss einen höheren Preis fordern.
+ \item Wenn der Kunde Anforderungen stellt, welche nicht klar sind, man muss hier mehr Zeit berechnen und deswegen höhere Kosten verrechnen.
+ \item Wenn der Kunde die Anforderungen oft ändert. Man muss damit rechnen, dass dies auch während der Umsetzung des Projekts passiert. Deshalb sollte man mit einem höheren Zeitaufwand und somit höheren Kosten rechen.
+ \item Wenn das Produkt, welches von unserer Firma entwickelt wurde Qualitativ höher ist als das der Mitbewerber.
+\end{itemize}
+\section{Das Planungsspiel des Extreme Programming (XP) basiert auf der Vorstellung, die Implementierung der
+User-Storys zu planen, die die Systemanforderungen darstellen. Erläutern Sie die potentiellen Probleme
+dieses Ansatzes, wenn die Software hohe Anforderungen an die Leistung und Verlässlichkeit aufweist.}
+Da das Planungsspiel sehr viel mit Kompromissen zu tun hat, kann es sein, dass die Faktoren mit einer hohen Priorisierung nicht immer Gleichzeitig umgesetzt werden können, da dies durch Velocity des Entwickerteams nicht möglich ist. Wenn man hohe Anforderungen an die Leistung und die Verlässlichkeit hat, dann kann es sein, dass diese Ansprüche sich widersprechen. Eine hohe Verlässlichkeit beruht darauf, dass gewisse teile redundant ausgeführt werden und man Sicherheiten einbaut, dass ein System immer erreichbar bleibt, bzw. nur eine gewisse Zeit pro Monat nicht erreichbar ist. Wenn man nun aber möchte, dass das System auch noch schnell bleibt, kann es sein, dass dies nicht möglich ist. Die Sicherheiten, welche eingebaut werden um die Verlässlichkeit zu garantieren erfordern oft hohe Anforderungen an die Hardware. Auch deswegen kann eine Anwendung langsam laufen.
+\section{Erläutern Sie, warum der Prozess der Projektplanung iterativ ist und warum ein Plan während eines Softwareprojekts ständig überarbeitet werden muss.}
+
+Zu Beginn, in der Phase der Angebotserstellung gibt es ein Grobplanung um Ressourcen und Arbeitsaufwand abzuschätzen und ob Projekt mit den vorhandenen Ressourcen realisiert werden kann.
+Die Projektplanung hat die Aufgabe im Laufe der Projektumsetzung über Arbeitsaufteilung und Ablauf informieren und helfen den Fortschritt des Projekts einzuschätzen. Die Projektplanung soll Probleme voraussehen und Lösungen oder Ansätze zur Lösung liefern. Zudem soll es die Arbeit aufteilen und die so entstandenen Teilaufgaben Mitarbeitern zuweisen. Dieser Prozess passiert immer wiederkehrend während der gesamten Projektlaufzeit.
+Im Projekt selbst kommt es zur vorausschauenden Planung um auftretende Probleme rechtzeitig zu erkennen und lösen zu können. Es erfolgt auch eine ständige Aktualisierung des Stands in der Entwicklung. Deswegen ist es wichtig, dass man die Ziele ständig kontrolliert und den Projektplan adaptiert und in eine neue Richtung lenkt. Man muss sich Ziele in der Projektplanung setzten, welche messbar sind, damit man es schafft zu evaluieren ob eine gewisse Zielsetzung erreicht worden ist. Sollte das Ziel nicht erreicht worden sein. oder es schon früh Schwierigkeiten geben, dann kann man einen neuen Weg suchen.
+\section{Ist es Ihrer Meinung nach moralisch vertretbare einen niedrigeren Preis für eine Software zu verlangen,
+wenn auf Grund unklar definierter Anforderungen davon ausgegangen werden kann, dass eine hohe Anzahl an zukünftigen Änderungen wahrscheinlich zu zusätzlichen Verrechnungen, und somit zu Mehreinnahmen für die Firma führen werden?}
+Unserer Meinung nach ist es sehr wohl vertretbar den Preis sehr Niedrig anzusetzen, wenn die Anforderungen von Seiten des Kunden nicht klar ausgesprochen werden. Man muss immer damit rechnen, dass die Anforderungen vom Kunden auch in Zukunft nicht klar gestellt werden. Wenn man kein klaren Anforderungen hat, kann es sein, dass man etwas Entwickelt, was der Kunde gar nicht will, nicht so will, wie es umgesetzt wurde. Auch wenn es abzusehen ist, dass man zusätzliche Komponenten benötigen wird ist dies nicht zu hundert Prozent sicher. Wir würden uns nur auf das verlassen was wirklich als Anforderung gilt. Manchmal kann es sein, dass ein/e EntwicklerIn denkt, dass gewisse Funktionen sinnvoll wären, während der/die Kunde/Kundin diese gar nicht möchte.
+Vor der Umsetzung solle man aber auf jedenfall nochmal mit dem/der Kunden/Kundin das Gespräch suchen und versuchen die Anforderungen spezifischer zu gestalten.
+\section{Erklären Sie, warum ein qualitativ hochwertiger Software Prozess zu qualitativ hochwertigen Softwareprodukten führen sollte. Erörtern Sie mögliche Probleme mit diesem System des Qualitätsmanagements.}
+Ein qualitativ hochwertiger Prozess führ automatisierte Tests durch, hat ein automatischen Build- prozess und verwendet Code-Review oder Pairprogramming um Sourcecode zu erstellen. Durch das durchlaufe von automatisierten Tests kann man Sicherstellen, dass Änderungen einer Komponente keine Auswirkungen auf eine andere Komponente haben. Ein Automatisierter Buildprozess stellt sicher, dass die Software sich zur Auslieferung genau gleich verhält wie bei den Tests im Unternehmen. Wenn man keinen automatischen Prozess hat, kann es sein, dass nicht immer alle Komponenten der Software neu gebaut werden, dies macht es fast unmöglich einen Bug zu Laufzeit zu fixen. Das anwenden der Code-Review bzw. des Pairprogramming stellt sicher, dass man Logik-Fehler minimieren kann. Wenn man diese Fehler eliminieren kann, dann bleiben nur noch echte Software-Bugs. Diese können durch Debugging gefunden werden und durch den automatischen Prozess einfach ausgerollt werden. Die Schwierigkeit hierbei liegt darin, dass es ein hoher Aufwand ist diesen Prozess und die Elemente in diesem Prozess in einem Unternehmen zu implementieren. Des Weiteren ist es schwierig einen Erfolg dieses Prozesses zu messen, da dies Software immer noch Fehler enthalten kann. Der/Die Kunde/Kundin kann Qualität anders Beurteilen, als das Unternehmen.
+\pagebreak
+\section{Erklären Sie, warum Inspektionen ein effektives Verfahren für die Entdeckung von Fehlern in einem Programm sind. Welche Arten von Fehler werden durch Inspektionen vermutlich nicht gefunden?}
+Bei der Inspektion kann die Lesbarkeit des Codes verbessert werden und grobe Logik-Fehler behoben werden. Des Weiteren kann man bei der Inspektion die Dokumentation hinzufügen oder verbessern. Dies führt dazu, dass der Code leichter zu Warten ist und man grobe Fehler, welche zu einem Stillstand des Programms führen, finden und korrigieren kann. Da bei der Inspektion immer Zeile für Zeile kontrolliert wird, können Fehler, welche Auswirkungen auf andere Programm-Komponenten haben nicht gefunden werden. Wenn man die Inspektion iterativ durchführt kann man auch Probleme in der Architektur gleich am Anfang erkennen und diese noch umbauen.
+\section{Ein:e Kolleg:in, der/die ein:e sehr gute:r Programmierer:in ist, stellt Software her, die nur sehr wenige Fehler aufweist, ignoriert jedoch ständig die Unternehmens- spezifischen Qualitätsstandards. Wie sollte die Firmenleitung auf dieses Verhalten reagieren?}
+Selbst wenn ein:e EntwicklerIn guten Sourcecode produziert muss er/sie sich an die Abläufe und Prozesse des Unternehmens halten. Die Unternehmensleitung sollte die/den Kollegin/Kollegen zuerst ermahnen und darauf hinweisen, dass das einhalten der Standard essentiell für die Qualität der Software und den Erfolg des Unternehmens ist. Ich persönlich würde noch versuchen einen anderen Entwickler abzustellen, welcher eine Zeit lang mit dieser/diesem Kollegen zusammen arbeitet. Dann könnte diese/dieser die sicherstellen, dass die Standards der Firma eingehalten werden und gleichzeitig noch etwas über gutes Code-Design lernen.
+
+\section{Erörtern Sie die Beurteilung der Softwarequalität nach den unten angeführten Qualitätsmerkmalen. Betrachten Sie fünf Merkmale und beschreiben Sie, wie diese beurteilt werden könnten.}
+\begin{itemize}
+ \item Verständlichkeit:\\
+ Beschreibt, wie einfach die Software generell, aber im eigentlichen wie gut und einfach das Frontend ist. Wenn man eine gute und Verständliche UI hat, dann muss man keine aufwändigen Schulungen für den Kunden unternehmen. Des Weiteren wird eine einfache UI viel eher verwendet, als eine komplizierte. Diese Eigenschaft hängt sehr stark vom empfinden des/der einzelnen Person ab. Es gibt jedoch gewisse Richtlinien und Regeln an welche man sich halten sollte, damit man ein Verständliches Frontend bekommt. Hierbei kann man auch definieren, dass die Kunden nach eine Einschulung von x Stunden das Programm bedienen können müssen.
+ \item Zuverlässigkeit:\\
+ Die Zuverlässigkeit beschreibt, dass eine Software immer erreichbar ist. Wenn diese nicht erreichbar ist, dann darf dies nur eine gewisse Anzahl an Tagen pro Monat passieren. Damit ein System Zuverlässig ist, müssen gewisse Komponenten redundant ausgeführt werden. Diese Komponenten können von Netzwerkgeräten bis hin zu Softwarekomponenten führen. Diese Qualität kann man testen, indem man zum Beispiel einen Server stoppt und somit einen Stromausfall oder ähnliches vortäuscht und dann untersucht, ob die Software noch einwandfrei läuft.
+\end{itemize}
+\pagebreak
+\begin{itemize}
+ \item Modularität:\\
+ Beschreibt das Verhalten einer Software, ob Komponenten unabhängig zu anderen sind. Die Modularität stellt sicher, dass ein Modul eines Programms zum Beispiel die Dinestplanung unabhängig von der Leistungserfassung laufen kann. Diese Qualität stellt man sicher, indem man die Software startet und gewisse Module nicht mit ausliefert. Startet die Software ohne Probleme, dann gibt es keine Abhängigkeiten, wenn nicht, dann besteht eine Abhängigkeit unter den Modulen. Modularität ist stellt sicher, dass eine Änderung in einem Modul keine unerwarteten Bugs in einem anderen hervorruft.
+ \item Testbarkeit:\\
+ Beschreibt die Eigenschaft, dass man Softwarekomponenten testen kann. Dies kann Sichergestellt werden, wenn man am Anfang der Entwicklung das Ziel verfolgt, dass die Komponenten getestet werden können. Nicht jede Funktion kann durch automatisierte Tests getestet werden. Soll ein Methode mittels JUNIT getestet werden, dann muss man dies schon beim erstellen des Funktion berücksichtigen. Diese Qualität kann man nicht testen. Man kann lediglich feststellen, ob die Software automatisch getestet werden kann oder nicht.
+ \item Effizienz:\\
+ Beschreibt wie schnell oder wie genau eine Funktion ein Problem bearbeiten kann. Hierbei kann man sich an gewisse Such- oder Sortieralgorithmen halten, welche schon zuvor Entwickelt wurden. So kann man ein Bubblesort durch einen anderen Sortieralgorithmus austauschen, damit eine Liste schneller sortiert werden kann. Diese Qualität kann man testen, indem man die gleiche Ausgangssituation verwendet und die Zeit von verschiedenen Algorithmen stoppt, bzw. man sich an die Beschreibung der einzelnen Algorithmen im Internet hält. Für die meisten gibt es eine Formel, welche den Worst-Case beschreibt. Mit diesen Formeln kann man sich einfach ausrechnen, welcher Algorithmus am besten geeignet ist.
+ \item Wiederverwendbarkeit:\\
+ Unter der Wiederverwendbarkeit versteht man das Benützen von Sourcecode an mehreren Stellen. Hierbei werden Funktionen oder Komponenten so gestaltet, dass diese immer wieder eingesetzt werden können. Ersichtlich wird dies im Zuge der Wartbarkeit. Sollte ein Fehler in der Komponente entstanden sein, dann muss man den Fehler nur einmal beheben. Dies kann auch im Zuge einer Inspektion Ersichtlich werden.
+ \item Stabilität:\\
+ Die Stabilität beschreibt die Eigenschaft, dass eine Software auch noch schnell und leistungsstark bleibt, wenn viele User diese Benützen. Ersichtlich wird dies, wenn man sogenannte Stresstests mit vielen virtuelle Usern durchführt.
+\end{itemize}
+\end{document}

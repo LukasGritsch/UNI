@@ -30,7 +30,7 @@ def bnf():
 
 def mail():
 
-    hadresses = ["gl1575@mci4me.at","gl1575@-mci4me.at","gl1575@mci4me.a5t","gl1ä575@mci4me.a5t","gl15ü75@mci4me.a5t","gl1ß575@mci4me.a5t",".gl1575@mci4me.a5t"]
+    hadresses = ["-gl1575@mci4me.at","gl1575@-mci4me.at","gl1575@mci4me.a5t","gl1-575@mci4me.a5t","gl15ü75@mci4me.a5t","gl1ß575@mci4me.a5t",".gl1575@mci4me.a5t"]
 
     for adress in hadresses:
 

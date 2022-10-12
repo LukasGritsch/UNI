@@ -1,7 +1,7 @@
 \documentclass[12pt]{article}
 \usepackage[ngerman]{babel}
 \usepackage[utf8]{inputenc}
-
+\usepackage{url}
 \usepackage{tabularx}
 \usepackage{lmodern,textcomp}
 \usepackage{geometry,lipsum}
@@ -19,7 +19,7 @@
 
 \renewcommand{\contentsname}{Inhaltsverzeichnis}
 \renewcommand{\figurename}{Abbildung}
-\renewcommand{\lstlistingname}{Sourcecode}% Listing -> Algorithm
+\renewcommand{\lstlistingname}{Sourcecode }% Listing -> Algorithm
 \renewcommand{\lstlistlistingname}{List von \lstlistingname Einträgen}
 
 \geometry{margin=2cm}% 1cm margin
@@ -55,8 +55,30 @@
 \definecolor{mygreen}{rgb}{0,0.6,0}
 \definecolor{mygray}{rgb}{0.5,0.5,0.5}
 \definecolor{mymauve}{rgb}{0.58,0,0.82}
+\definecolor{titlepagecolor}{cmyk}{1,.60,0,.40}
+\definecolor{namecolor}{cmyk}{1,.50,0,.10}
 
 \begin{document}
+
+\begin{titlepage}
+\newgeometry{left=7.5cm} %defines the geometry for the titlepage
+\pagecolor{titlepagecolor}
+\noindent
+\includegraphics[width=2cm]{example-image-a}\\[-1em]
+\color{white}
+\makebox[0pt][l]{\rule{1.3\textwidth}{1pt}}
+\par
+\noindent
+\textbf{\textsf{UniversitätsKlinikum}} \textcolor{namecolor}{\textsf{Heidelberg}}
+\vfill
+\noindent
+{\huge \textsf{Handbuch 1.3}}
+\vskip\baselineskip
+\noindent
+\textsf{August 2008}
+\end{titlepage}
+\restoregeometry
+\nopagecolor
 \tableofcontents
 \pagebreak
 \section{Aufgabe Pairprogramming}
@@ -70,7 +92,7 @@ Des Weiteren sollten wir einen Regulären Ausdruck (englisch regular expression,
 Wir haben die Aufgabe zuerst einzeln begonnen und anschließen ein Programm in Python entworfen, welches die Regeln überprüft, welche wir erstellt hatten. Zur Überprüfung der BNF und des Regex haben wir die Python Pakete \textbf{pyparsing} für die BNF und \textbf{re} für den Regex. Für die Umsetzung des Programms haben wir uns im \textbf{Study room 01} im Sakai-Kurs "my Bacherlor DiBSE" verwendet. Dort haben wir uns über die BigBlueButton Sitzung unterhalten und via Screen Sharing die Aufgabe besprochen. Zum Programmieren selbst haben wir das die Visual Studio Code plugin "Live Share" verwendet:
 \begin{figure}[h]
  \begin{center}
-  \includegraphics[scale=1]{example-image-a}
+  \includegraphics[scale=0.27]{LiveShare.png}
   \caption{Screenshot während dem Arbeiten mit Live Share}
  \end{center}
 \end{figure}
@@ -82,11 +104,52 @@ Als nächstes haben wir eine Funktion erstellt, welche eine Reihe von Mailadress
 \lstinputlisting[caption={Umsetzung von Regex zum testen von Mailadressen},language=Python,frame=single, numbers=left, breaklines=true,firstline=31,lastline=50]{../Programmiertechnik/ExerciseSheet_1.py}
 Wir haben beide Entwürfe des Regex getestet. Der Ausdruck, welcher der Variable \textbf{"x"} Zuweisen wir stammt von mir, deswegen werde ich die Funktion am Beispiel dieses Regex nun kurz erläutern. Am Anfang wird festgelegt, dass die Mailadresse nicht mit \textbf{"."} oder \textbf{"-"} beginnen darf. Dies übernimmt der Teil \textbf{\^{$[$}\^{$.-]$}}. Des Weiteren wird definiert, dass der Teil, welcher vor dem \textbf{"@"} Symbol steht alles beinhalten darf außer "ä,ü,ö,Ä,Ö,Ü oder {\ss}". Des Weiteren die Zeichenkette nicht mit einem Punkt enden. Dies wird mit der Zeichenkette \textbf{$[$\^{äöüÄÖÜ{\ss}$]*(?<!$\textbackslash$.)$}} sichergestellt. Nach dem zwingen \textbf{"@"} Symbol, welches durch \textbf{\textbackslash @} definiert wird. Muss ein Domain folgen, welche alle Zeichen von "$a-z,A-Z,0-9$ oder $-"$ enthalten darf. Es darf nicht mit einem Punkt beginnen und auch nicht mit einem Minus enden. Dass stellt die Zeichenkette \textbf{$[$\^{$.-$}$]($\textbackslash w| \textbackslash$-)+[$\^{$-$}$]$} sicher. Die letzte Zeichenkette $($\textbackslash$.[a-z]\{2\})+$ besagt, dass die Mailadresse mit Zeichenketten aufhören muss. Diese Zeichenketten müssen mindestens zwei Stellen haben und mit einem Punkt zur nächsten zweistelligen Zeichenkette und der Zeichenkette zuvor getrennt sein. Also zum Beispiel \textbf{.co.at}.
 \subsection{Zeitaufwand}
-Habe ich dazu mehr oder weniger Zeit benötigt, als hätte ich dies alleine gemacht?
+Da wir uns als erstes separat mit der Thematik beschäftigt haben und dann im Nachhinein zu Erstellung des Programms nochmals getroffen haben, war der Zeitaufwand mir Sicherheit größer, als wenn jeder das Problem alleine bearbeitet hätte. Was jedoch aufgefallen ist, ist dass man sich gegenseitig auf kleine Fehler hinweist, welche man alleine wahrscheinlich nicht gesehen hätte.
 \subsection{Verwendung in der Zukunft}
-Werde ich diese Methode in der Zukunft verwenden?
+Da ich bereits seit vier Jahren als Programmierer arbeite, ist mir die Methode des Pairprogramming bereits sehr gut bekannt. Was mir an dieser Übung seht gut gefallen hat, war das Tool "Live Share" von Visual Studio Code. Dass man hier gleichzeitig ein Sourcecode File bearbeiten kann finde ich eine super Lösung. Meine Erfahrungen mit Pairprogramming über eine remote Session waren bis jetzt immer von TeamViewer oder Screen Sharing Momenten geprägt. Daher finde ich es eine super Lösung wie dies durch "Live Share" gemacht wurde. Ich werde diese Methode mit Sicherheit bei meinem Arbeitgeber vorschlagen. Ich fand das Pairprogramming eine super Übung und finde auch, dass es eine gute Methode ist um Fehler zu minimieren und das Teamwork zu steigern.
 \subsection{Reposetory mit Ergebnis}
-Den Link zum MCI-Repo einfügen und eventuell auch gleich den python Code einfügen
+Als wir mit der Erstellung des SourceCodes fertig waren haben wir diesen in unser eigenes Repository commitet. Dies wurde durch folgenden Vorgang bewerkstelligt:
+\begin{enumerate}
+ \item Erstellen des Repository auf \url{https://git.mci4me.at/}
+ \begin{figure}[h]
+  \begin{center}
+   \includegraphics[scale=0.3]{newRepo}
+   \caption{Erstellung eines neuen Repository}
+  \end{center}
+ \end{figure}
+ \item Link des neuen Repository kopieren:
+ \begin{figure}[h]
+  \begin{center}
+   \includegraphics[scale=0.3]{copyLink}
+   \caption{Link zum Klonen des Repository}
+  \end{center}
+ \end{figure}
+ \item Klonen des Leeren Repository in ein lokales Verzeichnis:
+ \begin{lstlisting}[caption={CLI Kommando zum Klonen eines Repository},language=Bash,frame=single]
+  git clone https://git.mci4me.at/gl1575/eCollaberation_Pairprogramming.git
+ \end{lstlisting}
+  \item Die Entsprechende Python Datei in dieses Verzeichnis kopieren.
+  \item Die Datei für einen Commit hinzufügen:
+  \begin{lstlisting}[caption={CLI Kommando zum Hinzufügen einer Datei für einen Commit},language=Bash,frame=single]
+  git add ExerciseSheet_1.py
+ \end{lstlisting}
+ \item Eine Beschreibung für den Commit hinzufügen:
+ \begin{lstlisting}[caption={CLI Kommando zum Hinzufügen einer Beschreibung für einen Commit},language=Bash,frame=single]
+  git commit -m "Added exercise for pairprogramming"
+ \end{lstlisting}
+ \item Änderungen in das Repository hochladen. Das Hochladen wird als "push" bezeichnet:
+ \begin{lstlisting}[caption={Hochladen der Änderungen},language=Bash,frame=single]
+  git push
+ \end{lstlisting}
+ \item Nachdem man seine Anmeldedaten richtig eingegeben hat, sieht das Ergebnis im Repository so aus:
+ \begin{figure}[h]
+  \begin{center}
+   \includegraphics[scale=0.4]{newFileInRepo}
+   \caption{Resultat im Repository}
+  \end{center}
+ \end{figure}
+ \end{enumerate}
+\pagebreak
 
 \listoffigures
 \lstlistoflistings
