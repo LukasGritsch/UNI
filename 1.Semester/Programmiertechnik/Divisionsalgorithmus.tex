@@ -1,0 +1,103 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry,lipsum}
+\usepackage{fancyhdr}
+\usepackage{sectsty}
+\usepackage{multicol}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{csquotes}
+\usepackage[backend=biber,style=alphabetic,]{biblatex}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage[ngerman]{babel}
+
+\renewcommand{\labelenumii}{\theenumii}
+\renewcommand{\theenumii}{\theenumi.\arabic{enumii}.}
+\setlength{\leftmarginii}{1.8ex}
+
+\sectionfont{\fontsize{12}{15}\selectfont}
+\subsectionfont{\fontsize{12}{15}\selectfont}
+\geometry{margin=2cm}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\today}
+\chead{Lukas Gritsch}
+\lhead{Programmiertechnik}
+\rfoot{Seite \thepage}
+\renewcommand{\figurename}{Abbildung}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color
+  basicstyle=\footnotesize,        % size of fonts used for the code
+  breaklines=true,                 % automatic line breaking only at whitespace
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  keywordstyle=\color{blue},       % keyword style
+  stringstyle=\color{mymauve},     % string literal style
+}
+
+\begin{document}
+\section{Natürliche Sprache}
+\begin{enumerate}
+ \item Ein User gibt ein ganze Zahl über die Konsole ein.
+    \stepcounter{enumi}
+ \begin{enumerate}
+      \item Diese Eingabe wird überprüft, ob diese auch eine ganze Zahl ist. Sollte dies nicht der Fall sein, wird eine Fehlermeldung ausgegeben und die Eingabe wiederholt.
+      \item Ist die Eingabe in Ordnung, wird dies der Variable \textbf{a} zugewiesen.
+ \end{enumerate}
+ \item Ein User gibt eine zweite ganze Zahl ein, welche nicht 0 sein darf.
+     \stepcounter{enumi}
+ \begin{enumerate}
+ \item Diese Eingabe wird überprüft, ob diese auch eine ganze Zahl ist und nicht 0 ist. Sollte dies nicht der Fall sein, wird eine Fehlermeldung ausgegeben und die Eingabe wiederholt.
+ \item Ist die Eingabe in Ordnung, wird dies der Variable \textbf{b} zugewiesen.
+\end{enumerate}
+ \item Jetzt wird die Berechnung $\frac{a}{b}$ durchgeführt und der Variable \textbf{c} zugewiesen.
+ \item \textbf{c} wird nun mittels \textbf{print()} in der Konsole wieder ausgegeben.
+\end{enumerate}
+\pagebreak
+\section{Graphische Repräsentation}
+\begin{figure}[h]
+ \begin{center}
+  \includegraphics[scale=0.43]{DivMitRest}
+ \end{center}
+ \caption{Flussdiagramm/Programmablaufsplan Division mit Rest}
+\end{figure}
+\pagebreak
+\section*{(Optional) Als SourceCode}
+\begin{lstlisting}[caption={Umsetzung des obigen Flussdiagramm/Programmablaufsplan in Python},language=Python,frame=single, numbers=left, breaklines=true]
+def getVarA():
+    print("Bitte geben Sie ein ganze Zahl ein.")
+    hEin = input()
+    try:
+        a = int(hEin)
+        return a
+    except:
+        print("Eingabe muss ein ganze Zahl sein!")
+        return getVarA()
+
+def getVarB():
+    b = getVarA()
+    if b != 0:
+        return b
+    else:
+        print("Eingabe muss ein ganze Zahl sein und darf nicht 0 sein!")
+        return getVarB()
+
+def divMitrest():
+    a = getVarA()
+    b = getVarB()
+
+    c = a/b
+
+    print(c)
+
+divMitrest()
+\end{lstlisting}
+\end{document}a
