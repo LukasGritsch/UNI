@@ -2,7 +2,7 @@
 def is_odd(x):
     result = None
     
-    result = x % 2 == 0
+    result = (x % 2 == 0)
     
     return not result
 
@@ -43,15 +43,15 @@ print(get_min_max(21, 23, 13, 44, 5, 26))
 #Aufgabe 4
 def count_loop(x):
     count = 0
-    hVar = x
-    while not is_odd(hVar):
+    while not is_odd(x):
         count = count +1
-        hVar = hVar / 2
+        x = x / 2
     
     return count
 
 print(count_loop(48))
 
+#Aufgabe5
 def division_mit_rest(x, y):
     result = 0
     remainder = 0
@@ -71,6 +71,7 @@ def division_mit_rest(x, y):
 
 print(division_mit_rest(4, 2))
 
+#Aufgabe6
 def is_prime(x):
     if x < 1:
         return False
@@ -86,6 +87,7 @@ def is_prime(x):
 
 print(is_prime(5))
 
+#Aufgabe7
 def is_triangular(x):
     hSum = 0
     i = 0

@@ -16,6 +16,8 @@
 \usepackage{listings}
 \usepackage{tcolorbox}
 \usepackage{csquotes}
+\usepackage{tikz}
+\usepackage{float}
 
 \renewcommand{\contentsname}{Inhaltsverzeichnis}
 \renewcommand{\figurename}{Abbildung}
@@ -55,7 +57,7 @@
 \definecolor{mygreen}{rgb}{0,0.6,0}
 \definecolor{mygray}{rgb}{0.5,0.5,0.5}
 \definecolor{mymauve}{rgb}{0.58,0,0.82}
-\definecolor{titlepagecolor}{cmyk}{1,.60,0,.40}
+\definecolor{titlepagecolor}{HTML}{1b4477}
 \definecolor{namecolor}{HTML}{f39900}
 
 \begin{document}
@@ -150,8 +152,45 @@ Als wir mit der Erstellung des SourceCodes fertig waren haben wir diesen in unse
  \end{figure}
  \end{enumerate}
 \pagebreak
-
+\section{Communities in meinem persönliche Netzwerk}
+Da ich in einem ca. 2000 Seelendorf lebe sind viele meiner Communities Ortsbasiert. Folgende Communities treten in meinem persönlichen Netzwerk auf:
+\begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}
+\draw[blue] (0,0.5) circle (50pt);
+\filldraw[blue] (0,0.5) circle (0pt) node[anchor=center]{Feuerwehr};
+\draw[red] (0,-2.5) circle (50pt);
+\filldraw[red] (0,-2.5) circle (0pt) node[anchor=center]{Sellrain};
+\draw[green] (3,-2.5) circle (50pt);
+\filldraw[green] (3,-2.5) circle (0pt) node[anchor=center]{Jungbauern};
+\draw[black] (-3,-2.5) circle (50pt);
+\filldraw[black] (-3,-2.5) circle (0pt) node[anchor=center]{Schützen};
+\draw[orange] (0,-8) circle (50pt);
+\filldraw[orange] (0,-8) circle (0pt) node[anchor=center]{DiBSE};
+\draw[violet] (3,-8) circle (50pt);
+\filldraw[violet] (3,-8) circle (0pt) node[anchor=center]{Programmieren};
+\draw[brown] (-3,-8) circle (50pt);
+\filldraw[brown] (-3,-8) circle (0pt) node[anchor=center]{Linux};
+\end{tikzpicture}
+\end{center}
+\caption{Grafik meiner persönlichen Netzwerke}
+\end{figure}
+\flushleft Mein persönliches Netzwerk besteht zum Großteil aus Communities in meinem Heimatort. Da diese alle Vereine sind, werde ich diese unter einmal analysieren. Eine weitere sehr neue Community in meinem persönlichen Netzwerk ist die des DiBSE Studiums.
+\pagebreak
+\subsection{Vereine Schützen,Jungbauern und Feuerwehr}
+\subsubsection{Handelt es sich dabei tatsächlich um eine Community ?}
+\subsubsection{Art der Community}
+\subsubsection{Grad der Virtualität}
+\subsection{DiBSE-Studium}
+\subsubsection{Handelt es sich dabei tatsächlich um eine Community ?}
+\subsubsection{Art der Community}
+\subsubsection{Grad der Virtualität}
+\subsection{Linux,Programmieren}
+\subsubsection{Handelt es sich dabei tatsächlich um eine Community ?}
+\subsubsection{Art der Community}
+\subsubsection{Grad der Virtualität}
+\subsection{Überschneidungen zwischen den Communities}
+\pagebreak
 \listoffigures
 \lstlistoflistings
-
 \end{document}
