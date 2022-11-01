@@ -15,8 +15,8 @@
 \renewcommand{\labelenumi}{\roman{enumi})}
 
 %SPEZIELLE KOMMENTARE FÜR LOGIK UND BERECHENBARKEIT
-\newcommand{\w }{\texttt{W}}
-\newcommand{\f }{\texttt{F}}
+\newcommand{\w }{\texttt{ W }}
+\newcommand{\f }{\texttt{ F }}
 
 \setcounter{secnumdepth}{-1}
 
@@ -72,7 +72,8 @@ Negieren der Aussage $\forall x \forall y \neg \exists z : ((x*y) > 2z)$:
 \neg(\forall x \forall y \neg \exists z : ((x*y) > 2z))\\
 \exists x \neg(\forall y \neg \exists z : ((x*y) > 2z))\\
 \exists x \exists y \neg (\neg \exists z : ((x*y) > 2z))\\
-\exists x \exists y \exists z : \neg ((x*y) > 2z)
+\exists x \exists y \exists z : \neg ((x*y) > 2z)\\
+\exists x \exists y \exists z : (\neg (x*y) \leq 2z)
 \end{align}
 \subsection{1.b)}
 Negieren der Aussage $\forall x \neg \exists y : (x^2 \geq y)$:
@@ -80,14 +81,15 @@ Negieren der Aussage $\forall x \neg \exists y : (x^2 \geq y)$:
 \begin{align}
 \neg(\forall x \neg \exists y : (x^2 \geq y))\\
 \exists x \neg(\neg \exists y : (x^2 \geq y)\\
-\exists x \exists y : \neg (x^2 \geq y)
+\exists x \exists y : \neg (x^2 \geq y)\\
+\exists x \exists y : x^2 < y
 \end{align}
 \subsection{1.c)}
 Negieren der Aussage $\forall x : \text{isPrime(}x\text{)}$:
 \setcounter{equation}{0}
 \begin{align}
 \neg(\forall x : \text{isPrime(}x\text{)})\\
-\exists x :\neg(\text{isPrime(}x\text{)})\\
+\exists x :\neg(\text{isPrime(}x\text{)})
 \end{align}
 \pagebreak
 \section{Prädikatendefinition 1}
@@ -103,7 +105,7 @@ die dadurch entsteht, dass man die erste Zahl quadriert“}
 \begin{align*}
 \forall x \exists y: \text{Ungerade(}x < 10\text{)}^2 = \text{Ungerade(}y\text{)}
 \end{align*}
-Ungerade() überprüft, ob ein Zahl oder Variable ungerade ist $x<10$ ist aber eine atomare Aussage und kann nicht auf ungerade geprüft werden. Da Ungerade() ein Prädikat ist nimmt dieses den Zustand \w oder \f ein. Dies zu quadrieren gibt keinen Sinn. Des Weiteren fehlt hier der Zusammenhang zwischen $x$ und $y$ also, dass $y = x^2$ ist.
+Ungerade() überprüft, ob ein Zahl oder Variable ungerade ist. $x<10$ ist aber eine atomare Aussage und kann nicht auf ungerade geprüft werden. Da Ungerade() ein Prädikat ist nimmt dieses den Zustand\w oder\f ein. Dies zu quadrieren gibt keinen Sinn. Des Weiteren fehlt hier der Zusammenhang zwischen $x$ und $y$ also, dass $y = x^2$ ist.
 \subsection{2.b}
 \setcounter{equation}{0}
 \begin{align*}
@@ -115,7 +117,7 @@ In dieser Aussage fehlt der Zusammenhang zwischen $x$ und $y$ also, dass $y = x^
 \begin{align*}
 \forall x \exists y: (x < 10) \wedge \text{Ungerade(}x\text{)} \color{blue}\wedge\color{black} (y = x^2) \wedge \text{Ungerade(}y\text{)}
 \end{align*}
-In dieser Aussage würde ich das markierte und durch ein $\Rightarrow$ \glqq daraus folgt{} auswechseln. Ansonsten ist diese Aussage meiner Meinung nach korrekt.
+In dieser Aussage würde ich das markierte und durch ein Implikation ($\Rightarrow$) auswechseln. Ansonsten ist diese Aussage meiner Meinung nach korrekt.
 \pagebreak
 \section{Prädikatendefinition 2}
 \subsection{3.a}
@@ -123,25 +125,25 @@ Die Aussage $P(x, y)$ ist genau dann wahr, wenn $x$ oder $y$ eine Primzahl ist u
 Produkt von beiden eine ungerade Zahl ergibt.
 \setcounter{equation}{0}
 \begin{align}
-Ungerade(x):\Leftrightarrow \exists y : x = 2y +1\\
-Prim(x): \Leftrightarrow x \ne 1 \wedge \neg (\exists y : y \ne 1 \wedge y \ne x \wedge y|x)\\
-P(x,y) :\Leftrightarrow (isPrime(x) \vee isPrime(y)) \wedge Ungerade(x * y)
+\text{Ungerade}(x):\Leftrightarrow \exists y : x = 2y +1\\
+\text{Prim}(x): \Leftrightarrow x \ne 1 \wedge \neg (\exists y : y \ne 1 \wedge y \ne x \wedge y|x)\\
+P(x,y) :\Leftrightarrow (\text{Prime}(x) \vee \text{Prime}(y)) \Rightarrow \text{Ungerade}(x * y)
 \end{align}
 \subsection{3.b}
 Die Aussage $T(x)$ ist genau dann wahr, wenn x das Produkt aus den Quadraten zweier
 einstelliger Zahlen (im Dezimalsystem) ist.
 \setcounter{equation}{0}
 \begin{align*}
-T(x) :\Leftrightarrow (1 \leq z_1 \wedge z_1 \geq 9) \wedge (1 \leq z_2 \wedge z_2 \geq 9) \wedge (x = z_1^2*z_2^2)
+T(x) :\Leftrightarrow ((1 \leq z_1 \wedge z_1 \geq 9) \wedge (1 \leq z_2 \wedge z_2 \geq 9)) \Rightarrow (x = z_1^2*z_2^2)
 \end{align*}
 \section{Formale Problemspezifikation}
 \subsection{4.a}
 \textbf{ggT}: Zu zwei gegebenen natürlichen Zahlen soll der grösste gemeinsame Teiler (ggT) gefunden werden.\vspace{0.5 cm}\\
-Gegeben:$2 \text{ Zahlen} \in \mathbb{N}$\\
-Gesucht:$1 \text{ Zahl} \in \mathbb{N}$
+Gegeben: $2 \text{ Zahlen} \in \mathbb{N}$; $x \in \mathbb{N}; y \in \mathbb{N}$\\
+Gesucht: $1 \text{ Zahl} \in \mathbb{N}$
 \setcounter{equation}{0}
 \begin{align*}
-\exists x \exists y : (x|k \wedge y|k) \wedge \forall l (x|l \wedge y|l): k \geq l
+\exists x \exists y : (k|x \wedge k|y) \wedge \underset{l \ in \mathbb{N}}{\forall l} : (l|x \wedge l|y) \Rightarrow k \geq l
 \end{align*}
 \subsection{4.b}
 Sie sind zu einer Halloween Party eingeladen, aber kennen die Adresse nicht (Dieser
@@ -149,12 +151,14 @@ Satz ist für die Problemspezifikation unerheblich).
 Zu einer gegebenen Strasse soll ein Haus gefunden werden, welches einen Kürbis
 als Halloween-Dekoration besitzt. Ausserdem soll keines der Nachbarhäuser einen
 Vampir als Dekoration besitzen.\vspace{0.5 cm}\\
-Gegeben:$ 1 \text{ Straße } y \text{,} x \text{ Menge an Häuser in } y \text{ , } z\text{ Menge an Nachbarhäuser zu } x$\\
-Gesucht:$ 1 \text{ Haus}$
+Gegeben: $ 1 \text{ Straße } y$ \\%\text{,} x \text{ Menge an Häuser in } y \text{ , } z\text{ Menge an Nachbarhäuser zu } x$\\
+Gesucht: $ 1 \text{ Haus } x$
 \setcounter{equation}{0}
-\begin{align*}
-\underset{x \in \text{Häuser in Straße } y}{\exists x} : \text{hatKürbisAlsDeko}(x) \wedge \underset{z \in \text{Nachbarhäuser zu }x}{\forall z} : \neg \text{hatVampirAlsDeko}(z)
-\end{align*}
+\begin{align}
+T := \{\text{Häuser in der Straße }y\}\\
+Z := \{\text{Nachbarhäuser von }x \text{ in der Straße }y\}\\
+\underset{x \in T}{\exists! x} : \text{hatKürbisAlsDeko}(x) \wedge \underset{n \in Z}{\forall n} : \neg \text{hatVampirAlsDeko}(n)
+\end{align}
 \pagebreak
 \section{Beweise}
 \subsection{5.a}
@@ -162,15 +166,15 @@ Direkter Beweis für $\text{Gerade}(x) \Rightarrow \text{Gerade}(x^2)$. Bei eine
 \setcounter{equation}{0}
 \begin{align}
 x \in \mathbb{N} \Rightarrow x^2 \in \mathbb{N} && \text{Prämisse} 1\\
-\text{Gerade}(x): \Leftrightarrow \exists n \in \mathbb{N} : n = 2x && \text{Prämisse} 2\\
+\text{Gerade}(x): \Leftrightarrow \exists n \in \mathbb{N} : x = 2n && \text{Prämisse} 2
 \end{align}
-$x_*$ sei fix aber beliebig:\\
+$x_*$ sei beliebig aber fix und Gerade$(x_*)$ wahr\\
 \begin{align}
 [\text{Gerade}(x_*) \Rightarrow \exists n \in \mathbb{N} : x_* = 2n && x_* \text{ in Prämisse } 2 \text{ einsetzten}\\
 (x_*)^2 = (2n)^2 && x_* \text{quadriert}\\
 x_*^2 = 4n^2 \\
-x_*^2 = 2 \underbrace{(2n^2)}_{n^2 \in \mathbb{N} \Rightarrow n^2 = k}\\
-x^2 = 2k \Rightarrow \text{Gerade}(x_*^2)] &&\square
+x_*^2 = 2 * \underbrace{(2n^2)}_{n^2 \in \mathbb{N} \Rightarrow 2* n^2 \in \mathbb{N}; k := 2n^2}\\
+x_*^2 = 2k \Rightarrow \text{Gerade}(x_*^2)] &&\square
 \end{align}
 \subsection{5.b}
 Wiederspruchsbeweis für \glqq Wenn Ungerade$(5x+2)$ ,dann Ungerade$(x)$\grqq{}. Als erstes geht man von einer Aussage $A \Rightarrow \neg B$ aus. Also von $\text{Ungerade}(5x + 2) \Rightarrow \text{Gerade}(x)$:
@@ -179,16 +183,16 @@ Wiederspruchsbeweis für \glqq Wenn Ungerade$(5x+2)$ ,dann Ungerade$(x)$\grqq{}.
 x  \in \mathbb{N} \Rightarrow 5x +2 \in \mathbb{N} && \text{Prämisse} 1 \\
 \text{Gerade}(x) : \Leftrightarrow \underset{n \in \mathbb{N}}{\exists n}: x = 2n && \text{Prämisse}2\\
 \text{Ungerade}(x) : \Leftrightarrow \underset{e \in \mathbb{N}}{\exists e}: x = 2e +1 && \text{Prämisse}3\\
-\underset{k \in \mathbb{N}}{k} : \Leftrightarrow 5x + 2 && \text{Prämisse}4
+\underset{k \in \mathbb{N}}{k} := 5x + 2 && \text{Prämisse}4
 \end{align}
-$x_*$ sei fix aber beliebig:\\
+$x_*$ sei beliebig aber fix und Ungerade$(5x+2)$ wahr\\
 \begin{align}
-\text{Gerade}(x_*):\Leftrightarrow \exists n : x_* = 2n && \text{ in Prämisse } 1 \text{ einsetzten}\\
+[\text{Gerade}(x_*):\Leftrightarrow \exists n : x_* = 2n && \text{ in Prämisse } 2 \text{ einsetzten}\\
 k = 5(2n) +2 = 10 n +2 && x_*\text{ in Prämisse } 4 \text{ einsetzten}\\
 \text{Ungerade}(x_*) : \Leftrightarrow \underset{e \in \mathbb{N}}{\exists e}: x_* = 2e +1 && \text{ in Prämisse } 3 \text{ einsetzten}\\
 k = 5(2e +1) +2 = 10e +7 && x_*\text{ in Prämisse } 4 \text{ einsetzten}\\
 10 e + 7 = 10 n + 2  && k \text{ von Zeile } 6 \text{ und } 8 \text{ gleich setzten}\\
 10e+5 = 10n\\
-\underbrace{\frac{10 e + 5}{10} = n}_{ e \in \mathbb{N} ; 10e +5 \in \mathbb{N}; n \in \mathbb{N}; \frac{10e +5}{10} \notin \mathbb{N}} && \qquad \vcenter{\hbox{\includegraphics[width=0.08\linewidth]{blitz}}}
+\underbrace{\frac{10 e + 5}{10} = n}_{ e \in \mathbb{N}; n \in \mathbb{N}; \frac{10e +5}{10} \notin \mathbb{N}}] && \qquad \vcenter{\hbox{\includegraphics[width=0.08\linewidth]{blitz}}}
 \end{align}
 \end{document}

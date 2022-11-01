@@ -1,5 +1,3 @@
-
-
 def convertNumber(n, B):
 	result = ''
 	while n > 0:
