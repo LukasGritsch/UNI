@@ -1,0 +1,225 @@
+% !TEX encoding = UTF-8 Unicode
+\documentclass[10pt,ngerman]{scrartcl}
+\usepackage{url,bm,tikz,a4wide}
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs}
+\usepackage{amsmath,amssymb}
+\usepackage[ngerman]{babel}
+\usepackage{graphicx,tikzsymbols}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{arev}
+\usepackage{fancyhdr}
+\usepackage{sectsty}
+\usepackage{geometry,lipsum}
+\geometry{margin=2cm}
+
+
+\sectionfont{\fontsize{12}{15}\selectfont}
+%\renewcommand*{\thepage}{\thepage -\arabic{page}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\today}
+\chead{Lukas Gritsch}
+\lhead{Programmiertechnik}
+\rfoot{Seite \thepage \text{ von} 3}
+
+\begin{document}
+\begin{titlepage}
+\begin{center}
+\begin{Huge}
+ SFSCON - 11.11.2022\vspace{0.5cm}
+\end{Huge}
+\end{center}
+\begin{flushleft}
+Mein Weg durch die SFSCON 2020:
+\end{flushleft}
+\begin{flushleft}
+\begin{tikzpicture}
+\draw[red] (0,0) -- (0,20);
+\draw[blue] (2,0) -- (2,10.01);
+\draw[green] (4,0) -- (4,10.01);
+
+\draw[blue] (0,11.8) .. controls (0.2,11) and (1.8,11) .. (2,10);
+\draw[green] (0,11.8) .. controls (0.2,11) and (3.8,11) .. (4,10);
+
+\filldraw[black] (0,19.5) circle (2pt);
+\draw [dashed] (0,19.5) -- (10,19.5);
+\filldraw[black] (10,19.5) circle (0pt) node[anchor=west]{Opening SFSCON 2022};
+
+\filldraw[black] (0,17.6) circle (2pt);
+\draw [dashed] (0,17.6) -- (10,17.6);
+\filldraw[black] (10,17.8) circle (0pt) node[anchor=west]{Sustained Digital Sovereignty};
+\filldraw[black] (10,17.4) circle (0pt) node[anchor=west]{with Free Software};
+
+\filldraw[black] (0,15.7) circle (2pt);
+\draw [dashed] (0,15.7) -- (10,15.7);
+\filldraw[black] (10,15.9) circle (0pt) node[anchor=west]{Open Source and Open Standards:};
+\filldraw[black] (10,15.5) circle (0pt) node[anchor=west]{The Unseen Conflict};
+
+\filldraw[black] (0,13.8) circle (2pt);
+\draw [dashed] (0,13.8) -- (10,13.8);
+\filldraw[black] (10,13.8) circle (0pt) node[anchor=west]{KDE Eco: Looking Forward \& Backward};
+
+\filldraw[black] (0,11.9) circle (2pt);
+\draw [dashed] (0,11.9) -- (10,11.9);
+\filldraw[black] (10,12.1) circle (0pt) node[anchor=west]{Device Neutrality: Safeguarding Open};
+\filldraw[black] (10,11.7) circle (0pt) node[anchor=west]{Internet with Free Software};
+
+\filldraw[black] (2,10) circle (2pt);
+\draw [dashed] (2,10) -- (10,10);
+\filldraw[black] (10,10) circle (0pt) node[anchor=west]{Sustaining the Software Architecture};
+
+\filldraw[black] (0,8.1) circle (2pt);
+\draw [dashed] (0,8.1) -- (10,8.1);
+\filldraw[black] (10,8.1) circle (0pt) node[anchor=west]{Document it or it never existed!};
+
+\filldraw[black] (2,6.2) circle (2pt);
+\draw [dashed] (2,6.2) -- (10,6.2);
+\filldraw[black] (10,6.6) circle (0pt) node[anchor=west]{Blockchain Smart Contracts and};
+\filldraw[black] (10,6.2) circle (0pt) node[anchor=west]{Multicast End-to-End Encryption for};
+\filldraw[black] (10,5.8) circle (0pt) node[anchor=west]{a Trustless Data Economy};
+
+\filldraw[black] (2,4.3) circle (2pt);
+\draw [dashed] (2,4.3) -- (10,4.3);
+\filldraw[black] (10,4.5) circle (0pt) node[anchor=west]{Scalability assessment applied};
+\filldraw[black] (10,4.1) circle (0pt) node[anchor=west]{to microservice architectures};
+
+\filldraw[black] (4,2.4) circle (2pt);
+\draw [dashed] (4,2.4) -- (10,2.4);
+\filldraw[black] (10,2.8) circle (0pt) node[anchor=west]{The Alpine Drought Observatory};
+\filldraw[black] (10,2.4) circle (0pt) node[anchor=west]{Platform: An alpine wide CI/CD};
+\filldraw[black] (10,2) circle (0pt) node[anchor=west]{Pipeline in Action};
+
+\filldraw[red] (0,1.5) circle (0pt) node[anchor=west]{Main Track};
+\filldraw[blue] (2,1) circle (0pt) node[anchor=west]{DevOps Track};
+\filldraw[green] (4,0.5) circle (0pt) node[anchor=west]{Data Science Track};
+
+\end{tikzpicture}
+\end{flushleft}
+\end{titlepage}
+
+\pagebreak
+\pagenumbering{arabic}
+
+\section*{Opening SFSCON 2022}
+\begin{minipage}[b]{0.65\linewidth}
+Zuerst wurden einige organisatorische Themen behandelt. Ebenfalls wurde einiges über OpneSource Software erklärt, dass einige Unternehmen gar nicht wissen, dass diese OpenSource Software benützen. Des weiteren wurde erklärt, dass OpenSource Software hilft einige Projekte schneller und sicherer zu gestalten.
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.35\linewidth}
+\begin{flushright}
+\includegraphics[height=6\baselineskip]{1.png}
+\end{flushright}
+\end{minipage}
+
+\section*{Sustained Digital Sovereignty with Free Software}
+\begin{minipage}[b]{0.65\linewidth}
+In diesem Vortrag wurde erklärt, wie es sich eine Firma leisten kann OpenSource Software zu Entwickeln. Hierzu wurden verschiedene Geschäftsmodelle vorgestellt und erklärt. Beispiel hierfür ist die Lizenzierung gewisser Teile einer Software.
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.35\linewidth}
+\begin{flushright}
+\includegraphics[height=6\baselineskip]{2.png}
+\end{flushright}
+\end{minipage}
+
+\section*{Open Source and Open Standards: The Unseen Conflict}
+\begin{minipage}[b]{0.65\linewidth}
+Die wichtigste Aussage in diesem Vortrag war es, dass $Open\text{ }Source \neq Open\text{ }Standards$ ist.Der Vortragende hat gewarnt, dass Firmen immer wieder die Stellung der $Open\text{ }Standards$ anzweifeln werden und dies auch mit einem Beispiel erläutert.
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.35\linewidth}
+\begin{flushright}
+\includegraphics[height=6\baselineskip]{3.png}
+\end{flushright}
+\end{minipage}
+
+\section*{KDE Eco: Looking Forward \& Backward}
+\begin{minipage}[b]{0.65\linewidth}
+In diesem Vortrag wurde das Projekt \textbf{KDE Eco} Vorgestellt. Es wurde auf die Probleme aufmerksam gemacht, in welche wir in einigen Jahren laufen werden. \textbf{KDE Eco} beschäftigt sich hauptsächlich damit zu messen wie viel Energie eine Software verbraucht und versucht dies zu optimieren.
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.35\linewidth}
+\begin{flushright}
+\includegraphics[height=6\baselineskip]{4.png}
+\end{flushright}
+\end{minipage}
+
+\section*{Device Neutrality: Safeguarding Open Internet with Free Software}
+\begin{minipage}[b]{0.65\linewidth}
+In diesem Vortrag wurde die Frage behandelt: "Verlieren wir die Kontrolle über unsere Endgeräte?" behandelt. Dies wurde durch einige eindrückliche Beispiele bewiesen, dass wir nicht alles auf unseren Geräten kontrollieren können. So kann man zum Beispiel bei einem Android Endgerät nicht alle Vorinstallierten Apps löschen.
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.35\linewidth}
+\begin{flushright}
+\includegraphics[height=6\baselineskip]{5.png}
+\end{flushright}
+\end{minipage}
+\pagebreak
+\section*{Sustaining the Software Architecture}
+\begin{minipage}[b]{0.65\linewidth}
+In diesem Vortag wurden Probleme aufgezeigt, welche entstehen wenn man die Architektur im Entwicklungsprozess ändern muss. Für diese Probleme wurden aber auch Lösungen geboten. Wichtige Aspekte einer Architektur sind es die einzelnen Komponenten modular zu Entwickeln, so ist man flexibel und kann mit Änderungen leichter umgehen.
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.35\linewidth}
+\begin{flushright}
+\includegraphics[height=6\baselineskip]{6.png}
+\end{flushright}
+\end{minipage}
+
+\section*{Document it or it never existed!}
+\begin{minipage}[b]{0.65\linewidth}
+Bei diesem Vortag wurde das Thema Dokumentation behandel. Die wichtigste Aussage aus diesem Vortrag war für mich, dass man die Dokumentation wie einen SourceCode behandel sollt. Es wurde auch ein Beispiel genannt wie dies in einem Unternehmen umgesetzt werden kann.
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.35\linewidth}
+\begin{flushright}
+\includegraphics[height=6\baselineskip]{7.png}
+\end{flushright}
+\end{minipage}
+
+\section*{Blockchain Smart Contracts and Multicast End-to-End Encryption for a Trustless Data Economy}
+\begin{minipage}[b]{0.65\linewidth}
+Es wurde ein Produkt der Firma EcoSteer vorgestellt, welches mithilfe von Blockchain und MQTT eine Software erstellt hat, welche es ermöglicht, dass DataOwner über ein einfache User Interface Daten für DataUser freigeben oder sperren können.
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.35\linewidth}
+\begin{flushright}
+\includegraphics[height=6\baselineskip]{8.png}
+\end{flushright}
+\end{minipage}
+
+\section*{Scalability assessment applied to microservice architectures}
+\begin{minipage}[b]{0.65\linewidth}
+Es wurde kurz erklärt, was Microservices sind. Wichtig ist es, dass gute monitoring Tools gibt. Am Wichtigsten ist die Performance bei diesen Architekturen. Es wurde ein Stresstest Tool vorgestellt, welches vom Vortragendem entwickelt wurde. Ein Ergebnis des Test gibt Retoure, welche Komponenten am Meisten im Einsatz sind.
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.35\linewidth}
+\begin{flushright}
+\includegraphics[height=6\baselineskip]{9.png}
+\end{flushright}
+\end{minipage}
+
+\section*{The Alpine Drought Observatory Platform: An alpine wide CI/CD Pipeline in Action}
+\begin{minipage}[b]{0.65\linewidth}
+In diesem Vortrag ging es um die Umsetzung einer Webplatform für Wetterdaten und deren Auswirkungen diese auf die Umgebung haben. Hierbei wurde ein Augenmerk auf die Design Phase, die Infrastruktur und die komplexität der Pipeline (Weg von Daten zur fertigen Webplatform) gelegt.
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.35\linewidth}
+\begin{flushright}
+\includegraphics[height=6\baselineskip]{10.png}
+\end{flushright}
+\end{minipage}
+\pagebreak
+\section*{Learnings}
+Meine persönlichen Learnings von der SFSCON 2022 waren, dass es für Firmen sehr schwierig ist Open Source zu Entwickeln zu gleichzeitig am Markt zu bleiben. Sicher gibt es einige Modelle und welche dieses erleichtern und förder, aber es ist auch das Bestreben der sogenannten "Gate- keeper", dass die Open Source Projekte ihre Open Standards verlieren. Des weiteren fand ich es sehr Interessant und gut, dass ein großes Augenmerk auf unsere Umwelt gelegt wird. Android Upcycling und KDE Eco sind sehr gute und Innovative Ansätze. Ein eher unschöner Moment war es zu lernen, dass wir nach und nach die Kontrolle über unsere Endgeräte verlieren. So war mir schon bekannt, dass man bei Android gewisse Apps nicht löschen kann, wirklich hinterfragt hab ich dies bis jetzt aber nie. Sehr gut fand ich auch, dass man erklärt bekommen hat, wie man mit der Dokumentation umgehen soll und dass diese eigentlich auch wie SourceCode behandelt werden soll. Das Interessante hierbei war, dass dies kein Theorie Vortrag war sondern von einer Dame gezeigt wurde, wie dies bei einen renommierten Unternehmen gemacht wird.
+\section*{Besonderes Interesse}
+Der Vortrag von KDE Eco hat bei mir ein besonderes Interesse geweckt. Diesen Ansatz, dass unterschiedliche Software einen unterschiedlichen Energie verbrauch hat, habe ich noch nie verfolgt. Die Präsentation war sehr Interessant und passt seht gut in die aktuelle Zeit, in welcher die Energiekreise in aller Munde ist. Des Weiteren fand ich die Projekte, welche sich mit Upcycling befassen. Ich selber habe mich schon oft unbewusst mit diesem Thema beschäftigt. Ich habe zum Beispiel alte Laptops genommen und eine Linux Distribution auf diesen Geräten installiert. Das Phänomen war es, dass dieses Endgerät gleich wieder viel interessanter war, da es ein neues Betriebssystem hatte. Die Idee dies auch auf Smartphones umzusetzen finde ich sehr gut und ich kann es kaum erwarten Ubuntu oder Manjaro auf meinem Smartphone zu installieren.
+\section*{Überraschungen}
+Mich hat es sehr Überrascht, dass sich die Vorträge oft um gewisse Produkte gehandelt haben. Meine Erwartung war es eher, dass in den Vorträgen Experten auf Ihrem Gebiet sprechen und einen Theoretischen Vortag über gewisse Themen halten. Es war sehr erfrischend zu erfahren, dass hier echte Produkte und deren Umsetzung in der Realität behandelt wurden, aber auch Universitätsprofessoren Vorträge über theoretische Vorgänge hielten. Zusammenfassend kann ich also sagen, dass ich mir einen sehr theoretischen Tag vorgestellt habe, welcher aber durch überraschend vielen Beispielen aus der Praxis sehr abwechslungsreich war.
+\section*{Hilft das gelernte}
+Ich glaube, dass das gelernte sicherlich hilft, dass man ein bessere Software Engeneer wird. Es ist sehr gut, wenn man sehen kann wie andere Unternehmen zum Beispiel die Dokumentation handhaben. Was ich aber mit Sicherheit sagen kann ist, dass der Besuch der SFSCON alleine einem nicht automatische zu einem besseren Programmieren oder Software Engeneer macht. Viel mehr gibt diese Konferenz sehr viele Denkanstöße und Beispiele wie man etwas Umsetzten kann. So kann ich nach diesem Tag sagen, dass mir ein Tool zur Dokumentation gezeigt wurde oder Beispiele genannt wurden wie man mit Änderungen in Architekturen umgehen sollte. Wenn man aus jedem Vortrag für sich die wichtigsten Punkte herauspickt, so bekommt man einen guten Leitfaden für die Umsetzung von Projekten.
+\end{document}

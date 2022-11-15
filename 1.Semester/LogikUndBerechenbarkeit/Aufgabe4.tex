@@ -1,0 +1,316 @@
+% !TEX encoding = UTF-8 Unicode
+\documentclass[10pt,ngerman]{scrartcl}
+\usepackage{url,bm,tikz,a4wide}
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs}
+\usepackage{amsmath,amssymb}
+\usepackage[ngerman]{babel}
+\usepackage{graphicx,tikzsymbols}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{arev}
+
+\renewcommand{\theenumi}{\arabic{paragraph}.\alph{enumi}}
+\renewcommand{\theenumii}{\roman{enumii}}
+\renewcommand{\labelenumi}{\roman{enumi})}
+
+\def\firstcircle{(90:1.75cm) circle (2.5cm)}
+\def\secondcircle{(210:1.75cm) circle (2.5cm)}
+\def\thirdcircle{(330:1.75cm) circle (2.5cm)}
+
+%SPEZIELLE KOMMENTARE FÜR LOGIK UND BERECHENBARKEIT
+\newcommand{\w }{\texttt{ W }}
+\newcommand{\f }{\texttt{ F }}
+
+\setcounter{secnumdepth}{-1}
+
+
+\begin{document}
+
+\begin{figure}[htbp]
+\begin{minipage}[b]{0.50\linewidth}
+\begin{Large}
+
+%HIER PERSÖNLICHE DATEN EINTRAGEN
+	\textbf{Name:}\\
+	Gritsch 			\\
+	\textbf{Vorname:}\\
+	Lukas 				\\
+	\textbf{Matrikelnummer:}\\
+	2210836017
+
+\end{Large}
+\end{minipage}
+\begin{minipage}[b]{0.50\linewidth}
+\begin{flushright}
+\begin{Huge}
+%% HIER LEHRVERANSTALTUNG EINGEBEN/EINKOMMENTIEREN
+%\textbf{eCollaboration}\\
+%\textbf{Logik und \\Berechenbarkeit}\\
+%\textbf{Mathematik für\\ Software Engineering}\\
+\end{Huge}
+\vspace{10px}
+\begin{large}
+%% HIER SEMESTER EINGEBEN
+Wintersemester 2022/23
+\end{large}
+\end{flushright}
+\end{minipage}
+\end{figure}
+
+\vspace{20px}
+\begin{huge}
+\noindent
+
+%HIER NUMMER DES ÜBUNGSZETTELS EINTRAGEN
+\textbf{Übungsblatt 4}
+\end{huge}
+
+%HIER DIE JEWEILIGEN AUFGABENNUMMERN UND -NAMEN EINTRAGEN
+\pagebreak
+\section{Relationen 1}
+\begin{align*}
+D = \{\epsilon,\omega, \theta, \zeta\}, I = \{\alpha, \beta,\gamma, \delta\}, B = \{\spadesuit, \varheart, \clubsuit, \diamondsuit\}, S = \{1, 2, 3, 4\}, E = \{5, 4, 3, 2, 1\},\\
+M = \{a, b, c, d\}, C = \{b, c, d, e\}, T = \{b, d, f , g\}
+\end{align*}
+\subsection{1.a)}
+$U \subseteq E\text{ x }E := \{(1, 5), (2, 4), (3, 3), (4, 2), (5, 5)\}$
+\begin{align*}
+E\textbf{ x }E := \{\color{blue}(5,5)\color{black},(5,4),(5,3),(5,2),(5,1),\\
+(4,5),(4,4),(4,3),\color{blue}(4,2)\color{black},(4,1),\\
+(3,5),(3,4),\color{blue}(3,3)\color{black},(3,2),(3,1),\\
+(2,5),\color{blue}(2,4)\color{black},(2,3),(2,2),(2,1),\\
+\color{blue}(1,5)\color{black},(1,4),(1,3),(1,2),(1,1)\}
+\end{align*}
+$U$ ist eine Teilmenge von $E\text{ x }E$
+\begin{align*}
+\text{reflexiv}: \Leftrightarrow \underset{x \in E}{\forall} (x,x) \in U && (1,1) \text{ fehlt}&& \qquad \vcenter{\hbox{\includegraphics[width=0.08\linewidth]{blitz}}}\\
+\text{symetrisch}: \Leftrightarrow \underset{x,y \in E}{\forall} (x,y) \in U \Rightarrow (y,x) \in U && (5,1) \text{ fehlt}&& \qquad \vcenter{\hbox{\includegraphics[width=0.08\linewidth]{blitz}}}\\
+\text{transitiv}: \Leftrightarrow \underset{x,y,z \in E}{\forall} ((x,y) \in U \wedge (y,x) \in U) \Rightarrow (x,z) \in U && (5,1) \wedge (1,4)\text{ fehlen}&& \qquad \vcenter{\hbox{\includegraphics[width=0.08\linewidth]{blitz}}}
+\end{align*}
+\subsection{1.b)}
+$Q \subseteq M\text{ x }C := \{(a,c),(b,e),(d,d),(a,e),(c,a)\}$
+\begin{align*}
+ M\text{ x }C := \{(a,b),\color{blue}(a,c)\color{black},(a,d),\color{blue}(a,e)\color{black},\\
+ (b,b),(b,c),(b,d),\color{blue}(b,e)\color{black},\\
+ (c,b),(c,c),(c,d),(c,e),\\
+ (d,b),(d,c),\color{blue}(d,d)\color{black},(d,e)\}
+\end{align*}
+$Q$ ist keine Teilmenge von $M\text{ x }C$ also $Q \not\subseteq M\text{ x }C$ da $ (c,a) \notin M\text{ x }C$ ist.
+\pagebreak
+\subsection{1.c)}
+$R \subseteq S\text{ x }E := \{(1, 1), (1, 4), (1, 3), (2, 3), (2, 4), (3, 3), (4, 4), (4, 3)\}$
+\begin{align*}
+S\text{ x }E := \{(1,5),\color{blue}(1,4)\color{black},\color{blue}(1,3)\color{black},(1,2),\color{blue}(1,1)\color{black},\\
+(2,5),\color{blue}(2,4)\color{black},\color{blue}(2,3)\color{black},(2,2),(2,1),\\
+(3,5),(3,4),\color{blue}(3,3)\color{black},(3,2),(3,1),\\
+(4,5),\color{blue}(4,4)\color{black},\color{blue}(4,3)\color{black},(4,2),(4,1)\}
+\end{align*}
+$R$ ist eine Teilmenge von $S\text{ x }E $\\
+Wir haben in der Vorlesung refelxiv, symetrisch und transitiv Definiert als Relation \textbf{auf eine Menge}. Da dies hier nicht der Fall ist kann ich dies für diese Relation nicht überprüfen.
+\subsection{1.d)}
+$Z \subseteq D\text{ x }D := \{(\epsilon, \epsilon), (\omega, \omega), (\theta, \theta), (\zeta, \zeta)\}$
+\begin{align*}
+ D\text{ x }D :=\color{blue} \{(\epsilon,\epsilon)\color{black},(\epsilon,\omega),(\epsilon,\theta),(\epsilon,\zeta),\\
+ (\omega,\epsilon),\color{blue}(\omega,\omega)\color{black},(\omega,\theta),(\omega,\zeta),\\
+ (\theta,\epsilon),(\theta,\omega),\color{blue}(\theta,\theta)\color{black},(\theta,\zeta),\\
+ (\zeta,\epsilon),(\zeta,\omega),(\zeta,\theta),\color{blue}(\zeta,\zeta)\color{black}\}
+\end{align*}
+$Z$ ist Teilmenge von $D\text{ x }D $
+\begin{align*}
+\text{reflexiv}: \Leftrightarrow \underset{x \in D}{\forall} (x,x) \in Z && \text{ Wahr}&&\Box\\
+\text{symetrisch}: \Leftrightarrow \underset{x,y \in D}{\forall} (x,y) \in Z \Rightarrow (y,x) \in Z && \text{ Wahr}&& \Box\\
+\text{transitiv}: \Leftrightarrow \underset{x,y,z \in D}{\forall} ((x,y) \in Z \wedge (y,x) \in Z) \Rightarrow (x,z) \in Z && \text{Wahr} && \Box
+\end{align*}
+\section{2}
+\subsection{2.a)}
+Ausgangmenge = $\{(1, 2), (3, 4), (d, d), (a, a), (2, 1), (c, 2), (d, 2), (2, c)\}$\\
+Gefordert: Antisymmetrie
+\begin{align*}
+ antisymmetrie:\Leftrightarrow \underset{x,y \in M}{\forall} ((x,y) \in M^2 \wedge (y,x) \in M^2) \Rightarrow x = y\\
+ \{(1, 2), (3, 4), (d, d), (a, a), (c, 2), (d, 2)\}
+\end{align*}
+\subsection{2.b)}
+Ausgangmenge = $\{(a, 1), (b, 1), (1, 1), (1, b), (1, a), (2, 2), (b, c), (c, b), (a, 4)\}$\\
+Gefordert: Irreflexivität
+\begin{align*}
+ \text{irreflexivität} :\Leftrightarrow \underset{x \in M}{\forall} (x,x) \notin M^2\\
+ {(a, 1), (b, 1), (1, b), (1, a), (b, c), (c, b), (a, 4)}
+\end{align*}
+\subsection{2.c)}
+Ausgangmenge : $\{(1, d), (2, c), (3, b), (4, a), (a, a), (c, 2), (1, 3), (2, 4)\}$\\
+Gefordert: Asymmetrie
+\begin{align*}
+asymmetrie: \Leftrightarrow \underset{x,y \in M}{\forall} (x,y) \in M^2 \Rightarrow (y,x) \notin M^2\\
+ \{(1, d), (2, c), (3, b), (4, a), (1, 3), (2, 4)\}
+\end{align*}
+\section{3}
+$M = \{\spadesuit, x, Kiwi, \{\Omega, 5\}, \zeta, z\}$
+\subsection{3.a)}
+\begin{align*}
+ \underset{A \in P_a}{\forall} |A| \leq 3\\
+ P_a := \{\{x,\spadesuit,Kiwi\},\{\{\Omega, 5\}\},\{\zeta,z\}\}
+\end{align*}
+\subsection{3.b)}
+\begin{align*}
+ |P_b| = 4\\
+ P_b := \{\{x\},\{Kiwi\},\{\{\Omega, 5\}\},\{\spadesuit,\zeta,z\}\}
+\end{align*}
+\subsection{3.c)}
+\begin{align*}
+ \underset{A \in P_c}{\exists!}|A| = 3\\
+ P_c := \{\{x\},\{Kiwi\},\{\spadesuit\},\{\{\Omega, 5\},\zeta, z\}\}
+\end{align*}
+\section{4}
+$M = \{a, b, c, d, e, f , g\}$
+\subsection{4.a)}
+\begin{align*}
+ R \subseteq M \textbf{ x } M :=
+\{(f , f ), (b, g), (a, b), (a, a), (b, d), (e, c), (e, e),\\
+(d, g), (d, d), (b, a), (g, b), (d, a), (c, e), (c, c),\\
+(d, b), (a, g), (b, b), (g, g), (g, a), (a, d), (g, d)\}
+\end{align*}
+Äquivalenzrelation heißt, dass eine Relation transitiv,refelxiv und symetrisch ist.
+\begin{align*}
+\text{reflexiv}: \Leftrightarrow \underset{x \in M}{\forall} (x,x) \in R && \text{ Wahr}&&\Box\\
+\end{align*}
+da die Tupel $(a,a),(b,b),(c,c),(d,d),(e,e),(f,f),(g,g)$ enthalten sind
+\begin{align*}
+\text{symetrisch}: \Leftrightarrow \underset{x,y \in M}{\forall} (x,y) \in R \Rightarrow (y,x) \in R && \text{ Wahr}&& \Box
+\end{align*}
+da die Tupel $(b,g),(g,b)$ und $(a,b),(b,a)$ und $(b,d),(d,b)$ und $(e,c),(c,e)$ und $(d,g),(g,d)$ und $(d,a),(a,d)$ und $(a,g),(g,a)$ enthalten sind.
+\begin{align*}
+\text{transitiv}: \Leftrightarrow \underset{x,y,z \in M}{\forall} ((x,y) \in R \wedge (y,x) \in R) \Rightarrow (x,z) \in R && \text{ Wahr}&& \Box
+\end{align*}
+da folgende Aussagen wahr sind:
+\begin{align*}
+ ((b,g) \in R \wedge (g,b) \in R) \Rightarrow (b,d)\\
+ ((a,b) \in R \wedge (b,a) \in R) \Rightarrow (a,d)\\
+ ((b,d) \in R \wedge (d,b) \in R) \Rightarrow (b,g)\\
+ ((e,c) \in R \wedge (c,e) \in R) \Rightarrow (e,e)\\
+ ((d,g) \in R \wedge (g,d) \in R) \Rightarrow (d,b)\\
+ ((d,a) \in R \wedge (a,d) \in R) \Rightarrow (d,g)\\
+ ((a,g) \in R \wedge (g,a) \in R) \Rightarrow (a,b)
+\end{align*}
+\subsection{4.b)}
+\begin{align*}
+[a]_R = \{b,a,d,g\}\\
+[b]_R = \{g,a,d,b\}\\
+[c]_R = \{e,c\}\\
+[d]_R = \{b,g,d,a\}\\
+[e]_R = \{c,e\}\\
+[f]_R = \{f\}\\
+[g]_R = \{b,d,a,g\}
+\end{align*}
+Da $[a]_R = [b]_R = [d]_R = [g]_R$ und $[c]_R = [e]_R$ komme ich auf folgende Lösung:
+\begin{align*}
+ [a]_R = \{b,a,d,g\} = [b]_R = [d]_R = [g]_R\\
+ [c]_R = \{e,c\} = [e]_R\\
+ [f]_R = \{f\}
+\end{align*}
+\section{5}
+\begin{align*}
+ M = \{\alpha, \beta, \gamma, \delta\}, N = \{\spadesuit, \varheart, \clubsuit, \diamondsuit\}, O = \{\Omega, \Delta, \Sigma, \Pi\}, P = \{1, 3, 5, 7\}, \\
+ Q = \{2, 4, 6, 8\}, R = \{9, 10, 11\}, S = \{a, b, c, d\}, T = \{e, f , g, h\}, U = \{i, j, k \}
+\end{align*}
+\subsection{5.a)}
+$f_1: M\longrightarrow O := \{(\alpha, \Omega), (\alpha, \Omega), (\beta, \Pi), (\delta, \Sigma), (\gamma,\varheart)\} $\\
+Dies ist weder eine partielle noch eine totale Funktion, da das Tupel $(\gamma,\varheart)$ nicht in $M\text{ x }O$ enthalten ist.
+\subsection{5.b)}
+$f_2: N \longrightarrow M := \{(\varheart, \alpha), (\spadesuit, \gamma), (\diamondsuit, \delta), (\clubsuit, \gamma)\}$\\
+Dies ist eine totale Funktion, da für jedes Element aus N ein Element in M existiert also $\underset{x \in N}{\forall} \underset{y \in M}{\exists} (x,y) \in f$
+\begin{align*}
+injektiv :\Leftrightarrow \underset{x_1,x_2 \in N}{\forall} f (x_1) = f (x_2) | \Rightarrow x_1 = x_2 \\ f(\spadesuit) = f(\clubsuit) | \Rightarrow \spadesuit = \clubsuit && \qquad \vcenter{\hbox{\includegraphics[width=0.08\linewidth]{blitz}}}
+\end{align*}
+Nicht injektiv.
+\begin{align*}
+surjektiv :\Leftrightarrow \underset{y \in M}{\forall} \underset{x \in N}{\exists} f(x) = y && \qquad \vcenter{\hbox{\includegraphics[width=0.08\linewidth]{blitz}}} \\
+\text{Es gibt kein x welches für welches }f(x) = \beta \text{ gilt.}
+\end{align*}
+Nicht surjektiv.
+\begin{align*}
+ bijektiv :\Leftrightarrow injektiv (f ) \wedge surjektiv (f )
+\end{align*}
+Nicht bijektiv.
+\subsection{5.c)}
+$f_3: T \longrightarrow U := \{(f , j), (g, k ), (h, j), (e, i)\}$\\
+Dies ist eine totale Funktion, da für jedes Element aus T ein Element in U existiert also $\underset{x \in T}{\forall} \underset{y \in U}{\exists} (x,y) \in f$
+\begin{align*}
+injektiv :\Leftrightarrow \underset{x_1,x_2 \in N}{\forall} f (x_1) = f (x_2) | \Rightarrow x_1 = x_2 \\ f(f) = f(h) | \Rightarrow f = h && \qquad \vcenter{\hbox{\includegraphics[width=0.08\linewidth]{blitz}}}
+\end{align*}
+Nicht injektiv.
+\begin{align*}
+surjektiv :\Leftrightarrow \underset{y \in M}{\forall} \underset{x \in N}{\exists} f(x) = y && \Box
+\end{align*}
+Diese Funktion ist surjektiv.
+\begin{align*}
+ bijektiv :\Leftrightarrow injektiv (f ) \wedge surjektiv (f )
+\end{align*}
+Nicht bijektiv, da die Injektivität nicht erfüllt ist.
+\subsection{5.d}
+$f_4: R \longrightarrow Q := \{(9, 9), (10, 8), (11, 6)\}$\\
+Dies ist weder eine partielle noch eine totale Funktion, da das Tupel $(9,9)$ nicht in $R \text{ x } Q$ enthalten ist.
+\pagebreak
+\section{6}
+\subsection{6.a)}
+$f(x) := \begin{cases}
+3 * f(x - 1) +2 & \text{falls } x \geq 1 \\
+0 & \, \text{sonst}
+\end{cases}$
+\setcounter{equation}{0}
+\begin{align}
+f(1) = 3 * f(0) + 2\\
+f(1) = 3 * 0 + 2\\
+f(1) = 2
+\end{align}
+\begin{align}
+f(2) = 3 * f(1) + 2\\
+f(2) = 3 * 2 + 2\\
+f(2) = 8
+\end{align}
+\begin{align}
+f(3) = 3 * f(3) + 2\\
+f(3) = 3 * 8 + 2\\
+f(3) = 26
+\end{align}
+\begin{align}
+f(4) = 3 * f(3) + 2\\
+f(4) = 3 * 26 + 2\\
+f(4) = 80
+\end{align}
+\begin{align}
+f(5) = 3 * f(4) + 2\\
+f(5) = 3 * 80 + 2\\
+f(5) = 242
+\end{align}
+\subsection{6.b)}
+$f(x) := \begin{cases}
+f(x - 2) + 2x & \text{falls } x > 1\\
+1 & \text{sonst}
+\end{cases}$
+\setcounter{equation}{0}
+\begin{align}
+f(1) = 1
+\end{align}
+\begin{align}
+f(2) = f(0) + 2 * 2\\
+f(2) = 1+4\\
+f(2) = 5
+\end{align}
+\begin{align}
+f(3) = f(1) + 2 * 3\\
+f(3) = 1+6\\
+f(3) = 7
+\end{align}
+\begin{align}
+f(4) = f(2) + 2 * 4\\
+f(4) = 5+8\\
+f(4) = 13
+\end{align}
+\begin{align}
+f(5) = f(3) + 2 * 5\\
+f(5) = 7+10\\
+f(5) = 17
+\end{align}
+\end{document}
