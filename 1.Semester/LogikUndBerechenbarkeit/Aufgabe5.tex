@@ -1,0 +1,297 @@
+% !TEX encoding = UTF-8 Unicode
+\documentclass[10pt,ngerman]{scrartcl}
+\usepackage{url,bm,tikz,a4wide}
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs}
+\usepackage{amsmath,amssymb}
+\usepackage[ngerman]{babel}
+\usepackage{graphicx,tikzsymbols}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{graphicx}
+\usetikzlibrary{automata, positioning, arrows}
+
+
+\renewcommand{\theenumi}{\arabic{paragraph}.\alph{enumi}}
+\renewcommand{\theenumii}{\roman{enumii}}
+\renewcommand{\labelenumi}{\roman{enumi})}
+
+\def\firstcircle{(90:1.75cm) circle (2.5cm)}
+\def\secondcircle{(210:1.75cm) circle (2.5cm)}
+\def\thirdcircle{(330:1.75cm) circle (2.5cm)}
+
+%SPEZIELLE KOMMENTARE FÜR LOGIK UND BERECHENBARKEIT
+\newcommand{\w }{\texttt{ W }}
+\newcommand{\f }{\texttt{ F }}
+
+\setcounter{secnumdepth}{-1}
+
+
+\begin{document}
+
+\begin{figure}[htbp]
+\begin{minipage}[b]{0.50\linewidth}
+\begin{Large}
+
+%HIER PERSÖNLICHE DATEN EINTRAGEN
+	\textbf{Name:}\\
+	Gritsch 			\\
+	\textbf{Vorname:}\\
+	Lukas 				\\
+	\textbf{Matrikelnummer:}\\
+	2210836017
+
+\end{Large}
+\end{minipage}
+\begin{minipage}[b]{0.50\linewidth}
+\begin{flushright}
+\begin{Huge}
+%% HIER LEHRVERANSTALTUNG EINGEBEN/EINKOMMENTIEREN
+%\textbf{eCollaboration}\\
+%\textbf{Logik und \\Berechenbarkeit}\\
+%\textbf{Mathematik für\\ Software Engineering}\\
+\end{Huge}
+\vspace{10px}
+\begin{large}
+%% HIER SEMESTER EINGEBEN
+Wintersemester 2022/23
+\end{large}
+\end{flushright}
+\end{minipage}
+\end{figure}
+
+\vspace{20px}
+\begin{huge}
+\noindent
+
+%HIER NUMMER DES ÜBUNGSZETTELS EINTRAGEN
+\textbf{Übungsblatt 5}
+\end{huge}
+
+%HIER DIE JEWEILIGEN AUFGABENNUMMERN UND -NAMEN EINTRAGEN
+\pagebreak
+\section{Formale Grammatik}
+Gegeben ist eine formale Grammatik $g$
+\begin{align*}
+ G=(V,\Sigma,P,S) V=\{S,A,B,C\} \Sigma = \{e,f,g\}\\
+ P = \{ S \longrightarrow AB , A \longrightarrow eB, A \longrightarrow \epsilon , B \longrightarrow BC, B \longrightarrow Bf, B \longrightarrow f \\
+ C \longrightarrow gC , C \longrightarrow \epsilon\}\\
+ S=S
+\end{align*}
+\subsection{1.a.i}
+Gesucht $\epsilon$
+\begin{align*}
+ S \underset{S \longrightarrow AB }{\Rightarrow} AB \underset{A \longrightarrow \epsilon }{\Rightarrow} \epsilon B && \text{es kann nicht von }B \longrightarrow \epsilon \text{ abgeleitet werden} && \qquad \vcenter{\hbox{\includegraphics[width=0.08\linewidth]{blitz}}}
+\end{align*}
+\subsection{1.a.ii}
+Gesucht $eff$
+\begin{align*}
+ S \underset{S \longrightarrow AB}{\Rightarrow} AB \underset{A \longrightarrow eB}{\Rightarrow} eBB \underset{B \longrightarrow f}{\Rightarrow} efB \underset{B \longrightarrow f}{\Rightarrow} eff && \Box
+\end{align*}
+\subsection{1.a.iii}
+Gesucht $eeffg$
+\begin{align*}
+S \underset{S \longrightarrow AB}{\Rightarrow} AB \underset{A \longrightarrow eB}{\Rightarrow} eBB && \text{es kann nicht von } B \longrightarrow e \text{ abgeleitet werden} && \qquad \vcenter{\hbox{\includegraphics[width=0.08\linewidth]{blitz}}}
+\end{align*}
+\subsection{1.a.iv}
+Gesucht $effffggg$
+\begin{align*}
+S \underset{S \longrightarrow AB}{\Rightarrow} AB \underset{A \longrightarrow eB}{\Rightarrow} eBB \underset{B \longrightarrow Bf}{\Rightarrow} eBfB \underset{B \longrightarrow Bf }{\Rightarrow} eBffB \underset{B \longrightarrow BC}{\Rightarrow} eBffBC \underset{C \longrightarrow gC }{\Rightarrow} eBffBgC\\
+\underset{C \longrightarrow gC}{\Rightarrow} eBffBggC \underset{B \longrightarrow f}{\Rightarrow} efffBggC \underset{B \longrightarrow f}{\Rightarrow} effffggC \underset{C \longrightarrow gC }{\Rightarrow} effffgggC \underset{C \longrightarrow \epsilon}{\Rightarrow} effffggg\epsilon && \Box
+\end{align*}
+\subsection{1.b}
+Diese Grammatik ist keine reguläre Grammatik, da für reguläre Grammatiken $\forall(X-Y) \in P : (X \in V) \wedge (Y \in (\Sigma^* \cup \Sigma^+V))$ gilt. Dies bedeutet, dass $Y$ nur ein Element aus $V$ sein darf und es immer mit $\epsilon$ oder einem anderen Element aus $\Sigma$ beginnen muss. Dies trifft auf
+$S \longrightarrow AB ; B \longrightarrow BC ; B \longrightarrow Bf$ nicht zu.
+\pagebreak
+\section{Deterministische Endliche Automaten}
+\begin{figure}[h]
+ \begin{center}
+  \includegraphics[scale=0.6]{5_2.png}
+ \end{center}
+\end{figure}
+\subsection{2.a Beschreibung als 5-Tupel}
+\begin{align*}
+ A = (Q=\{q_0,q_1,q_2,q_3\}, \Sigma=\{a,b,c\},\\
+ \delta=\{\delta(q_0,a) = \{q_2\},\delta(q_0,b) = \{q_1\},\delta(q_1,a) = \{q_1\},\\
+ \delta(q_1,c) = \{q_2\},\delta(q_2,a) = \{q_3\},\delta(q_3,c) = \{q_3\}\}),\\
+ q_0 = q_0,F = \{q_3\})
+\end{align*}
+\subsection{2.b.i}
+Wird $baabcacc$ akzeptiert?
+\begin{align*}
+q_0 \underset{b}{\longrightarrow} q_1 \underset{a}{\longrightarrow} q_1 \underset{a}{\longrightarrow} q_1 \underset{b}{\longrightarrow} \text{toter Zustand} && \qquad \vcenter{\hbox{\includegraphics[width=0.08\linewidth]{blitz}}}
+\end{align*}
+\subsection{2.b.ii}
+Wird $aacc$ akzeptiert?
+\begin{align*}
+ q_0 \underset{a}{\longrightarrow} q_2 \underset{a}{\longrightarrow} q_3 \underset{c}{\longrightarrow} q_3 \underset{c}{\longrightarrow} q_3 && q_3 \in F && \Box
+\end{align*}
+\subsection{2.b.iii}
+Wird $baacacc$ akzeptiert?
+\begin{align*}
+ q_0 \underset{b}{\longrightarrow} q_1 \underset{a}{\longrightarrow} q_1 \underset{a}{\longrightarrow} q_1 \underset{c}{\longrightarrow} q_2 \underset{a}{\longrightarrow} q_3 \underset{c}{\longrightarrow} q_3 \underset{c}{\longrightarrow} q_3 && q_3 \in F && \Box
+\end{align*}
+\subsection{2.b.iv}
+Wird $baaac$ akzeptiert?
+\begin{align*}
+ q_0 \underset{b}{\longrightarrow} q_1 \underset{a}{\longrightarrow} q_1 \underset{a}{\longrightarrow} q_1 \underset{a}{\longrightarrow} q_1 \underset{c}{\longrightarrow} q_2 && q_2 \not \in F && \qquad \vcenter{\hbox{\includegraphics[width=0.08\linewidth]{blitz}}}
+\end{align*}
+\pagebreak
+\subsection{2.c}
+$\Sigma=\{a,c\}$ $L_B := \{w \in \Sigma^* | w $ beginnt mit beliebig vielen $a$'s gefolgt von einer ungeraden Anzahl $c$'s (zwischen oder nach den $c$'s können auch wieder $a$'s folgen) $\}$
+\begin{figure}[ht] % ’ht’ tells LaTeX to place the figure ’here’ or at the top of the page
+\centering % centers the figure
+\begin{tikzpicture} [node distance = 3cm, on grid, auto]
+
+\node (A) [state, initial , initial text = {}] {$A$};
+\node (B) [state, right = of A] {$B$};
+\node (C) [state, accepting, right = of B] {$C$};
+
+\path [-stealth, thick]
+    (A) edge node {c} (B)
+    (B) edge node {c} (A)
+    (A) edge [loop above]  node {a}()
+    (B) edge node {a}(C);
+\end{tikzpicture}
+\end{figure}\\
+Überprüfung, $aca$,$aaccca$ und $accaaaca$ sollen akzeptiert werden.
+\begin{align*}
+A \underset{a}{\longrightarrow} A \underset{c}{\longrightarrow} B \underset{a}{\longrightarrow} C && C \in F && \Box\\
+A \underset{a}{\longrightarrow} A \underset{a}{\longrightarrow} A \underset{c}{\longrightarrow} B \underset{c}{\longrightarrow} A \underset{c}{\longrightarrow} B \underset{a}{\longrightarrow} C && C \in F && \Box \\
+A \underset{a}{\longrightarrow} A \underset{c}{\longrightarrow} B \underset{c}{\longrightarrow} A \underset{a}{\longrightarrow} A \underset{a}{\longrightarrow} A \underset{a}{\longrightarrow} A \underset{c}{\longrightarrow} B \underset{a}{\longrightarrow} C && C \in F && \Box
+\end{align*}
+\begin{align*}
+ B=(Q=\{A,B,C\}, \Sigma= \{a,c\},\\
+ \delta = \{\delta(A,a) = \{A\} , \delta(A,c) = \{B\}\\
+ \delta(B,a) = \{C\},\delta(B,c) = \{A\}\}\\
+ q_0=A,F=\{C\})
+\end{align*}
+\subsection{2.d}
+\begin{align*}
+ B=(V=\{A,B,C\},\Sigma=\{a,c\}\\
+ P=\{A \longrightarrow aA, A \longrightarrow cB\\
+ B \longrightarrow aC,B \longrightarrow cA\\
+ C \longrightarrow \epsilon\},S=A)
+\end{align*}
+\pagebreak
+\section{Nicht-Deterministische Endliche Automaten}
+\subsection{3.a Mit der Potennzmengenkonstruktion}
+Ausgangs-regeln:
+\begin{table}[h]
+\begin{center}
+ \begin{tabular}{l|c|c}
+& $a$ & $b$\\
+\hline
+$q_0$ & $\{q_0,q_1\}$ & $q_1$ \\
+\hline
+$q_1$ & $q_2$ & $\{q_0,q_1\}$ \\
+\hline
+$q_2$ & $q_2$ & $q_0$ \\
+ \end{tabular}
+\end{center}
+\end{table}\\
+Daraus können wir folgende Regeln für $A$ erstellen:
+\begin{table}[h]
+\begin{center}
+ \begin{tabular}{l|c|c}
+& $a$ & $b$\\
+\hline
+$q_0$ & $\{q_0,q_1\}$ & $q_1$ \\
+\hline
+$\{q_0,q_1\}$ & $\{q_0,q_1,q_2\}$ & $\{q_0,q_1\}$ \\
+\hline
+$\{q_0,q_1,q_2\}$ & $\{q_0,q_1,q_2\}$ & $\{q_0,q_1\}$ \\
+\hline
+$q_1$ & $q_2$ & $\{q_0,q_1\}$ \\
+\hline
+$q_2$ & $q_2$ & $q_0$
+ \end{tabular}
+\end{center}
+\end{table}\\
+Daraus kann man folgende Tupel erstellen:
+\begin{align*}
+ A=(Q=\{X,Y,Z,B,C\},\Sigma=\{a,b\},\\ \delta = \{ \delta(X,a) = \{C\},\delta(X,b) = \{Y\},\delta(Y,a) = \{Z\},\delta(Y,b) = \{C\},\delta(Z,a) = \{Z\},\delta(Z,b) = \{X\},\\ \delta(C,a) = \{B\},\delta(C,b) = \{C\},\delta(B,a) = \{b\},\delta(B,b) = \{C\},\\
+ q_0 = X , F = \{Z,B\} \})
+\end{align*}
+\pagebreak
+\subsection{3.a Graphisch}
+Für eine einfachere Darstellung werden in folgender Grafik die oben agebenen Punkte folgendermaßen umbenannt:
+\begin{align*}
+ q_0 \longrightarrow X\\
+ q_1 \longrightarrow Y\\
+ q_2 \longrightarrow Z \\
+ \{q_0,q_1\} \longrightarrow C \\
+ \{q_0,q_1,q_2\} \longrightarrow B
+\end{align*}
+\begin{figure}[ht] % ’ht’ tells LaTeX to place the figure ’here’ or at the top of the page
+\centering % centers the figure
+\begin{tikzpicture} [node distance = 3cm, on grid, auto]
+
+\node (X) [state, initial , initial text = {}] {$X$};
+\node (Y) [state, below = of X] {$Y$};
+\node (Z) [state,accepting, right = of X] {$Z$};
+\node (C) [state, below = of Z] {$C$};
+\node (B) [state, accepting, right = of C] {$B$};
+
+
+\path [-stealth, thick]
+    (X) edge node {a} (C)
+    (X) edge node {b} (Y)
+    (Y) edge node {a} (Z)
+    (Y) edge node {b} (C)
+    (Z) edge [loop above]  node {a}
+    (Z) edge node {b} (X)
+    (C) edge node {a} (B)
+    (C) edge [loop below]  node {b}()
+    (B) edge node {b} (C)
+    (B) edge [loop below]  node {a}();
+\end{tikzpicture}
+\end{figure}
+\subsection{3.b.i}
+Wird $bbabaa$ akzeptiert ?
+\begin{align*}
+ X \underset{b}{\longrightarrow} Y \underset{b}{\longrightarrow} C \underset{a}{\longrightarrow} B \underset{b}{\longrightarrow} C \underset{a}{\longrightarrow} B \underset{a}{\longrightarrow} B && B \in F && \Box && \text{Anhand von } A\\
+ q_0 \underset{b}{\longrightarrow} q_1 \underset{b}{\longrightarrow} q_0 \underset{a}{\longrightarrow} q_1 \underset{b}{\longrightarrow} q_1 \underset{a}{\longrightarrow} q_2 \underset{a}{\longrightarrow} q_2 && q_2 \in F && \Box && \text{Anhand von } N
+\end{align*}
+\subsection{3.b.ii}
+Wird $bbabb$ akzeptiert ?
+\begin{align*}
+ X \underset{b}{\longrightarrow} Y \underset{b}{\longrightarrow} C \underset{a}{\longrightarrow} B \underset{b}{\longrightarrow} C \underset{b}{\longrightarrow} C  && C \not \in F && \qquad \vcenter{\hbox{\includegraphics[width=0.08\linewidth]{blitz}}} && \text{Anhand von } A\\
+ q_0 \underset{b}{\longrightarrow} q_1 \underset{b}{\longrightarrow} q_1 \underset{a}{\longrightarrow} q_2 \underset{b}{\longrightarrow} q_0 \underset{b}{\longrightarrow} q_1  && q_1 \not \in F && \qquad \vcenter{\hbox{\includegraphics[width=0.08\linewidth]{blitz}}} && \text{Anhand von } N\\
+ \text{Ich konnte kein Beispiel in }N\text{ finden, welches akzeptiert wurde.} && &&
+\end{align*}
+\subsection{3.b.iii}
+Wird $abaab$ akzeptiert ?
+\begin{align*}
+ X \underset{a}{\longrightarrow} C \underset{b}{\longrightarrow} C \underset{a}{\longrightarrow} B \underset{a}{\longrightarrow} B \underset{b}{\longrightarrow} C   && C \not \in F && \qquad \vcenter{\hbox{\includegraphics[width=0.08\linewidth]{blitz}}} && \text{Anhand von } A\\
+ q_0 \underset{a}{\longrightarrow} q_0 \underset{b}{\longrightarrow} q_1 \underset{a}{\longrightarrow} q_2 \underset{a}{\longrightarrow} q_2 \underset{b}{\longrightarrow} q_0   && q_0 \not \in F && \qquad \vcenter{\hbox{\includegraphics[width=0.08\linewidth]{blitz}}} && \text{Anhand von } N\\
+ \text{Ich konnte kein Beispiel in }N\text{ finden, welches akzeptiert wurde.} && &&
+\end{align*}
+\subsection{3.b.iv}
+Wird $aaaa$ akzeptiert ?
+\begin{align*}
+ X \underset{a}{\longrightarrow} C \underset{a}{\longrightarrow} B \underset{a}{\longrightarrow} B \underset{a}{\longrightarrow} B  && B \in F && \Box && \text{Anhand von } A \\
+  q_0 \underset{a}{\longrightarrow} q_0 \underset{a}{\longrightarrow} q_0 \underset{a}{\longrightarrow} q_1 \underset{a}{\longrightarrow} q_2  && q_2 \in F && \Box && \text{Anhand von } N
+\end{align*}
+\section{$\epsilon$-Nicht-Deterministische Endliche Automaten}
+\subsection{4.a}
+Wird $bab$ akzeptiert?
+\begin{align*}
+ q_0 \underset{\epsilon}{\Rightarrow} q_1 \underset{b}{\Rightarrow} q_0 \underset{\epsilon}{\Rightarrow} q_1 \underset{a}{\Rightarrow} q_1 \underset{b}{\Rightarrow} q_3 && q_3 \in F && \Box
+\end{align*}
+\subsection{4.b}
+Wird $aa$ akzeptiert?
+\begin{align*}
+ q_0 \underset{\epsilon}{\Rightarrow} q_1 \underset{a}{\Rightarrow} q_2 \underset{a}{\Rightarrow} q_3 && q_3 \in F && \Box
+\end{align*}
+\subsection{4.c}
+Wird $bbbb$ akzeptiert?
+\begin{align*}
+ q_0 \underset{\epsilon}{\Rightarrow} q_1 \underset{b}{\Rightarrow} q_0 \underset{\epsilon}{\Rightarrow} q_1 \underset{b}{\Rightarrow} q_0 \underset{\epsilon}{\Rightarrow} q_1 \underset{b}{\Rightarrow} q_0 \underset{\epsilon}{\Rightarrow} q_1 \underset{b}{\Rightarrow} q_3 && q_3 \in F && \Box
+\end{align*}
+\subsection{4.d}
+Wird $bbbb$ akzeptiert?
+\begin{align*}
+ q_0 \underset{\epsilon}{\Rightarrow} q_1 \underset{b}{\Rightarrow} q_0 \underset{\epsilon}{\Rightarrow} q_1 \underset{b}{\Rightarrow} q_0 \underset{\epsilon}{\Rightarrow} q_1 \underset{b}{\Rightarrow} q_3 && q_3 \in F && \Box
+\end{align*}
+\end{document}

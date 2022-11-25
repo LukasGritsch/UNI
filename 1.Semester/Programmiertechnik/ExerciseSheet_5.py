@@ -2,13 +2,20 @@
 from turtle import hideturtle
 
 
-def search_array(array, x):    
+def search_array(array,x):    
     hIdx = 0
     for i in array:
         if i == x:
             return hIdx
         hIdx = hIdx + 1
     return None
+
+
+def search_array1(array, x):    
+    for i in range(0,len(array)):
+        if array[i] == x:
+            return i
+    return None    
 
 print(search_array([1,2,3,3, 4,5 ,3 ], 3))
 
