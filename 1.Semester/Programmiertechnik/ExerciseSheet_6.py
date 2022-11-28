@@ -45,7 +45,7 @@ def nested_sum(aArray):
     return hSum
         
 
-#print(nested_sum([5, [4, "3"], 4, [3, [2.5, [1, 1]]]]))
+print(nested_sum([5, [4, "3"], 4, [3, [2.5, [1, 1]]]]))
 
 
 
@@ -91,7 +91,6 @@ def twinPrimeSum(x):
                 i = i + 1
                 continue
             
-            
             if len(hRetList) == 0:
                 hRetList.append(i)
             else:
@@ -115,7 +114,7 @@ def twinPrimeSum(x):
         
     return hSum
 
-print(twinPrimeSum(23))
+print(twinPrimeSum(6))
 
 
 

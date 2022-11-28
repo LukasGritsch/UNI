@@ -66,18 +66,19 @@
 \newgeometry{left=7.5cm} %defines the geometry for the titlepage
 \pagecolor{titlepagecolor}
 \noindent
-\includegraphics[width=4cm]{mci.png}\\[-1em]
+%\includegraphics[width=4cm]{mci.png}\\[-1em]
 \color{white}
+{\Huge \textsf{Portfolio\vspace{0.1 cm}}\\}
 \makebox[0pt][l]{\rule{1.3\textwidth}{1pt}}
 \par
 \noindent
-\textbf{\textsf{Management Center}} \textcolor{namecolor}{\textsf{Innsbruck}}
+\textbf{\textsf{eCollaboration}} \textcolor{namecolor}{\textsf{Lukas Gritsch}}
 \vfill
 \noindent
-{\huge \textsf{Portfolio\vspace{0.2 cm}\\eCollaboration}}
+%{\huge \textsf{Portfolio\vspace{0.2 cm}\\eCollaboration}}
 \vskip\baselineskip
 \noindent
-\textsf{Lukas Gritsch\\Matrikelnummer: 2210836017}
+\textsf{Matrikelnummer: 2210836017}
 \end{titlepage}
 \restoregeometry
 \nopagecolor
@@ -90,8 +91,8 @@ Ich habe die erste Aufgabe aus dem Fach Programmiertechnik mit Frau Sybille Kohl
  \item http://www.google.com
  \item https://www.mci.edu/en/universtity/the-mci/team-faculty
 \end{itemize}
-Des Weiteren sollten wir einen Regulären Ausdruck (englisch regular expression, Abkürzung RegExp oder Regex), welcher überprüft, ob eine Mailadresse valide ist.\\\\
-Wir haben die Aufgabe zuerst einzeln begonnen und anschließen ein Programm in Python entworfen, welches die Regeln überprüft, welche wir erstellt hatten. Zur Überprüfung der BNF und des Regex haben wir die Python Pakete \textbf{pyparsing} für die BNF und \textbf{re} für den Regex. Für die Umsetzung des Programms haben wir uns im \textbf{Study room 01} im Sakai-Kurs "my Bacherlor DiBSE" verwendet. Dort haben wir uns über die BigBlueButton Sitzung unterhalten und via Screen Sharing die Aufgabe besprochen. Zum Programmieren selbst haben wir das die Visual Studio Code plugin "Live Share" verwendet:
+Des Weiteren sollten wir einen Regulären Ausdruck (englisch regular expression, Abkürzung RegExp oder Regex) erstellen, welcher überprüft, ob eine Mailadresse valide ist.\\\\
+Wir haben die Aufgabe zuerst einzeln begonnen und anschließen ein Programm in Python entworfen, welches die Regeln überprüft, welche wir erstellt hatten. Zur Überprüfung der BNF und des Regex haben wir die Python Pakete \textbf{pyparsing} für die BNF und \textbf{re} für den Regex verwendet. Für die Umsetzung des Programms haben wir den \textbf{Study room 01} im Sakai-Kurs "my Bacherlor DiBSE" verwendet. Dort haben wir uns über die BigBlueButton Sitzung unterhalten und via Screen Sharing die Aufgabe besprochen. Zum Programmieren selbst haben wir das Visual Studio Code plugin "Live Share" verwendet:
 \begin{figure}[h]
  \begin{center}
   \includegraphics[scale=0.27]{LiveShare.png}
@@ -101,10 +102,10 @@ Wir haben die Aufgabe zuerst einzeln begonnen und anschließen ein Programm in P
 \pagebreak\\
 Als erstes habe wir die BNF für URLs als Funktion umgesetzt:
 \lstinputlisting[caption={Umsetzung einer BNF für URLs in Python},language=Python,frame=single, numbers=left, breaklines=true,firstline=4,lastline=27]{../Programmiertechnik/ExerciseSheet_1.py}
-Dieser Sourcecode teste die oben angegeben URLs, ob diese aus einem Protokoll, einer Serveradresse, optional einen Port und optional einem Pfad besteht. Als Protokoll sind entweder \textbf{http} oder \textbf{https} zulässig. Nach dem Protokoll muss unbedingt die Zeichenkette \textbf{://} folgen. Nach dieser Zeichenkette folgt die Serveradresse, diese besteht aus einzeln Serveradress-teilen. Ein Serveradress-teil darf aus Zeichen von \textbf{a-z},\textbf{A-Z} oder \textbf{0-9} bestehen. Einzelne Serveradress-teile werden mit \textbf{"."} zusammen gehängt und werden dadurch zur Serveradresse. Nach der Serveradresse folgt wahlweise ein Port oder ein Pfad. Ein Port besteht aus dem Zeichen \textbf{":"} und Zahlen von \textbf{0-9}. Ein Pfad besteht aus Pfad-teilen, welche mit dem Zeichen \textbf{"$/$"} zu einem Pfad zusammen gehängt. Der Pfad-teil besteht wiederum aus Zeichen von \textbf{a-z},\textbf{A-Z}, dem Zeichen \textbf{"-"} oder \textbf{0-9}.\\\\
+Dieser Sourcecode testet die oben angegeben URLs, ob diese aus einem Protokoll, einer Serveradresse, optional einem Port und optional einem Pfad besteht. Als Protokoll sind entweder \textbf{http} oder \textbf{https} zulässig. Nach dem Protokoll muss unbedingt die Zeichenkette \textbf{://} folgen. Nach dieser Zeichenkette folgt die Serveradresse, diese besteht aus einzeln Serveradress-teilen. Ein Serveradress-teil darf aus Zeichen von \textbf{a-z},\textbf{A-Z} oder \textbf{0-9} bestehen. Einzelne Serveradress-teile werden mit \textbf{"."} zusammen gehängt und werden dadurch zur Serveradresse. Nach der Serveradresse folgt wahlweise ein Port oder ein Pfad. Ein Port besteht aus dem Zeichen \textbf{":"} und Zahlen von \textbf{0-65536}. Ein Pfad besteht aus Pfad-teilen, welche mit dem Zeichen \textbf{"$/$"} zu einem Pfad zusammen gehängt. Der Pfad-teil besteht wiederum aus Zeichen von \textbf{a-z},\textbf{A-Z}, dem Zeichen \textbf{"$-$"} oder \textbf{0-9}.\\\\
 Als nächstes haben wir eine Funktion erstellt, welche eine Reihe von Mailadressen gegen zwei Regex testet:
 \lstinputlisting[caption={Umsetzung von Regex zum testen von Mailadressen},language=Python,frame=single, numbers=left, breaklines=true,firstline=31,lastline=50]{../Programmiertechnik/ExerciseSheet_1.py}
-Wir haben beide Entwürfe des Regex getestet. Der Ausdruck, welcher der Variable \textbf{"x"} Zuweisen wir stammt von mir, deswegen werde ich die Funktion am Beispiel dieses Regex nun kurz erläutern. Am Anfang wird festgelegt, dass die Mailadresse nicht mit \textbf{"."} oder \textbf{"-"} beginnen darf. Dies übernimmt der Teil \textbf{\^{$[$}\^{$.-]$}}. Des Weiteren wird definiert, dass der Teil, welcher vor dem \textbf{"@"} Symbol steht alles beinhalten darf außer "ä,ü,ö,Ä,Ö,Ü oder {\ss}". Des Weiteren die Zeichenkette nicht mit einem Punkt enden. Dies wird mit der Zeichenkette \textbf{$[$\^{äöüÄÖÜ{\ss}$]*(?<!$\textbackslash$.)$}} sichergestellt. Nach dem zwingen \textbf{"@"} Symbol, welches durch \textbf{\textbackslash @} definiert wird. Muss ein Domain folgen, welche alle Zeichen von "$a-z,A-Z,0-9$ oder $-"$ enthalten darf. Es darf nicht mit einem Punkt beginnen und auch nicht mit einem Minus enden. Dass stellt die Zeichenkette \textbf{$[$\^{$.-$}$]($\textbackslash w| \textbackslash$-)+[$\^{$-$}$]$} sicher. Die letzte Zeichenkette $($\textbackslash$.[a-z]\{2\})+$ besagt, dass die Mailadresse mit Zeichenketten aufhören muss. Diese Zeichenketten müssen mindestens zwei Stellen haben und mit einem Punkt zur nächsten zweistelligen Zeichenkette und der Zeichenkette zuvor getrennt sein. Also zum Beispiel \textbf{.co.at}.
+Wir haben beide Entwürfe des Regex getestet. Der Ausdruck, welcher der Variable \textbf{"x"} Zugewiesen wird stammt von mir, deswegen werde ich die Funktion am Beispiel dieses Regex nun kurz erläutern. Am Anfang wird festgelegt, dass die Mailadresse nicht mit \textbf{"."} oder \textbf{"$-$"} beginnen darf. Dies übernimmt der Teil \textbf{\^{$[$}\^{$.-]$}}. Des Weiteren wird definiert, dass der Teil, welcher vor dem \textbf{"@"} Symbol steht alles beinhalten darf außer "ä,ü,ö,Ä,Ö,Ü oder {\ss}". Die Zeichenkette darf nicht mit einem Punkt enden. Dies wird mit der Zeichenkette \textbf{$[$\^{äöüÄÖÜ{\ss}$]*(?<!$\textbackslash$.)$}} sichergestellt. Nach dem zwingenden \textbf{"@"} Symbol, welches durch \textbf{\textbackslash @} definiert wird. Muss ein Domain folgen, welche alle Zeichen von "$a-z,A-Z,0-9$ oder $-"$ enthalten darf. Es darf nicht mit einem Punkt beginnen und auch nicht mit einem Minus enden. Dass stellt die Zeichenkette \textbf{$[$\^{$.-$}$]($\textbackslash w| \textbackslash$-)+[$\^{$-$}$]$} sicher. Die letzte Zeichenkette $($\textbackslash$.[a-z]\{2\})+$ besagt, dass die Mailadresse mit Zeichenketten aufhören muss. Diese Zeichenketten müssen mindestens zwei Stellen haben und mit einem Punkt zur nächsten zweistelligen Zeichenkette und der Zeichenkette zuvor getrennt sein. Also zum Beispiel \textbf{.co.at}.
 \subsection{Zeitaufwand}
 Da wir uns als erstes separat mit der Thematik beschäftigt haben und dann im Nachhinein zu Erstellung des Programms nochmals getroffen haben, war der Zeitaufwand mir Sicherheit größer, als wenn jeder das Problem alleine bearbeitet hätte. Was jedoch aufgefallen ist, ist dass man sich gegenseitig auf kleine Fehler hinweist, welche man alleine wahrscheinlich nicht gesehen hätte.
 \subsection{Verwendung in der Zukunft}
@@ -204,7 +205,7 @@ Ich würde dies als \textbf{Identitätsbasierte Community} einstufen, da sich Me
 \subsubsection{Grad der Virtualität}
 Da man sich hier meistens über Foren austauscht und sich tatsächlich nie physisch kennenlernt. Würde ich den Grad der Virtualität als Sehr Hoch einstufen.
 \subsection{Überschneidungen zwischen den Communities}
-Wie man schon aus der Abbildung \ref{fig:communities} entnehmen kann gibt es Überschneidungen zwischen den Communities \textbf{Feuerwehr,Schützen und Jungbauern}. Die Überschneidungen hierbei ist nicht nur, dass diese sich im selben Ort befinden. Sondern auch, dass die Personen, mit welchem ich mich in diesen Communities treffe meistens in allen der drei Vereine vertreten sind. So ist die Freundesgruppe, mit welcher ich mich Mietens treffe sowohl mitglied bei der Feuerwehr als auch bei den Jungbauern und Schützen.\\
+Wie man schon aus der Abbildung \ref{fig:communities} entnehmen kann gibt es Überschneidungen zwischen den Communities \textbf{Feuerwehr,Schützen und Jungbauern}. Die Überschneidungen hierbei ist nicht nur, dass diese sich im selben Ort befinden. Sondern auch, dass die Personen, mit welchem ich mich in diesen Communities treffe meistens in allen der drei Vereine vertreten sind. So ist die Freundesgruppe, mit welcher ich mich meistens treffe sowohl Mitglied bei der Feuerwehr als auch bei den Jungbauern und Schützen.\\
 Die Communities \textbf{DiBSE,Programmieren und Linux} Überschneidungen sich in der Thematik, welche in den Communities behandelt werden. So wird im DiBSE Studium über Programmierung und Linux gesprochen. Weiteres kann ich aus dem DiBSE-Studium Wissen für die anderen Communities nutzen.
 \pagebreak
 \section{Teambuilding mit Among Us}
@@ -214,8 +215,8 @@ Die Communities \textbf{DiBSE,Programmieren und Linux} Überschneidungen sich in
 \end{center}
 \caption{Screenshot während des Teambuildings}
 \end{figure}
-Wie man in der Abbildung 6 erkennen kann bestand unser Team aus Kevin,Mira,Michael, Manuel,Mathis,Tobias,Nina und mir. Wir entschieden uns für den Teamnamen \textbf{A little bit DiBSE}. Während dem Teambuilding haben wir drei Runden Among Us gespielt. Während diesen Runden wurde meiner Meinung nach ein gutes Teamgefühl breit. Die Gruppe hat gut als Team funktioniert. Am Anfang wurde denjenigen, welche das Spiel noch nicht kannten die Regeln und Aufgaben grundlegend erklärt. Wir hatten zwei Personen (Kevin und Tobias), welche das Spiel schon kannten. Dies wurde parallel zum Download des Spiels der Teammitglieder bewerkstelligt. Meiner Meinung nach hat kam es in unserer Gruppe zu keinem sozaial loafing oder einem Free-rider Problem. Alle waren sehr bemüht die Regeln des Spiels zu lernen und zusammen als Besatzungsteam die Aufgaben am Schiff zu erledigen und die Imposter zu entlarfen. Da der Großteil von uns das Spiel noch nie gespielt hat, haben wir uns dazu entschieden, dass wir das Spiel auf der geringsten Komplexitätsstufe spielen. Es hätte noch die Moglichkeit gegeben einen Detektiv einzubinden, wir sind aber bei den Rollen Besatzungsmitglied und Imposter geblieben. Das einzige, was am Anfang nicht sehr gut Funktioniert hat war die Kommunikation der einzelnen Teammitglieder. Man konnte erkennen, dass alle am Anfang noch etwas schüchtern waren, dies wurde aber im laufe des Teambuildings immer besser. Da vom Spiel die Rollen der Imposter und der Besatzungsmitglieder jede Rolle Zufällig zugeordnet wurden haben wir keinen fixen Aufgabenmanager,Boten,Zeitwächter,Schreiber,Prozessbeobachter,Präsentator oder Moderator gehabt. Es war eher so, dass derjenige, welcher zum Beispiel den Fund einer Leiche gemeldet hat auch die Moderation der Diskussionsrunde übernahm. Nachdem wir die drei Runden des Spiels  absolviert haben, haben wir uns über die Aufgabe im Portfolio unterhalten. In dieser Unterhaltung ist der Teamname entstanden und wir haben uns Kurz über die Fragen unterhalten, welche hier beantwortet werden sollen. Hier sind wir dann auch zum Schluss gekommen, dass dies jeder für sich selbst zusammenfassen sollte.\vspace{0.5cm}\\
-Persönlich fand ich die Teambuilding-Aktivität sehr spannend und passend. Generell finde ich die Idee ein Teambuilding mittels eines Computerspiels zu machen sehr innovativ. Ich habe schon an vielen Teambuldins teilgenommen, welche zwar immer mit persönlicher Anwesenheit Vorort Verbunden waren, aber nie so schnell Wirkung gezeigt haben. Bei diesem Spiel konnte man sehr gut beobachten wie schnell alles aus unsrem Team zusammengearbeitet haben um die Aufgabe zu erfüllen und aus meiner Sicht auch Spaß daran hatten. Ich finde Spiele als Online-Teambuilding eine sehr gute Idee und finde Among Us ist dafür auch sehr gut geeignet. Damit man sich als Gruppe die einzelnen Rollen einteilten könnte und noch enger als Team zusammen Arbeiten muss fände ich Strategiespiele wie "Age of Empires" oder "Stronghold" eine gute Idee. Der einzige Hacken an diesen Spielen ist es, dass diese nicht Kostenlos sind und man diese auch nicht so einfach wie Among Us online spielen kann. Ansonsten könnte ich mir noch "Online-Escaperooms" als gute Online-Teambuilding-Aktivität vorstellen.
+Wie man in der Abbildung 6 erkennen kann bestand unser Team aus Kevin,Mira,Michael, Manuel,Mathis,Tobias,Nina und mir. Wir entschieden uns für den Teamnamen \textbf{A little bit DiBSE}. Während dem Teambuilding haben wir drei Runden Among Us gespielt. Während diesen Runden wurde meiner Meinung nach ein gutes Teamgefühl breit. Die Gruppe hat gut als Team funktioniert. Am Anfang wurde denjenigen, welche das Spiel noch nicht kannten die Regeln und Aufgaben grundlegend erklärt. Wir hatten zwei Personen (Kevin und Tobias), welche das Spiel schon kannten. Dies wurde parallel zum Download des Spiels der Teammitglieder bewerkstelligt. Meiner Meinung nach kam es in unserer Gruppe zu keinem sozaial loafing oder einem Free-rider Problem. Alle waren sehr bemüht die Regeln des Spiels zu lernen und zusammen als Besatzungsteam die Aufgaben am Schiff zu erledigen und die Imposter zu entlarfen. Da der Großteil von uns das Spiel noch nie gespielt hat, haben wir uns dazu entschieden, dass wir das Spiel auf der geringsten Komplexitätsstufe spielen. Es hätte noch die Moglichkeit gegeben einen Detektiv einzubinden, wir sind aber bei den Rollen Besatzungsmitglied und Imposter geblieben. Das einzige, was am Anfang nicht sehr gut Funktioniert hat war die Kommunikation der einzelnen Teammitglieder. Man konnte erkennen, dass alle am Anfang noch etwas schüchtern waren, dies wurde aber im laufe des Teambuildings immer besser. Da vom Spiel die Rollen der Imposter und der Besatzungsmitglieder jede Rolle Zufällig zugeordnet wurden haben wir keinen fixen Aufgabenmanager,Boten,Zeitwächter,Schreiber,Prozessbeobachter,Präsentator oder Moderator gehabt. Es war eher so, dass derjenige, welcher zum Beispiel den Fund einer Leiche gemeldet hat auch die Moderation der Diskussionsrunde übernahm. Nachdem wir die drei Runden des Spiels  absolviert haben, haben wir uns über die Aufgabe im Portfolio unterhalten. In dieser Unterhaltung ist der Teamname entstanden und wir haben uns Kurz über die Fragen unterhalten, welche hier beantwortet werden sollen. Hier sind wir dann auch zum Schluss gekommen, dass dies jeder für sich selbst zusammenfassen sollte.\vspace{0.5cm}\\
+Persönlich fand ich die Teambuilding-Aktivität sehr spannend und passend. Generell finde ich die Idee ein Teambuilding mittels eines Computerspiels zu machen sehr innovativ. Ich habe schon an vielen Teambuldins teilgenommen, welche zwar immer mit persönlicher Anwesenheit Vorort Verbunden waren, aber nie so schnell Wirkung gezeigt haben. Bei diesem Spiel konnte man sehr gut beobachten wie schnell alles aus unserem Team zusammengearbeitet haben um die Aufgabe zu erfüllen und aus meiner Sicht auch Spaß daran hatten. Ich finde Spiele als Online-Teambuilding eine sehr gute Idee und finde Among Us ist dafür auch sehr gut geeignet. Damit man sich als Gruppe die einzelnen Rollen einteilten könnte und noch enger als Team zusammen Arbeiten muss fände ich Strategiespiele wie "\text{Age of Empires}" \text{oder} "\text{Stronghold}" eine gute Idee. Der einzige Hacken an diesen Spielen ist es, dass diese nicht Kostenlos sind und man diese auch nicht so einfach wie Among Us online spielen kann. Ansonsten könnte ich mir noch "\text{Online-Escaperooms}" als gute Online-Teambuilding-Aktivität vorstellen.
 \section{Zusammenarbeit im DiBSE Studium}
 Unsere Aufgabe im vierten Webinar war es einen Steckbrief zu erstelle, danach haben wir uns in Gruppen zusammengefunden und anhand unserer Steckbriefe eine Gruppenanlyse unserer Gruppe gemacht. Zum Ende der Vorlesung haben wir noch Regeln für eine Zusammenarbeit in einer Gruppe aufstellen und uns überlegen, wie wir mit Verfehlungen dieser umgehen wollen.
 \subsection{Erstellung eines Steckbriefs}
@@ -254,9 +255,9 @@ Wir hatten 30 Minuten Zeit eine Analyse unserer Gruppe zu machen. Dazu habe wir 
  \end{center}
  \caption{Gruppenanalyse unserer Gruppe}
 \end{figure}\\
-Wir hatten entschlossen, dass wir alle die Rolle des Moderators übernehme werden. Dies hat auch während der Zusammenarbeit sehr gut funktioniert. Des Weiteren haben wir entschieden, dass bei so einer Gruppengröße jeder in die Präsentation eingebunden werden sollte. Die restlichen Rollen haben wir wie in Abbildung 9 zu sehen verteilt.
+Wir haben uns entschlossen, dass wir alle die Rolle des Moderators übernehme werden. Dies hat auch während der Zusammenarbeit sehr gut funktioniert. Des Weiteren haben wir entschieden, dass bei so einer Gruppengröße jeder in die Präsentation eingebunden werden sollte. Die restlichen Rollen haben wir wie in Abbildung 9 zu sehen verteilt.
 \subsection{Regeln für eine gute Zusammenarbeit}
-Nachdem wir unsere Gruppe analysiert haben, haben wir Regeln aufgestellt, welche für essentiell für eine gute Gruppenarbeit sind. Diese sind:
+Nachdem wir unsere Gruppe analysiert haben, haben wir Regeln aufgestellt, welche für uns essentiell für eine gute Gruppenarbeit sind. Diese sind:
 \begin{itemize}
  \item Hilfsbereitschaft
  \begin{itemize}
@@ -268,7 +269,7 @@ Nachdem wir unsere Gruppe analysiert haben, haben wir Regeln aufgestellt, welche
  \end{itemize}
  \item Pflichtbewusstsein
  \begin{itemize}
-  \item [] Man sollte sich immer bewusst sein, dass man in einer Gruppenarbeit nicht alleine ist und deswegen auch für die Noten von anderen die Verantwortung.
+  \item [] Man sollte sich immer bewusst sein, dass man in einer Gruppenarbeit nicht alleine ist und deswegen auch für die Noten von anderen die Verantwortung trägt.
  \end{itemize}
  \item Fristen Einhalten
  \begin{itemize}
@@ -276,7 +277,7 @@ Nachdem wir unsere Gruppe analysiert haben, haben wir Regeln aufgestellt, welche
  \end{itemize}
  \item Gute Gesprächskultur
  \begin{itemize}
-  \item [] Dies sollte in jedem Gespräch gewahrt werden. Vor allem aber über die Zusammenarbeit über das Internet ist es wichtig Personen aussprechen zu lassen und sich eindeutig auszudrücken, denn Gesten können manchmal nicht wahrgenommen werden.
+  \item [] Dies sollte in jedem Gespräch gewahrt werden. Vor allem aber über die Zusammenarbeit über das Internet ist es wichtig Personen aussprechen zu lassen und sich eindeutig auszudrücken, denn Gesten und Körpersprache können nicht wahrgenommen werden. So kann es leicht zu Missverständnissen kommen.
  \end{itemize}
  \item Kritikfähigkeit
  \begin{itemize}
@@ -288,15 +289,15 @@ Nachdem wir unsere Gruppe analysiert haben, haben wir Regeln aufgestellt, welche
  \end{itemize}
  \item Verständnis
  \begin{itemize}
-  \item [] Man sollte zwar von jedem verlangen können, dass die Teile der Arbeit rechtzeitig gemacht werden. Aber auch Verständnis zeigen, wenn dies durch persönliche Problem nicht gemacht worden konnte.
+  \item [] Man sollte zwar von jedem verlangen können, dass die Teile der Arbeit rechtzeitig gemacht werden. Aber auch Verständnis zeigen, wenn dies durch persönliche Problem nicht gemacht werden konnte.
  \end{itemize}
- \item Sein bestes geblieben
+ \item Sein bestes geben
  \begin{itemize}
-  \item [] Man sollte von jedem Teammitglied erwarten können, dass er sein bestes gibt, auch wenn dies für jede/jeden eine unterschiedliche Qualität widerspiegelt.
+  \item [] Man sollte von jedem Teammitglied erwarten können, dass er/sie sein/ihr bestes gibt, auch wenn dies für jede/jeden eine unterschiedliche Qualität widerspiegelt.
  \end{itemize}
  \item Regeln einhalten
  \begin{itemize}
-  \item [] Man sollte sich immer an die Regeln halten, welche zu beginn einer Gruppenarbeit ausmacht.
+  \item [] Man sollte sich immer an die Regeln halten, welche zu beginn einer Gruppenarbeit ausgemacht worden sind.
  \end{itemize}
  \pagebreak
 \end{itemize}
@@ -314,7 +315,7 @@ Zum Schluss der Vorlesung haben wir uns noch auf drei Schritte geeignet, welche 
  \item [] \textbf{3. Mal} Aus der Gruppe ausschließen.
 \end{itemize}
 \subsection{Reflektion über die Verwendung von Canva im Hochschulbereich}
-Ich kannte Canva vor dieser Vorlesung noch nicht und wurde überrascht wie gut dies in der Zusammenarbeit funktioniert. Des Weiteren wurde ich von der Vielzahl von Vorlagen überrascht. Ich finde, dass man das Tool sehr gut im Hochschulbereich einsetzten kann. Vor allem in Aktivitäten wie Brainstorming finde ich das Tool gut, da jeder Post-it auf ein Whiteboard kleben kann und so jeder seinen Teil einbringen kann. Daraus können nun gute Ideen abgeleitet werden. Ich könnte mir vorstellen Canva folgendermaßen weiter einzusetzen:
+Ich kannte Canva vor dieser Vorlesung noch nicht und wurde überrascht wie gut dies in der Zusammenarbeit funktioniert. Des Weiteren wurde ich von der Vielzahl von Vorlagen überrascht. Ich finde, dass man das Tool sehr gut im Hochschulbereich einsetzten kann. Vor allem in Aktivitäten wie Brainstorming finde ich das Tool gut, da jeder ein Post-it auf ein Whiteboard kleben kann und so jeder seinen Teil einbringen kann. Daraus können nun gute Ideen abgeleitet werden. Ich könnte mir vorstellen Canva folgendermaßen weiter einzusetzen:
 \begin{itemize}
  \item Hilfe beim Brainstorming
  \item Erstellung von sozaial Meadi Posts (dies sieht nach einem sehr interessanten Feature fürs Marketing aus)
@@ -326,7 +327,7 @@ Situationen, in welchen ich eher auf andere Tools zurückgreifen würde:
  \item Bildbearbeitung
 \end{itemize}
 \subsection{Selbstreflexion}
-Wie ich schon in meinem Steckbrief geschrieben habe finde ich, dass ich mich im Verfassen von Texten verbessern kann. Des Weiteren will ich mich im Zitieren verbessern, da ich dies nicht wirklich kann. Des Weiteren will ich mir eine wissenschaftliche fundierte Arbeitsweise Aneignen. Dies kann nicht nur im Studium, sonder auch in der Arbeit als Software Engineer behilflich sein. Denn man sollte nichts was man von Kunden über einen Software-Fehler gesagt bekommt als wahr annehmen. Man muss sich immer selbst vom Sachverhalt überzeugen. Damit verhindert man das vergebliche Suchen in der falschen Gegend.
+Wie ich schon in meinem Steckbrief geschrieben habe finde ich, dass ich mich im Verfassen von Texten verbessern kann. Des Weiteren will ich mich im Zitieren verbessern, da ich dies nicht wirklich kann. Ich will mir auch eine wissenschaftliche fundierte Arbeitsweise Aneignen. Dies kann nicht nur im Studium, sonder auch in der Arbeit als Software Engineer behilflich sein. Denn man sollte nichts was man von Kunden über einen Software-Fehler gesagt bekommt als wahr annehmen. Man muss sich immer selbst vom Sachverhalt überzeugen. Damit verhindert man das vergebliche Suchen in der falschen Gegend.
 \listoffigures
 \lstlistoflistings
 \end{document}
